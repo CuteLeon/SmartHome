@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 
+
+//todo:为事件增加时间戳判断，仅增加新出现的事件，防止控件闪烁
 namespace 智能家居系统
 {
 

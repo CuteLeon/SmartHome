@@ -63,12 +63,12 @@ namespace 智能家居系统
                         activeItem.DomesticApplianceItem_Click(activeItem,new EventArgs());
                     }
                 }
-                base.Dispose();
             }
             catch (Exception ex)
             {
                 Debug.Print("家电[{0}]释放托管内存前预处理时出错：{1}",MAC,ex.Message);
             }
+            base.Dispose();
         }
 
         /// <summary>

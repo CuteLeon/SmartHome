@@ -222,9 +222,9 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
+            this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Controls.Add(this.CardPanel);
             this.MainPanel.Controls.Add(this.ControlPanel);
-            this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(241, 81);
             this.MainPanel.Name = "MainPanel";
@@ -237,7 +237,7 @@
             this.CardPanel.Location = new System.Drawing.Point(0, 0);
             this.CardPanel.Name = "CardPanel";
             this.CardPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.CardPanel.Size = new System.Drawing.Size(600, 518);
+            this.CardPanel.Size = new System.Drawing.Size(558, 518);
             this.CardPanel.TabIndex = 5;
             this.CardPanel.Visible = false;
             // 
@@ -247,7 +247,7 @@
             this.ControlPanel.Location = new System.Drawing.Point(0, 0);
             this.ControlPanel.Name = "ControlPanel";
             this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.ControlPanel.Size = new System.Drawing.Size(600, 518);
+            this.ControlPanel.Size = new System.Drawing.Size(558, 518);
             this.ControlPanel.TabIndex = 3;
             // 
             // InfoPanel
@@ -260,7 +260,7 @@
             this.InfoPanel.Location = new System.Drawing.Point(0, 0);
             this.InfoPanel.Name = "InfoPanel";
             this.InfoPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.InfoPanel.Size = new System.Drawing.Size(600, 518);
+            this.InfoPanel.Size = new System.Drawing.Size(558, 518);
             this.InfoPanel.TabIndex = 4;
             this.InfoPanel.Visible = false;
             // 
@@ -279,7 +279,7 @@
             this.EventListView.MultiSelect = false;
             this.EventListView.Name = "EventListView";
             this.EventListView.ShowGroups = false;
-            this.EventListView.Size = new System.Drawing.Size(570, 258);
+            this.EventListView.Size = new System.Drawing.Size(528, 258);
             this.EventListView.TabIndex = 3;
             this.EventListView.UseCompatibleStateImageBehavior = false;
             this.EventListView.View = System.Windows.Forms.View.Details;
@@ -336,7 +336,7 @@
             this.InfoTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InfoTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InfoTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.InfoTablePanel.Size = new System.Drawing.Size(570, 230);
+            this.InfoTablePanel.Size = new System.Drawing.Size(528, 230);
             this.InfoTablePanel.TabIndex = 2;
             // 
             // InfoTitle
@@ -348,7 +348,7 @@
             this.InfoTitle.Location = new System.Drawing.Point(5, 5);
             this.InfoTitle.Margin = new System.Windows.Forms.Padding(5);
             this.InfoTitle.Name = "InfoTitle";
-            this.InfoTitle.Size = new System.Drawing.Size(560, 26);
+            this.InfoTitle.Size = new System.Drawing.Size(518, 26);
             this.InfoTitle.TabIndex = 12;
             this.InfoTitle.Text = "家用电器信息";
             this.InfoTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -360,9 +360,9 @@
             this.DescriptionValueLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.DescriptionValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DescriptionValueLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DescriptionValueLabel.Location = new System.Drawing.Point(288, 198);
+            this.DescriptionValueLabel.Location = new System.Drawing.Point(267, 198);
             this.DescriptionValueLabel.Name = "DescriptionValueLabel";
-            this.DescriptionValueLabel.Size = new System.Drawing.Size(279, 32);
+            this.DescriptionValueLabel.Size = new System.Drawing.Size(258, 32);
             this.DescriptionValueLabel.TabIndex = 11;
             this.DescriptionValueLabel.Text = "(unknown)";
             this.DescriptionValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -374,7 +374,7 @@
             this.DescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DescriptionLabel.Location = new System.Drawing.Point(3, 198);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(279, 32);
+            this.DescriptionLabel.Size = new System.Drawing.Size(258, 32);
             this.DescriptionLabel.TabIndex = 10;
             this.DescriptionLabel.Text = "描述：";
             this.DescriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -385,9 +385,9 @@
             this.FDValueLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FDValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FDValueLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.FDValueLabel.Location = new System.Drawing.Point(288, 172);
+            this.FDValueLabel.Location = new System.Drawing.Point(267, 172);
             this.FDValueLabel.Name = "FDValueLabel";
-            this.FDValueLabel.Size = new System.Drawing.Size(279, 26);
+            this.FDValueLabel.Size = new System.Drawing.Size(258, 26);
             this.FDValueLabel.TabIndex = 9;
             this.FDValueLabel.Text = "(unknown)";
             this.FDValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -399,7 +399,7 @@
             this.FDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FDLabel.Location = new System.Drawing.Point(3, 172);
             this.FDLabel.Name = "FDLabel";
-            this.FDLabel.Size = new System.Drawing.Size(279, 26);
+            this.FDLabel.Size = new System.Drawing.Size(258, 26);
             this.FDLabel.TabIndex = 8;
             this.FDLabel.Text = "连接号：";
             this.FDLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -410,9 +410,9 @@
             this.TypeValueLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TypeValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TypeValueLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.TypeValueLabel.Location = new System.Drawing.Point(288, 114);
+            this.TypeValueLabel.Location = new System.Drawing.Point(267, 114);
             this.TypeValueLabel.Name = "TypeValueLabel";
-            this.TypeValueLabel.Size = new System.Drawing.Size(279, 26);
+            this.TypeValueLabel.Size = new System.Drawing.Size(258, 26);
             this.TypeValueLabel.TabIndex = 7;
             this.TypeValueLabel.Text = "(unknown)";
             this.TypeValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -424,7 +424,7 @@
             this.TypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TypeLabel.Location = new System.Drawing.Point(3, 114);
             this.TypeLabel.Name = "TypeLabel";
-            this.TypeLabel.Size = new System.Drawing.Size(279, 26);
+            this.TypeLabel.Size = new System.Drawing.Size(258, 26);
             this.TypeLabel.TabIndex = 6;
             this.TypeLabel.Text = "类型：";
             this.TypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -435,9 +435,9 @@
             this.ManufactorValueLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ManufactorValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ManufactorValueLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ManufactorValueLabel.Location = new System.Drawing.Point(288, 88);
+            this.ManufactorValueLabel.Location = new System.Drawing.Point(267, 88);
             this.ManufactorValueLabel.Name = "ManufactorValueLabel";
-            this.ManufactorValueLabel.Size = new System.Drawing.Size(279, 26);
+            this.ManufactorValueLabel.Size = new System.Drawing.Size(258, 26);
             this.ManufactorValueLabel.TabIndex = 5;
             this.ManufactorValueLabel.Text = "(unknown)";
             this.ManufactorValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -449,7 +449,7 @@
             this.ManufactorLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ManufactorLabel.Location = new System.Drawing.Point(3, 88);
             this.ManufactorLabel.Name = "ManufactorLabel";
-            this.ManufactorLabel.Size = new System.Drawing.Size(279, 26);
+            this.ManufactorLabel.Size = new System.Drawing.Size(258, 26);
             this.ManufactorLabel.TabIndex = 4;
             this.ManufactorLabel.Text = "厂商：";
             this.ManufactorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -460,9 +460,9 @@
             this.ModelValueLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ModelValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ModelValueLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ModelValueLabel.Location = new System.Drawing.Point(288, 62);
+            this.ModelValueLabel.Location = new System.Drawing.Point(267, 62);
             this.ModelValueLabel.Name = "ModelValueLabel";
-            this.ModelValueLabel.Size = new System.Drawing.Size(279, 26);
+            this.ModelValueLabel.Size = new System.Drawing.Size(258, 26);
             this.ModelValueLabel.TabIndex = 3;
             this.ModelValueLabel.Text = "(unknown)";
             this.ModelValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -474,7 +474,7 @@
             this.ModelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ModelLabel.Location = new System.Drawing.Point(3, 62);
             this.ModelLabel.Name = "ModelLabel";
-            this.ModelLabel.Size = new System.Drawing.Size(279, 26);
+            this.ModelLabel.Size = new System.Drawing.Size(258, 26);
             this.ModelLabel.TabIndex = 2;
             this.ModelLabel.Text = "家电型号：";
             this.ModelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -485,9 +485,9 @@
             this.DeviceNameValueLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.DeviceNameValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DeviceNameValueLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DeviceNameValueLabel.Location = new System.Drawing.Point(288, 36);
+            this.DeviceNameValueLabel.Location = new System.Drawing.Point(267, 36);
             this.DeviceNameValueLabel.Name = "DeviceNameValueLabel";
-            this.DeviceNameValueLabel.Size = new System.Drawing.Size(279, 26);
+            this.DeviceNameValueLabel.Size = new System.Drawing.Size(258, 26);
             this.DeviceNameValueLabel.TabIndex = 1;
             this.DeviceNameValueLabel.Text = "(unknown)";
             this.DeviceNameValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -499,7 +499,7 @@
             this.DeviceNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DeviceNameLabel.Location = new System.Drawing.Point(3, 36);
             this.DeviceNameLabel.Name = "DeviceNameLabel";
-            this.DeviceNameLabel.Size = new System.Drawing.Size(279, 26);
+            this.DeviceNameLabel.Size = new System.Drawing.Size(258, 26);
             this.DeviceNameLabel.TabIndex = 13;
             this.DeviceNameLabel.Text = "家电名称：";
             this.DeviceNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -510,9 +510,9 @@
             this.MACValueLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.MACValueLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.MACValueLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.MACValueLabel.Location = new System.Drawing.Point(288, 140);
+            this.MACValueLabel.Location = new System.Drawing.Point(267, 140);
             this.MACValueLabel.Name = "MACValueLabel";
-            this.MACValueLabel.Size = new System.Drawing.Size(279, 32);
+            this.MACValueLabel.Size = new System.Drawing.Size(258, 32);
             this.MACValueLabel.TabIndex = 16;
             this.MACValueLabel.Text = "(unknown)";
             this.MACValueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -524,7 +524,7 @@
             this.MACLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.MACLabel.Location = new System.Drawing.Point(3, 140);
             this.MACLabel.Name = "MACLabel";
-            this.MACLabel.Size = new System.Drawing.Size(279, 32);
+            this.MACLabel.Size = new System.Drawing.Size(258, 32);
             this.MACLabel.TabIndex = 14;
             this.MACLabel.Text = "MAC：";
             this.MACLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
