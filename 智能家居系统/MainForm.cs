@@ -145,9 +145,6 @@ namespace 智能家居系统
 
             ExitButton.MouseEnter += new EventHandler(Button_MouseEnter);
             ExitButton.MouseLeave += new EventHandler(Button_MouseLeave);
-            ExitButton.MouseDown += new MouseEventHandler(Button_MouseDown);
-            ExitButton.MouseUp += new MouseEventHandler(Button_MouseUp);
-
 
             //家电名称和描述显示控件鼠标进入或离开时改变编辑按钮的可见性
             Action<object, EventArgs> ShowEditButton = new Action<object, EventArgs>(delegate (object x,EventArgs y){ if (MACValueLabel.Text == "(unknown)") return; (x as Label).Image = UnityResource.Edit_0;(x as Label).ForeColor = Color.DeepSkyBlue; });
@@ -265,34 +262,36 @@ namespace 智能家居系统
             //todo:遍历FD<0的家电（已经掉线），移除字典和控件(如果被移除的空间被激活，优先激活下一个，如果下一个不存在，激活上一个，如不存在不激活)
 
             UnityModule.DebugPrint("开始更新已连接家电信息...");
-            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM devicebase WHERE FD>-1"))
+            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM devicebase WHERE FD>=0"))
             {
                 if (DataReader == null) return;
                 if (DataReader.HasRows)
                 {
                     while (DataReader.Read())
                     {
-                        string DeviceName = DataReader["DeviceName"] as string;
-                        string Model = DataReader["Model"] as string;
-                        string Description = DataReader["Description"] as string;
-                        string Manufactor = DataReader["Manufactor"] as string;
-                        string MAC;
+                        string DeviceName="";
+                        string Model="";
+                        string Description="";
+                        string Manufactor="";
+                        string MAC="";
+
                         try
                         {
                             DeviceName = DataReader["DeviceName"] as string;
-                            Model = DataReader["Model"] as string;
                             Description = DataReader["Description"] as string;
-                            Manufactor = DataReader["Manufactor"] as string;
                             MAC = DataReader["MAC"] as string;
+
                             if (DomesticApplianceItem.DAExists(MAC))
                             {
                                 //家电已经存在了，仅更新数据
                                 UnityModule.DebugPrint("更新家电数据 : {0}",MAC);
-
+                                DomesticApplianceItem.GetDAByMAC(MAC)?.SetDeviceNameAndDescription(DeviceName, Description);
                             }
                             else
                             {
                                 //家电不存在，添加新家电
+                                Model = DataReader["Model"] as string;
+                                Manufactor = DataReader["Manufactor"] as string;
                                 DomesticApplianceItem newDAItem;
                                 newDAItem = new DomesticApplianceItem(MAC, Manufactor,Model);
                                 newDAItem.SetDeviceNameAndDescription(DeviceName,Description);
@@ -310,6 +309,31 @@ namespace 智能家居系统
                         catch (Exception ex)
                         {
                             UnityModule.DebugPrint("读取家电列表时出错：\n\t\t\t" + DeviceName ?? "未知家电" + " (" + Model ?? "未知型号" + ")" + ex.Message);
+                        }
+                    }
+                }
+                DataReader.Close();
+            }
+            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM devicebase WHERE FD<0"))
+            {
+                if (DataReader == null) return;
+                if (DataReader.HasRows)
+                {
+                    while (DataReader.Read())
+                    {
+                        string MAC = "";
+                        try
+                        {
+                            MAC = DataReader["MAC"] as string;
+                            foreach(DomesticApplianceItem DAOffLine in DomesticAppliancePanel.Controls.Find(MAC, true))
+                            {
+                                UnityModule.DebugPrint("移除断开的家电[{0}]",MAC);
+                                DAOffLine.Dispose();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            UnityModule.DebugPrint("移除家电[{0}]时遇到错误：{1}" ,MAC,ex.Message);
                         }
                     }
                 }
@@ -386,7 +410,14 @@ namespace 智能家居系统
         {
             if (!AllowToClose)
             {
-                if (new MyMessageBox("您真的要退出智能家居系统吗？", MyMessageBox.IconType.Question).ShowDialog(this) != DialogResult.OK) return;
+                ExitButton.Image = UnityResource.ExitApp_2;
+                ExitButton.Refresh();
+                ExitButton.Image = UnityResource.ExitApp_1;
+                if (new MyMessageBox("您真的要退出智能家居系统吗？", MyMessageBox.IconType.Question).ShowDialog(this) != DialogResult.OK)
+                {
+                    ExitButton.Image = UnityResource.ExitApp_0;
+                    return;
+                }
                 ExitApplication();
             }
         }

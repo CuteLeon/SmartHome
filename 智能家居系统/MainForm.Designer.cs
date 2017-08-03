@@ -542,6 +542,7 @@
             // 
             // DateAndTimeTimer
             // 
+            this.DateAndTimeTimer.Enabled = true;
             this.DateAndTimeTimer.Interval = 3000;
             this.DateAndTimeTimer.Tick += new System.EventHandler(this.DateAndTimeTimer_Tick);
             // 
