@@ -144,6 +144,7 @@ namespace 智能家居系统
             CardLabel.MouseUp += new MouseEventHandler(Button_MouseUp);
 
             ExitButton.MouseEnter += new EventHandler(Button_MouseEnter);
+            ExitButton.MouseDown += new MouseEventHandler(Button_MouseDown);
             ExitButton.MouseLeave += new EventHandler(Button_MouseLeave);
 
             //家电名称和描述显示控件鼠标进入或离开时改变编辑按钮的可见性
@@ -310,6 +311,7 @@ namespace 智能家居系统
                         {
                             UnityModule.DebugPrint("读取家电列表时出错：\n\t\t\t" + DeviceName ?? "未知家电" + " (" + Model ?? "未知型号" + ")" + ex.Message);
                         }
+                        UnityModule.DebugPrint("——————————");
                     }
                 }
                 DataReader.Close();
@@ -335,6 +337,7 @@ namespace 智能家居系统
                         {
                             UnityModule.DebugPrint("移除家电[{0}]时遇到错误：{1}" ,MAC,ex.Message);
                         }
+                        UnityModule.DebugPrint("——————————");
                     }
                 }
                 DataReader.Close();
@@ -410,8 +413,6 @@ namespace 智能家居系统
         {
             if (!AllowToClose)
             {
-                ExitButton.Image = UnityResource.ExitApp_2;
-                ExitButton.Refresh();
                 ExitButton.Image = UnityResource.ExitApp_1;
                 if (new MyMessageBox("您真的要退出智能家居系统吗？", MyMessageBox.IconType.Question).ShowDialog(this) != DialogResult.OK)
                 {
@@ -582,6 +583,7 @@ namespace 智能家居系统
                     ShowDomesticApplianceEventLog(DomesticApplianceItem.ActiveItem.MAC);
                 }
             }
+            UnityModule.DebugPrint("——————————————————————————");
         }
 
     }
