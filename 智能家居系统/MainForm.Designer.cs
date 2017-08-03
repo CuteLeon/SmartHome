@@ -38,7 +38,10 @@
             this.ControlLabel = new System.Windows.Forms.Label();
             this.CardLabel = new System.Windows.Forms.Label();
             this.InfoLabel = new System.Windows.Forms.Label();
+            this.TargetLabel = new System.Windows.Forms.Label();
             this.MainPanel = new 数码复印机保密检查系统.MyPanel();
+            this.CardPanel = new 数码复印机保密检查系统.MyPanel();
+            this.ControlPanel = new 数码复印机保密检查系统.MyPanel();
             this.InfoPanel = new 数码复印机保密检查系统.MyPanel();
             this.EventListView = new System.Windows.Forms.ListView();
             this.EventTimeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -60,18 +63,12 @@
             this.DeviceNameLabel = new System.Windows.Forms.Label();
             this.MACValueLabel = new System.Windows.Forms.Label();
             this.MACLabel = new System.Windows.Forms.Label();
-            this.CardPanel = new 数码复印机保密检查系统.MyPanel();
-            this.CardPanelLabel = new System.Windows.Forms.Label();
-            this.ControlPanel = new 数码复印机保密检查系统.MyPanel();
-            this.ControlPanelLabel = new System.Windows.Forms.Label();
             this.DateAndTimeTimer = new System.Windows.Forms.Timer(this.components);
             this.LeftPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
             this.InfoTablePanel.SuspendLayout();
-            this.CardPanel.SuspendLayout();
-            this.ControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LeftPanel
@@ -82,7 +79,7 @@
             this.LeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftPanel.Location = new System.Drawing.Point(1, 1);
             this.LeftPanel.Name = "LeftPanel";
-            this.LeftPanel.Size = new System.Drawing.Size(200, 598);
+            this.LeftPanel.Size = new System.Drawing.Size(240, 598);
             this.LeftPanel.TabIndex = 0;
             // 
             // DomesticAppliancePanel
@@ -97,7 +94,7 @@
             this.DomesticAppliancePanel.Margin = new System.Windows.Forms.Padding(0);
             this.DomesticAppliancePanel.Name = "DomesticAppliancePanel";
             this.DomesticAppliancePanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.DomesticAppliancePanel.Size = new System.Drawing.Size(200, 398);
+            this.DomesticAppliancePanel.Size = new System.Drawing.Size(240, 398);
             this.DomesticAppliancePanel.TabIndex = 1;
             this.DomesticAppliancePanel.WrapContents = false;
             // 
@@ -111,7 +108,7 @@
             this.LogoLabel.Location = new System.Drawing.Point(0, 0);
             this.LogoLabel.Name = "LogoLabel";
             this.LogoLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.LogoLabel.Size = new System.Drawing.Size(200, 200);
+            this.LogoLabel.Size = new System.Drawing.Size(240, 200);
             this.LogoLabel.TabIndex = 0;
             this.LogoLabel.Text = "智能家居解决方案";
             this.LogoLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -123,9 +120,9 @@
             this.TimeLabel.Dock = System.Windows.Forms.DockStyle.Right;
             this.TimeLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TimeLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.TimeLabel.Location = new System.Drawing.Point(373, 0);
+            this.TimeLabel.Location = new System.Drawing.Point(333, 0);
             this.TimeLabel.Name = "TimeLabel";
-            this.TimeLabel.Size = new System.Drawing.Size(145, 82);
+            this.TimeLabel.Size = new System.Drawing.Size(145, 80);
             this.TimeLabel.TabIndex = 3;
             this.TimeLabel.Text = "yyyy/MM/dd\r\nhh:mm";
             this.TimeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -138,10 +135,11 @@
             this.TopPanel.Controls.Add(this.ControlLabel);
             this.TopPanel.Controls.Add(this.CardLabel);
             this.TopPanel.Controls.Add(this.InfoLabel);
+            this.TopPanel.Controls.Add(this.TargetLabel);
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(201, 1);
+            this.TopPanel.Location = new System.Drawing.Point(241, 1);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(598, 82);
+            this.TopPanel.Size = new System.Drawing.Size(558, 80);
             this.TopPanel.TabIndex = 1;
             this.TopPanel.Resize += new System.EventHandler(this.TopPanel_Resize);
             // 
@@ -151,10 +149,10 @@
             this.ExitButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.ExitButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
             this.ExitButton.Image = global::智能家居系统.UnityResource.ExitApp_0;
-            this.ExitButton.Location = new System.Drawing.Point(518, 0);
+            this.ExitButton.Location = new System.Drawing.Point(478, 0);
             this.ExitButton.Margin = new System.Windows.Forms.Padding(0);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(80, 82);
+            this.ExitButton.Size = new System.Drawing.Size(80, 80);
             this.ExitButton.TabIndex = 3;
             this.ExitButton.Tag = "ExitApp";
             this.ExitButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -166,7 +164,7 @@
             this.ControlLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
             this.ControlLabel.Image = global::智能家居系统.UnityResource.Control_0;
             this.ControlLabel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ControlLabel.Location = new System.Drawing.Point(114, 9);
+            this.ControlLabel.Location = new System.Drawing.Point(114, 5);
             this.ControlLabel.Margin = new System.Windows.Forms.Padding(0);
             this.ControlLabel.Name = "ControlLabel";
             this.ControlLabel.Size = new System.Drawing.Size(60, 60);
@@ -182,7 +180,7 @@
             this.CardLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
             this.CardLabel.Image = global::智能家居系统.UnityResource.Card_;
             this.CardLabel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CardLabel.Location = new System.Drawing.Point(234, 9);
+            this.CardLabel.Location = new System.Drawing.Point(234, 5);
             this.CardLabel.Margin = new System.Windows.Forms.Padding(0);
             this.CardLabel.Name = "CardLabel";
             this.CardLabel.Size = new System.Drawing.Size(60, 60);
@@ -198,7 +196,7 @@
             this.InfoLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
             this.InfoLabel.Image = global::智能家居系统.UnityResource.Info_;
             this.InfoLabel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.InfoLabel.Location = new System.Drawing.Point(174, 9);
+            this.InfoLabel.Location = new System.Drawing.Point(174, 5);
             this.InfoLabel.Margin = new System.Windows.Forms.Padding(0);
             this.InfoLabel.Name = "InfoLabel";
             this.InfoLabel.Size = new System.Drawing.Size(60, 60);
@@ -208,17 +206,49 @@
             this.InfoLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.InfoLabel.Click += new System.EventHandler(this.InfoLabel_Click);
             // 
+            // TargetLabel
+            // 
+            this.TargetLabel.BackColor = System.Drawing.Color.Transparent;
+            this.TargetLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.TargetLabel.Image = global::智能家居系统.UnityResource.Target;
+            this.TargetLabel.Location = new System.Drawing.Point(129, 65);
+            this.TargetLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TargetLabel.Name = "TargetLabel";
+            this.TargetLabel.Size = new System.Drawing.Size(60, 15);
+            this.TargetLabel.TabIndex = 4;
+            this.TargetLabel.Tag = "";
+            this.TargetLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
-            this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Controls.Add(this.CardPanel);
             this.MainPanel.Controls.Add(this.ControlPanel);
+            this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainPanel.Location = new System.Drawing.Point(201, 83);
+            this.MainPanel.Location = new System.Drawing.Point(241, 81);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(598, 516);
+            this.MainPanel.Size = new System.Drawing.Size(558, 518);
             this.MainPanel.TabIndex = 2;
+            // 
+            // CardPanel
+            // 
+            this.CardPanel.BackColor = System.Drawing.Color.Transparent;
+            this.CardPanel.Location = new System.Drawing.Point(0, 0);
+            this.CardPanel.Name = "CardPanel";
+            this.CardPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.CardPanel.Size = new System.Drawing.Size(600, 518);
+            this.CardPanel.TabIndex = 5;
+            this.CardPanel.Visible = false;
+            // 
+            // ControlPanel
+            // 
+            this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.ControlPanel.Name = "ControlPanel";
+            this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.ControlPanel.Size = new System.Drawing.Size(600, 518);
+            this.ControlPanel.TabIndex = 3;
             // 
             // InfoPanel
             // 
@@ -499,47 +529,6 @@
             this.MACLabel.Text = "MAC：";
             this.MACLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // CardPanel
-            // 
-            this.CardPanel.BackColor = System.Drawing.Color.Transparent;
-            this.CardPanel.Controls.Add(this.CardPanelLabel);
-            this.CardPanel.Location = new System.Drawing.Point(0, 0);
-            this.CardPanel.Name = "CardPanel";
-            this.CardPanel.Size = new System.Drawing.Size(600, 518);
-            this.CardPanel.TabIndex = 5;
-            this.CardPanel.Visible = false;
-            // 
-            // CardPanelLabel
-            // 
-            this.CardPanelLabel.AutoSize = true;
-            this.CardPanelLabel.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CardPanelLabel.ForeColor = System.Drawing.Color.White;
-            this.CardPanelLabel.Location = new System.Drawing.Point(227, 239);
-            this.CardPanelLabel.Name = "CardPanelLabel";
-            this.CardPanelLabel.Size = new System.Drawing.Size(146, 41);
-            this.CardPanelLabel.TabIndex = 4;
-            this.CardPanelLabel.Text = "卡片面板";
-            // 
-            // ControlPanel
-            // 
-            this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
-            this.ControlPanel.Controls.Add(this.ControlPanelLabel);
-            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.Size = new System.Drawing.Size(600, 518);
-            this.ControlPanel.TabIndex = 3;
-            // 
-            // ControlPanelLabel
-            // 
-            this.ControlPanelLabel.AutoSize = true;
-            this.ControlPanelLabel.Font = new System.Drawing.Font("微软雅黑", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ControlPanelLabel.ForeColor = System.Drawing.Color.White;
-            this.ControlPanelLabel.Location = new System.Drawing.Point(227, 239);
-            this.ControlPanelLabel.Name = "ControlPanelLabel";
-            this.ControlPanelLabel.Size = new System.Drawing.Size(146, 41);
-            this.ControlPanelLabel.TabIndex = 4;
-            this.ControlPanelLabel.Text = "控制面板";
-            // 
             // DateAndTimeTimer
             // 
             this.DateAndTimeTimer.Enabled = true;
@@ -567,7 +556,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
-            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.LeftPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
@@ -575,10 +563,6 @@
             this.InfoPanel.PerformLayout();
             this.InfoTablePanel.ResumeLayout(false);
             this.InfoTablePanel.PerformLayout();
-            this.CardPanel.ResumeLayout(false);
-            this.CardPanel.PerformLayout();
-            this.ControlPanel.ResumeLayout(false);
-            this.ControlPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -597,8 +581,6 @@
         private 数码复印机保密检查系统.MyPanel ControlPanel;
         private 数码复印机保密检查系统.MyPanel InfoPanel;
         private 数码复印机保密检查系统.MyPanel CardPanel;
-        private System.Windows.Forms.Label CardPanelLabel;
-        private System.Windows.Forms.Label ControlPanelLabel;
         private System.Windows.Forms.Label ExitButton;
         private System.Windows.Forms.TableLayoutPanel InfoTablePanel;
         private System.Windows.Forms.Label DescriptionValueLabel;
@@ -620,6 +602,7 @@
         private System.Windows.Forms.Label MACValueLabel;
         private System.Windows.Forms.Label MACLabel;
         private System.Windows.Forms.ColumnHeader EventTimeColumnHeader;
+        private System.Windows.Forms.Label TargetLabel;
     }
 }
 

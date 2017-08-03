@@ -42,7 +42,7 @@ namespace 智能家居系统
         /// <summary>
         /// 页面状态状态
         /// </summary>
-        PanelState PanelStatenow = PanelState.Control;
+        PanelState PanelStatenow;
         /// <summary>
         /// 获取或设置页面状态
         /// </summary>
@@ -70,6 +70,7 @@ namespace 智能家居系统
                                 CardPanel.Hide();
                                 CardLabel.Image = UnityResource.Card_;
                             }
+                            TargetLabel.Left = ControlLabel.Left;
                             MainPanel.Invalidate();
                             break;
                         }
@@ -87,6 +88,7 @@ namespace 智能家居系统
                                 CardPanel.Hide();
                                 CardLabel.Image = UnityResource.Card_;
                             }
+                            TargetLabel.Left = InfoLabel.Left;
                             MainPanel.Invalidate();
                             //如果被激活的家电项目不为空，立即刷新家电信息和事件
                             if (!string.IsNullOrEmpty(DomesticApplianceItem.ActiveItem?.MAC))
@@ -109,6 +111,7 @@ namespace 智能家居系统
                                 InfoLabel.Image = UnityResource.Info_;
                             }
                             CardPanel.Show();
+                            TargetLabel.Left = CardLabel.Left;
                             MainPanel.Invalidate();
                             break;
                         }
@@ -126,9 +129,10 @@ namespace 智能家居系统
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //初始化窗体图标和时钟
+            //初始化窗体
             this.Icon = UnityResource.LogoIcon;
             TimeLabel.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm");
+            PanelStateNow = PanelState.Control;
 
             //使用静态变量，让DAItems知道容器地址，当释放某个DAItem时，会自动激活临近DAItem
             DomesticApplianceItem.ParentPanel = DomesticAppliancePanel;
@@ -223,19 +227,6 @@ namespace 智能家居系统
         #endregion
 
         #region "页面大小改变自适应布局"
-        private void MainForm_Resize(object sender, EventArgs e)
-        {
-            if (this.Width == 0 || this.Height == 0) return;
-            UnityModule.DebugPrint("开始自适应调整界面...");
-
-            //Left:
-            LeftPanel.Width = Math.Min((int)(this.Width * 0.3), 300);
-
-            //Top
-            TopPanel.Height = Math.Max((int)(this.Height * 0.10), 80);
-
-            UnityModule.DebugPrint("界面调整完毕！");
-        }
 
         private void TopPanel_Resize(object sender, EventArgs e)
         {
@@ -243,6 +234,7 @@ namespace 智能家居系统
             ControlLabel.Left = (int)((TimeLabel.Left - 240) / 2);
             InfoLabel.Left = ControlLabel.Right + 20;
             CardLabel.Left = InfoLabel.Right + 20;
+            TargetLabel.Left = TopPanel.Controls.Find(PanelStateNow.ToString() + "Label", false).First()?.Left??TargetLabel.Left;
         }
         #endregion
 
