@@ -187,6 +187,12 @@ namespace 智能家居系统
             InputBoxForm.InputTextBox.Show();
             InputBoxForm.InputTextBox.Text = DefaultString;
             InputBoxForm.InputTextBox.MaxLength = MaxLength;
+            InputBoxForm.InputTextBox.KeyDown += new KeyEventHandler(delegate(object x,KeyEventArgs y) {
+                if (y.KeyCode == Keys.Escape)
+                    InputBoxForm.CancelButton_Click(InputBoxForm.CancelButton,new EventArgs());
+                else if (y.KeyCode == Keys.Enter)
+                    InputBoxForm.OKButton_Click(InputBoxForm.OKButton, new EventArgs());
+            });
             DialogResult InputBoxDialogResult = InputBoxForm.ShowDialog();
             if (InputBoxDialogResult == DialogResult.OK)
             {

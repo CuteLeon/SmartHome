@@ -49,6 +49,7 @@ namespace 智能家居系统
         private PanelState PanelStateNow
         {
             get => PanelStatenow;
+            //封装字段为属性：使用set自动触发界面切换
             set
             {
                 PanelStatenow = value;
@@ -57,15 +58,24 @@ namespace 智能家居系统
                 {
                     case PanelState.Control:
                         {
+                            //切换到控制页面
                             ControlPanel.Show();
-                            if (InfoPanel.Visible) InfoPanel.Hide();
-                            if (CardPanel.Visible) CardPanel.Hide();
-                            InfoLabel.Image = UnityResource.Info_;
-                            CardLabel.Image = UnityResource.Card_;
+                            if (InfoPanel.Visible)
+                            {
+                                InfoPanel.Hide();
+                                InfoLabel.Image = UnityResource.Info_;
+                            }
+                            if (CardPanel.Visible)
+                            {
+                                CardPanel.Hide();
+                                CardLabel.Image = UnityResource.Card_;
+                            }
+                            MainPanel.Invalidate();
                             break;
                         }
                     case PanelState.Info:
                         {
+                            //切换到信息界面
                             if (ControlPanel.Visible)
                             {
                                 ControlPanel.Hide();
@@ -77,7 +87,8 @@ namespace 智能家居系统
                                 CardPanel.Hide();
                                 CardLabel.Image = UnityResource.Card_;
                             }
-                            this.Invalidate();
+                            MainPanel.Invalidate();
+                            //如果被激活的家电项目不为空，立即刷新家电信息和事件
                             if (!string.IsNullOrEmpty(DomesticApplianceItem.ActiveItem?.MAC))
                             {
                                 ShowDomesticApplianceInfo(DomesticApplianceItem.ActiveItem.MAC);
@@ -98,6 +109,7 @@ namespace 智能家居系统
                                 InfoLabel.Image = UnityResource.Info_;
                             }
                             CardPanel.Show();
+                            MainPanel.Invalidate();
                             break;
                         }
                 }
@@ -114,20 +126,25 @@ namespace 智能家居系统
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //初始化窗体图标和时钟
             this.Icon = UnityResource.LogoIcon;
             TimeLabel.Text = DateTime.Now.ToString("yyyy/MM/dd hh:mm");
+
+            //使用静态变量，让DAItems知道容器地址，当释放某个DAItem时，会自动激活临近DAItem
             DomesticApplianceItem.ParentPanel = DomesticAppliancePanel;
 
             //注册鼠标拖动功能
-            LogoLabel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
+            //LogoLabel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
             TopPanel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
 
-
+            //允许多线程访问界面
             CheckForIllegalCrossThreadCalls = false;
+            //控制MainPanel内三个页面容器控件填充父容器
             ControlPanel.Dock = DockStyle.Fill;
             InfoPanel.Dock = DockStyle.Fill;
             CardPanel.Dock = DockStyle.Fill;
 
+            //为按钮绑定鼠标动态效果事件
             InfoLabel.MouseEnter += new EventHandler(Button_MouseEnter);
             InfoLabel.MouseLeave += new EventHandler(TitleButton_MouseLeave);
             InfoLabel.MouseDown += new MouseEventHandler(Button_MouseDown);
@@ -154,9 +171,11 @@ namespace 智能家居系统
             DescriptionValueLabel.MouseEnter += new EventHandler(ShowEditButton);
             DeviceNameValueLabel.MouseLeave += new EventHandler(HideEditButton);
             DescriptionValueLabel.MouseLeave += new EventHandler(HideEditButton);
+            //允许点击时编辑家电名称和描述信息
             DeviceNameValueLabel.Click += new EventHandler(EditDAInfo);
             DescriptionValueLabel.Click += new EventHandler(EditDAInfo);
 
+            //界面初始化完后曾
             LogoLabel.Text = "界面初始化完毕！";
             UnityModule.DebugPrint("界面初始化完毕！");
             this.Invalidate();
@@ -164,6 +183,7 @@ namespace 智能家居系统
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
+            this.Refresh();
             UnityModule.DebugPrint("界面显示完成。_Shown()");
             //连接数据库
             if (DataBaseController.CreateConnection())
@@ -188,11 +208,12 @@ namespace 智能家居系统
             LogoLabel.Text = "家电读取完毕！\n欢迎使用智能家居系统！";
         }
 
-        static bool AllowToClose = false;
+        bool AllowToClose = false;
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (!AllowToClose)
             {
+                //未经允许关闭时拦截关闭消息
                 e.Cancel = true;
                 if (new MyMessageBox("您真的要退出智能家居系统吗？", MyMessageBox.IconType.Question).ShowDialog(this) != DialogResult.OK) return;
                 ExitApplication();
@@ -216,12 +237,6 @@ namespace 智能家居系统
             UnityModule.DebugPrint("界面调整完毕！");
         }
 
-        private void LeftPanel_Resize(object sender, EventArgs e)
-        {
-            LogoLabel.Width = LeftPanel.Width;
-            DomesticAppliancePanel.Height = LeftPanel.Height - LogoLabel.Bottom;
-        }
-
         private void TopPanel_Resize(object sender, EventArgs e)
         {
             ExitButton.Width = TopPanel.Height;
@@ -239,8 +254,12 @@ namespace 智能家居系统
         private void ExitApplication()
         {
             UnityModule.DebugPrint("正在退出系统...");
+            //允许关闭窗体
             AllowToClose = true;
+            //断开数据库连接
             if (DataBaseController != null) DataBaseController.CloseConnection();
+            
+            //向线程池申请可用线程，并在成功时回调动态隐藏函数
             ThreadPool.QueueUserWorkItem(delegate
             {
                 while (this.Opacity > 0)
@@ -249,6 +268,7 @@ namespace 智能家居系统
                     Thread.Sleep(20);
                 }
                 UnityModule.DebugPrint("欢迎下次使用！再见！");
+                //退出程序
                 Application.Exit();
             });
         }
@@ -258,11 +278,8 @@ namespace 智能家居系统
         /// </summary>
         private void LoadDomesticAppliance()
         {
-            //todo:遍历在线的家电，新家电加入字典和控件
-            //todo:遍历在线的家电，更新家电数据
-            //todo:遍历FD<0的家电（已经掉线），移除字典和控件(如果被移除的空间被激活，优先激活下一个，如果下一个不存在，激活上一个，如不存在不激活)
-
             UnityModule.DebugPrint("开始更新已连接家电信息...");
+            //读取在线家电
             using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM devicebase WHERE FD>=0"))
             {
                 if (DataReader == null) return;
@@ -281,10 +298,11 @@ namespace 智能家居系统
                             DeviceName = DataReader["DeviceName"] as string;
                             Description = DataReader["Description"] as string;
                             MAC = DataReader["MAC"] as string;
-
+                            
+                            //以MAC为唯一标识判断家电是否已经存在
                             if (DomesticApplianceItem.DAExists(MAC))
                             {
-                                //家电已经存在了，仅更新数据
+                                //家电已经存在了，仅更新家电名称和描述
                                 UnityModule.DebugPrint("更新家电数据 : {0}",MAC);
                                 DomesticApplianceItem.GetDAByMAC(MAC)?.SetDeviceNameAndDescription(DeviceName, Description);
                             }
@@ -303,6 +321,7 @@ namespace 智能家居系统
                                 this.Invoke(new Action(() =>
                                 {
                                     DomesticAppliancePanel.Controls.Add(newDAItem);
+                                    DomesticAppliancePanel.Invalidate();
                                     UnityModule.DebugPrint("成功加入列表控件");
                                 }));
                             }

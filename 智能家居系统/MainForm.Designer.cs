@@ -84,27 +84,27 @@
             this.LeftPanel.Name = "LeftPanel";
             this.LeftPanel.Size = new System.Drawing.Size(200, 598);
             this.LeftPanel.TabIndex = 0;
-            this.LeftPanel.Resize += new System.EventHandler(this.LeftPanel_Resize);
             // 
             // DomesticAppliancePanel
             // 
             this.DomesticAppliancePanel.AutoScroll = true;
             this.DomesticAppliancePanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.DomesticAppliancePanel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DomesticAppliancePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DomesticAppliancePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DomesticAppliancePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.DomesticAppliancePanel.ForeColor = System.Drawing.Color.Black;
-            this.DomesticAppliancePanel.Location = new System.Drawing.Point(0, 211);
+            this.DomesticAppliancePanel.Location = new System.Drawing.Point(0, 200);
             this.DomesticAppliancePanel.Margin = new System.Windows.Forms.Padding(0);
             this.DomesticAppliancePanel.Name = "DomesticAppliancePanel";
             this.DomesticAppliancePanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.DomesticAppliancePanel.Size = new System.Drawing.Size(200, 387);
+            this.DomesticAppliancePanel.Size = new System.Drawing.Size(200, 398);
             this.DomesticAppliancePanel.TabIndex = 1;
             this.DomesticAppliancePanel.WrapContents = false;
             // 
             // LogoLabel
             // 
             this.LogoLabel.BackColor = System.Drawing.Color.Transparent;
+            this.LogoLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.LogoLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LogoLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.LogoLabel.Image = global::智能家居系统.UnityResource.Logo;
@@ -543,7 +543,7 @@
             // DateAndTimeTimer
             // 
             this.DateAndTimeTimer.Enabled = true;
-            this.DateAndTimeTimer.Interval = 3000;
+            this.DateAndTimeTimer.Interval = 5000;
             this.DateAndTimeTimer.Tick += new System.EventHandler(this.DateAndTimeTimer_Tick);
             // 
             // MainForm
