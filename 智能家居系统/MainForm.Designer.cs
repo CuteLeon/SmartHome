@@ -40,8 +40,8 @@
             this.InfoLabel = new System.Windows.Forms.Label();
             this.TargetLabel = new System.Windows.Forms.Label();
             this.MainPanel = new 数码复印机保密检查系统.MyPanel();
-            this.CardPanel = new 数码复印机保密检查系统.MyPanel();
             this.ControlPanel = new 数码复印机保密检查系统.MyPanel();
+            this.PowerButton = new System.Windows.Forms.Label();
             this.InfoPanel = new 数码复印机保密检查系统.MyPanel();
             this.EventListView = new System.Windows.Forms.ListView();
             this.EventTimeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -63,10 +63,12 @@
             this.DeviceNameLabel = new System.Windows.Forms.Label();
             this.MACValueLabel = new System.Windows.Forms.Label();
             this.MACLabel = new System.Windows.Forms.Label();
-            this.DateAndTimeTimer = new System.Windows.Forms.Timer(this.components);
+            this.CardPanel = new 数码复印机保密检查系统.MyPanel();
+            this.SystemEngine = new System.Windows.Forms.Timer(this.components);
             this.LeftPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            this.ControlPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
             this.InfoTablePanel.SuspendLayout();
             this.SuspendLayout();
@@ -222,33 +224,41 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
+            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Controls.Add(this.CardPanel);
-            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(241, 81);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(558, 518);
             this.MainPanel.TabIndex = 2;
             // 
-            // CardPanel
-            // 
-            this.CardPanel.BackColor = System.Drawing.Color.Transparent;
-            this.CardPanel.Location = new System.Drawing.Point(0, 0);
-            this.CardPanel.Name = "CardPanel";
-            this.CardPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.CardPanel.Size = new System.Drawing.Size(558, 518);
-            this.CardPanel.TabIndex = 5;
-            this.CardPanel.Visible = false;
-            // 
             // ControlPanel
             // 
             this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.ControlPanel.Controls.Add(this.PowerButton);
             this.ControlPanel.Location = new System.Drawing.Point(0, 0);
             this.ControlPanel.Name = "ControlPanel";
             this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
             this.ControlPanel.Size = new System.Drawing.Size(558, 518);
             this.ControlPanel.TabIndex = 3;
+            // 
+            // PowerButton
+            // 
+            this.PowerButton.BackColor = System.Drawing.Color.Transparent;
+            this.PowerButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PowerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.PowerButton.Image = global::智能家居系统.UnityResource.Power_true_0;
+            this.PowerButton.Location = new System.Drawing.Point(15, 15);
+            this.PowerButton.Margin = new System.Windows.Forms.Padding(0);
+            this.PowerButton.Name = "PowerButton";
+            this.PowerButton.Size = new System.Drawing.Size(528, 120);
+            this.PowerButton.TabIndex = 4;
+            this.PowerButton.Tag = "true";
+            this.PowerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.PowerButton.Click += new System.EventHandler(this.PowerButton_Click);
+            this.PowerButton.MouseEnter += new System.EventHandler(this.PowerButton_MouseEnter);
+            this.PowerButton.MouseLeave += new System.EventHandler(this.PowerButton_MouseLeave);
             // 
             // InfoPanel
             // 
@@ -529,11 +539,21 @@
             this.MACLabel.Text = "MAC：";
             this.MACLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // DateAndTimeTimer
+            // CardPanel
             // 
-            this.DateAndTimeTimer.Enabled = true;
-            this.DateAndTimeTimer.Interval = 5000;
-            this.DateAndTimeTimer.Tick += new System.EventHandler(this.DateAndTimeTimer_Tick);
+            this.CardPanel.BackColor = System.Drawing.Color.Transparent;
+            this.CardPanel.Location = new System.Drawing.Point(0, 0);
+            this.CardPanel.Name = "CardPanel";
+            this.CardPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.CardPanel.Size = new System.Drawing.Size(558, 518);
+            this.CardPanel.TabIndex = 5;
+            this.CardPanel.Visible = false;
+            // 
+            // SystemEngine
+            // 
+            this.SystemEngine.Enabled = true;
+            this.SystemEngine.Interval = 5000;
+            this.SystemEngine.Tick += new System.EventHandler(this.SystemEngine_Tick);
             // 
             // MainForm
             // 
@@ -559,6 +579,7 @@
             this.LeftPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
+            this.ControlPanel.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
             this.InfoTablePanel.ResumeLayout(false);
@@ -577,7 +598,7 @@
         private System.Windows.Forms.Label ControlLabel;
         private System.Windows.Forms.Label CardLabel;
         private System.Windows.Forms.Label TimeLabel;
-        private System.Windows.Forms.Timer DateAndTimeTimer;
+        private System.Windows.Forms.Timer SystemEngine;
         private 数码复印机保密检查系统.MyPanel ControlPanel;
         private 数码复印机保密检查系统.MyPanel InfoPanel;
         private 数码复印机保密检查系统.MyPanel CardPanel;
@@ -603,6 +624,7 @@
         private System.Windows.Forms.Label MACLabel;
         private System.Windows.Forms.ColumnHeader EventTimeColumnHeader;
         private System.Windows.Forms.Label TargetLabel;
+        private System.Windows.Forms.Label PowerButton;
     }
 }
 

@@ -37,7 +37,7 @@
             // 
             this.DeviceNameLabel.AutoSize = true;
             this.DeviceNameLabel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DeviceNameLabel.Location = new System.Drawing.Point(50, 14);
+            this.DeviceNameLabel.Location = new System.Drawing.Point(50, 12);
             this.DeviceNameLabel.Name = "DeviceNameLabel";
             this.DeviceNameLabel.Size = new System.Drawing.Size(103, 20);
             this.DeviceNameLabel.TabIndex = 1;
@@ -49,7 +49,7 @@
             this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.DescriptionLabel.ForeColor = System.Drawing.Color.Gray;
-            this.DescriptionLabel.Location = new System.Drawing.Point(50, 38);
+            this.DescriptionLabel.Location = new System.Drawing.Point(50, 36);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(163, 20);
             this.DescriptionLabel.TabIndex = 2;
@@ -85,7 +85,7 @@
         #endregion
 
         private System.Windows.Forms.Label TypeLogoLabel;
-        private System.Windows.Forms.Label DeviceNameLabel;
         private System.Windows.Forms.Label DescriptionLabel;
+        private System.Windows.Forms.Label DeviceNameLabel;
     }
 }

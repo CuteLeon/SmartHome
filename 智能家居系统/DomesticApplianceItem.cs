@@ -44,7 +44,7 @@ namespace 智能家居系统
         private readonly string Model;
 
         /// <summary>
-        /// 继承自 IDisposable 接口，释放托管资源并自动从家电字典里移除此项
+        /// 继承自 IDisposable 接口，释放托管资源并自动从家电字典里移除此项（注意：必须使用 IDisposable 接口调用此方法）
         /// </summary>
         void IDisposable.Dispose()
         {
@@ -68,7 +68,9 @@ namespace 智能家居系统
             {
                 Debug.Print("家电[{0}]释放托管内存前预处理时出错：{1}",MAC,ex.Message);
             }
+
             base.Dispose();
+            GC.Collect();
         }
 
         /// <summary>
@@ -143,6 +145,7 @@ namespace 智能家居系统
         {
             UnityModule.DebugPrint("修改家电控件信息：{0} / {1}",DeviceName,Description);
             DeviceNameLabel.Text = string.Format("{0} ({1})", DeviceName, (Model.StartsWith(Manufactor) ? Model : Manufactor + "-" + Model));
+            this.Tag = DeviceNameLabel.Text;
             DescriptionLabel.Text = Description;
         }
 

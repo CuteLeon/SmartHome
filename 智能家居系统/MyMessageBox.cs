@@ -58,6 +58,7 @@ namespace 智能家居系统
         public MyMessageBox(string MessageText,string Title,IconType iconType)
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
 
             TitleLabel.Text = Title;
             MessageLabel.Text = MessageText;

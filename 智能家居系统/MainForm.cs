@@ -24,7 +24,7 @@ namespace 智能家居系统
         MySQLDBModel DataBaseController = new MySQLDBModel();
 
         /// <summary>
-        /// 页面状态枚举
+        /// 界面状态枚举
         /// </summary>
         private enum PanelState
         {
@@ -42,11 +42,11 @@ namespace 智能家居系统
             Card
         }
         /// <summary>
-        /// 页面状态状态
+        /// 界面状态状态
         /// </summary>
         PanelState PanelStatenow;
         /// <summary>
-        /// 获取或设置页面状态
+        /// 获取或设置界面状态
         /// </summary>
         private PanelState PanelStateNow
         {
@@ -60,7 +60,7 @@ namespace 智能家居系统
                 {
                     case PanelState.Control:
                         {
-                            //切换到控制页面
+                            //切换到控制界面
                             ControlPanel.Show();
                             if (InfoPanel.Visible)
                             {
@@ -74,6 +74,7 @@ namespace 智能家居系统
                             }
                             TargetLabel.Left = ControlLabel.Left;
                             MainPanel.Invalidate();
+
                             break;
                         }
                     case PanelState.Info:
@@ -145,7 +146,7 @@ namespace 智能家居系统
 
             //允许多线程访问界面
             CheckForIllegalCrossThreadCalls = false;
-            //控制MainPanel内三个页面容器控件填充父容器
+            //控制MainPanel内三个界面容器控件填充父容器
             ControlPanel.Dock = DockStyle.Fill;
             InfoPanel.Dock = DockStyle.Fill;
             CardPanel.Dock = DockStyle.Fill;
@@ -228,7 +229,7 @@ namespace 智能家居系统
 
         #endregion
 
-        #region "页面大小改变自适应布局"
+        #region "界面大小改变自适应布局"
 
         private void TopPanel_Resize(object sender, EventArgs e)
         {
@@ -311,7 +312,7 @@ namespace 智能家居系统
                                 newDAItem.Width = DomesticAppliancePanel.Width-25;
                                 newDAItem.ItemClick += new EventHandler(DomesticApplianceItem_ItemClick);
 
-                                UnityModule.DebugPrint("增加新家电：{0}({1})\n\t\t\t\tMAC地址：{2}",DeviceName , Model, MAC);
+                                UnityModule.DebugPrint("增加新家电：{0}({1})\t\tMAC地址：{2}",DeviceName , Model, MAC);
                                 this.Invoke(new Action(() =>
                                 {
                                     DomesticAppliancePanel.Controls.Add(newDAItem);
@@ -322,7 +323,7 @@ namespace 智能家居系统
                         }
                         catch (Exception ex)
                         {
-                            UnityModule.DebugPrint("读取家电列表时出错：\n\t\t\t" + DeviceName ?? "未知家电" + " (" + Model ?? "未知型号" + ")" + ex.Message);
+                            UnityModule.DebugPrint("读取家电列表时出错：\t" + DeviceName ?? "未知家电" + " (" + Model ?? "未知型号" + ")" + ex.Message);
                         }
                         UnityModule.DebugPrint("——————————");
                     }
@@ -343,7 +344,7 @@ namespace 智能家居系统
                             foreach(DomesticApplianceItem DAOffLine in DomesticAppliancePanel.Controls.Find(MAC, true))
                             {
                                 UnityModule.DebugPrint("移除断开的家电[{0}]",MAC);
-                                DAOffLine.Dispose();
+                                (DAOffLine as IDisposable).Dispose();
                             }
                         }
                         catch (Exception ex)
@@ -362,12 +363,16 @@ namespace 智能家居系统
 
         private void DomesticApplianceItem_ItemClick(object sender, EventArgs e)
         {
-            if (-1 < (int)DataBaseController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", (sender as DomesticApplianceItem).MAC))
+            object Result = DataBaseController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", (sender as DomesticApplianceItem).MAC);
+            if (Result == null) return;
+            if (-1 < (int)Result)
             {
                 //如果用户点击的家电仍在线，更新家电信息
                 UnityModule.DebugPrint("点击家电项目，加载家电信息和事件记录...");
                 ShowDomesticApplianceInfo((sender as DomesticApplianceItem).MAC);
                 ShowDomesticApplianceEventLog((sender as DomesticApplianceItem).MAC);
+
+
             }
             else
             {
@@ -438,7 +443,7 @@ namespace 智能家居系统
 
         #endregion
 
-        #region "家电信息页面事件"
+        #region "家电信息界面事件"
 
         /// <summary>
         /// 编辑家电信息并储存进数据库
@@ -463,7 +468,7 @@ namespace 智能家居系统
         }
 
         /// <summary>
-        /// 初始化家电信息页面
+        /// 初始化家电信息界面
         /// </summary>
         private void ResetDAInfoPanel()
         {
@@ -486,13 +491,13 @@ namespace 智能家居系统
         }
 
         /// <summary>
-        /// 把上次读取的数据里读取家电信息显示在信息页面
+        /// 把上次读取的数据里读取家电信息显示在信息界面
         /// </summary>
         /// <param name="mac">家电的MAC地址</param>
         private void ShowDomesticApplianceInfo(string mac)
         {
             if (string.IsNullOrEmpty(mac)) return;
-            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader(String.Format("SELECT * FROM devicebase WHERE MAC= '{0}'", mac)))
+            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM devicebase WHERE MAC= '{0}'", mac))
             {
                 EventListView.Items.Clear();
                 if (DataReader == null) return;
@@ -529,7 +534,7 @@ namespace 智能家居系统
         private void ShowDomesticApplianceEventLog(string mac)
         {
             if (string.IsNullOrEmpty(mac)) return;
-            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader(String.Format("SELECT * FROM eventbase WHERE MAC= '{0}'",mac)))
+            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM eventbase WHERE MAC= '{0}'",mac))
             {
                 EventListView.Items.Clear();
                 if (DataReader == null) return;
@@ -573,6 +578,57 @@ namespace 智能家居系统
 
         #endregion
 
+        #region "家电控制界面事件"
+
+        private void PowerButton_Click(object sender, EventArgs e)
+        {
+            if (DomesticApplianceItem.ActiveItem == null) return;
+            if (new MyMessageBox(string.Format("您确定要关闭家电 {0} 的电源吗？",DomesticApplianceItem.ActiveItem.Tag.ToString()),MyMessageBox.IconType.Question).ShowDialog(this) != DialogResult.OK) return;
+
+            ShutdownDA(DomesticApplianceItem.ActiveItem.MAC);
+
+            ResetDAInfoPanel();
+            (DomesticApplianceItem.ActiveItem as IDisposable).Dispose();
+        }
+
+        private void PowerButton_MouseEnter(object sender, EventArgs e)
+        {
+            if (DomesticApplianceItem.ActiveItem == null) return;
+            PowerButton.Image = UnityResource.Power_1;
+        }
+
+        private void PowerButton_MouseLeave(object sender, EventArgs e)
+        {
+            if (DomesticApplianceItem.ActiveItem == null) return;
+            PowerButton.Image = UnityResource.Power_true_0;
+        }
+
+        /// <summary>
+        /// 关闭家电的电源
+        /// </summary>
+        /// <param name="MAC">家电的MAC地址</param>
+        private void ShutdownDA(string MAC)
+        {
+            //todo:使用网络协议发送关闭指令
+            //一个简单的方法，在数据库将家电的在线特征置为 -1；
+            DataBaseController.ExecuteNonQuery("UPDATE devicebase SET FD = {0} WHERE MAC='{1}'",-1,MAC);
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 判断家电是否在线
+        /// </summary>
+        /// <param name="MAC">家电的MAC地址</param>
+        /// <returns></returns>
+        [Obsolete]
+        private bool IsDAOnLine(string MAC)
+        {
+            object Result = DataBaseController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", MAC);
+            if (Result == null) return false;
+            return ((int)Result > -1);
+        }
+
         private void LogoLabel_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Maximized)
@@ -581,7 +637,7 @@ namespace 智能家居系统
                 this.WindowState = FormWindowState.Maximized;
         }
 
-        private void DateAndTimeTimer_Tick(object sender, EventArgs e)
+        private void SystemEngine_Tick(object sender, EventArgs e)
         {
             UnityModule.DebugPrint("心跳更新数据...");
             TimeLabel.Text = DateTime.Now.ToString("yyyy-MM-dd\nhh:mm");
