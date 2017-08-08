@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             this.LeftPanel = new 数码复印机保密检查系统.MyPanel();
             this.LogoPanel = new 数码复印机保密检查系统.MyPanel();
+            this.FunctionButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.VoiceButton = new System.Windows.Forms.PictureBox();
             this.RefreshButton = new System.Windows.Forms.Label();
             this.LogoLabel = new System.Windows.Forms.Label();
             this.DomesticAppliancePanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -69,6 +71,8 @@
             this.SystemEngine = new System.Windows.Forms.Timer(this.components);
             this.LeftPanel.SuspendLayout();
             this.LogoPanel.SuspendLayout();
+            this.FunctionButtonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.VoiceButton)).BeginInit();
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ControlPanel.SuspendLayout();
@@ -90,25 +94,58 @@
             // 
             // LogoPanel
             // 
-            this.LogoPanel.Controls.Add(this.RefreshButton);
+            this.LogoPanel.Controls.Add(this.FunctionButtonPanel);
             this.LogoPanel.Controls.Add(this.LogoLabel);
             this.LogoPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.LogoPanel.Location = new System.Drawing.Point(0, 0);
+            this.LogoPanel.Margin = new System.Windows.Forms.Padding(0);
             this.LogoPanel.Name = "LogoPanel";
             this.LogoPanel.Size = new System.Drawing.Size(240, 216);
             this.LogoPanel.TabIndex = 0;
             // 
+            // FunctionButtonPanel
+            // 
+            this.FunctionButtonPanel.AutoScroll = true;
+            this.FunctionButtonPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.FunctionButtonPanel.Controls.Add(this.RefreshButton);
+            this.FunctionButtonPanel.Controls.Add(this.VoiceButton);
+            this.FunctionButtonPanel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FunctionButtonPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.FunctionButtonPanel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.FunctionButtonPanel.ForeColor = System.Drawing.Color.Black;
+            this.FunctionButtonPanel.Location = new System.Drawing.Point(0, 170);
+            this.FunctionButtonPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.FunctionButtonPanel.Name = "FunctionButtonPanel";
+            this.FunctionButtonPanel.Size = new System.Drawing.Size(240, 46);
+            this.FunctionButtonPanel.TabIndex = 9;
+            this.FunctionButtonPanel.WrapContents = false;
+            // 
+            // VoiceButton
+            // 
+            this.VoiceButton.BackgroundImage = global::智能家居系统.UnityResource.CircularButton_0;
+            this.VoiceButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.VoiceButton.Image = global::智能家居系统.UnityResource.Microphone_Off;
+            this.VoiceButton.Location = new System.Drawing.Point(139, 0);
+            this.VoiceButton.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.VoiceButton.Name = "VoiceButton";
+            this.VoiceButton.Size = new System.Drawing.Size(46, 46);
+            this.VoiceButton.TabIndex = 10;
+            this.VoiceButton.TabStop = false;
+            this.VoiceButton.Click += new System.EventHandler(this.VoiceButton_Click);
+            this.VoiceButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VoiceButton_MouseDown);
+            this.VoiceButton.MouseEnter += new System.EventHandler(this.VoiceButton_MouseEnter);
+            this.VoiceButton.MouseLeave += new System.EventHandler(this.VoiceButton_MouseLeave);
+            this.VoiceButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VoiceButton_MouseUp);
+            // 
             // RefreshButton
             // 
             this.RefreshButton.BackColor = System.Drawing.Color.Transparent;
-            this.RefreshButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RefreshButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
             this.RefreshButton.Image = global::智能家居系统.UnityResource.Refresh_0;
-            this.RefreshButton.Location = new System.Drawing.Point(0, 170);
-            this.RefreshButton.Margin = new System.Windows.Forms.Padding(0);
+            this.RefreshButton.Location = new System.Drawing.Point(191, 0);
             this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(240, 46);
-            this.RefreshButton.TabIndex = 7;
+            this.RefreshButton.Size = new System.Drawing.Size(46, 46);
+            this.RefreshButton.TabIndex = 9;
             this.RefreshButton.Tag = "Refresh";
             this.RefreshButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
@@ -608,6 +645,8 @@
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.LeftPanel.ResumeLayout(false);
             this.LogoPanel.ResumeLayout(false);
+            this.FunctionButtonPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.VoiceButton)).EndInit();
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.ControlPanel.ResumeLayout(false);
@@ -656,8 +695,10 @@
         private System.Windows.Forms.Label TargetLabel;
         private System.Windows.Forms.Label PowerButton;
         private 数码复印机保密检查系统.MyPanel LogoPanel;
-        private System.Windows.Forms.Label RefreshButton;
         private System.Windows.Forms.Label LogoLabel;
+        private System.Windows.Forms.FlowLayoutPanel FunctionButtonPanel;
+        private System.Windows.Forms.PictureBox VoiceButton;
+        private System.Windows.Forms.Label RefreshButton;
     }
 }
 

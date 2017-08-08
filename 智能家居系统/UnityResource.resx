@@ -130,6 +130,15 @@
   <data name="Card_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Card_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CircularButton_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CircularButton_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircularButton_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CircularButton_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircularButton_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CircularButton_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Close_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Close_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -204,6 +213,12 @@
   </data>
   <data name="LogoIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Logo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Microphone_Off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Microphone_Off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Microphone_On" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Microphone_On.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Power_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Power_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

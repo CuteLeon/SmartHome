@@ -156,6 +156,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MySql.Data.dll" />
+    <None Include="Resources\Microphone_On.png" />
+    <None Include="Resources\Microphone_Off.png" />
     <None Include="Resources\Refresh_2.png" />
     <None Include="Resources\Refresh_1.png" />
     <None Include="Resources\Refresh_0.png" />
@@ -179,6 +181,9 @@
     <None Include="Resources\Edit_0.png" />
     <None Include="Resources\Edit_1.png" />
     <None Include="Resources\Edit_2.png" />
+    <None Include="Resources\CircularButton_0.png" />
+    <None Include="Resources\CircularButton_1.png" />
+    <None Include="Resources\CircularButton_2.png" />
     <Content Include="Resources\Info_.png" />
     <None Include="Resources\Warning.png" />
     <None Include="Resources\Question.png" />

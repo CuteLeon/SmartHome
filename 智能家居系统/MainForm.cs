@@ -244,6 +244,13 @@ namespace 智能家居系统
             CardLabel.Left = InfoLabel.Right + 20;
             TargetLabel.Left = TopPanel.Controls.Find(PanelStateNow.ToString() + "Label", false).First()?.Left??TargetLabel.Left;
         }
+
+
+        private void LeftPanel_Resize(object sender, EventArgs e)
+        {
+            DomesticAppliancePanel.Height = LeftPanel.Height - LogoPanel.Bottom;
+        }
+
         #endregion
 
         #region "功能函数"
@@ -660,16 +667,45 @@ namespace 智能家居系统
             UnityModule.DebugPrint("——————————————————————————");
         }
 
-        private void LeftPanel_Resize(object sender, EventArgs e)
-        {
-            DomesticAppliancePanel.Height = LeftPanel.Height - LogoPanel.Bottom;
-        }
+        #region "功能按钮流式布局区事件"
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
+            UnityModule.DebugPrint("点击家电列表刷新按钮");
             SystemEngine.Stop();
             LoadDomesticAppliance();
             SystemEngine.Start();
         }
+
+        private void VoiceButton_Click(object sender, EventArgs e)
+        {
+            UnityModule.DebugPrint("点击语音控制功能开关按钮");
+            MicrophoneSwitch = !MicrophoneSwitch;
+            VoiceButton.Image = (MicrophoneSwitch ? UnityResource.Microphone_On : UnityResource.Microphone_Off);
+        }
+
+        private bool MicrophoneSwitch = false;
+        private void VoiceButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            VoiceButton.BackgroundImage = UnityResource.CircularButton_2;
+        }
+
+        private void VoiceButton_MouseEnter(object sender, EventArgs e)
+        {
+            VoiceButton.BackgroundImage = UnityResource.CircularButton_1;
+        }
+
+        private void VoiceButton_MouseLeave(object sender, EventArgs e)
+        {
+            VoiceButton.BackgroundImage = UnityResource.CircularButton_0;
+        }
+
+        private void VoiceButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            VoiceButton.BackgroundImage = UnityResource.CircularButton_1;
+        }
+
+        #endregion
+
     }
 }

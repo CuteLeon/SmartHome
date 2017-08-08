@@ -103,6 +103,36 @@ namespace 智能家居系统 {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap CircularButton_0 {
+            get {
+                object obj = ResourceManager.GetObject("CircularButton_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap CircularButton_1 {
+            get {
+                object obj = ResourceManager.GetObject("CircularButton_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap CircularButton_2 {
+            get {
+                object obj = ResourceManager.GetObject("CircularButton_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Close_0 {
             get {
                 object obj = ResourceManager.GetObject("Close_0", resourceCulture);
@@ -347,6 +377,26 @@ namespace 智能家居系统 {
             get {
                 object obj = ResourceManager.GetObject("LogoIcon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Microphone_Off {
+            get {
+                object obj = ResourceManager.GetObject("Microphone_Off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Microphone_On {
+            get {
+                object obj = ResourceManager.GetObject("Microphone_On", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
