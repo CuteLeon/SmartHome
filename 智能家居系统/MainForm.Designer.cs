@@ -30,8 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.LeftPanel = new 数码复印机保密检查系统.MyPanel();
-            this.DomesticAppliancePanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.LogoPanel = new 数码复印机保密检查系统.MyPanel();
+            this.RefreshButton = new System.Windows.Forms.Label();
             this.LogoLabel = new System.Windows.Forms.Label();
+            this.DomesticAppliancePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TimeLabel = new System.Windows.Forms.Label();
             this.TopPanel = new 数码复印机保密检查系统.MyPanel();
             this.ExitButton = new System.Windows.Forms.Label();
@@ -66,6 +68,7 @@
             this.CardPanel = new 数码复印机保密检查系统.MyPanel();
             this.SystemEngine = new System.Windows.Forms.Timer(this.components);
             this.LeftPanel.SuspendLayout();
+            this.LogoPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.ControlPanel.SuspendLayout();
@@ -76,29 +79,39 @@
             // LeftPanel
             // 
             this.LeftPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.LeftPanel.Controls.Add(this.LogoPanel);
             this.LeftPanel.Controls.Add(this.DomesticAppliancePanel);
-            this.LeftPanel.Controls.Add(this.LogoLabel);
             this.LeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.LeftPanel.Location = new System.Drawing.Point(1, 1);
             this.LeftPanel.Name = "LeftPanel";
             this.LeftPanel.Size = new System.Drawing.Size(240, 598);
             this.LeftPanel.TabIndex = 0;
+            this.LeftPanel.Resize += new System.EventHandler(this.LeftPanel_Resize);
             // 
-            // DomesticAppliancePanel
+            // LogoPanel
             // 
-            this.DomesticAppliancePanel.AutoScroll = true;
-            this.DomesticAppliancePanel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.DomesticAppliancePanel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DomesticAppliancePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DomesticAppliancePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.DomesticAppliancePanel.ForeColor = System.Drawing.Color.Black;
-            this.DomesticAppliancePanel.Location = new System.Drawing.Point(0, 200);
-            this.DomesticAppliancePanel.Margin = new System.Windows.Forms.Padding(0);
-            this.DomesticAppliancePanel.Name = "DomesticAppliancePanel";
-            this.DomesticAppliancePanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.DomesticAppliancePanel.Size = new System.Drawing.Size(240, 398);
-            this.DomesticAppliancePanel.TabIndex = 1;
-            this.DomesticAppliancePanel.WrapContents = false;
+            this.LogoPanel.Controls.Add(this.RefreshButton);
+            this.LogoPanel.Controls.Add(this.LogoLabel);
+            this.LogoPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.LogoPanel.Location = new System.Drawing.Point(0, 0);
+            this.LogoPanel.Name = "LogoPanel";
+            this.LogoPanel.Size = new System.Drawing.Size(240, 216);
+            this.LogoPanel.TabIndex = 0;
+            // 
+            // RefreshButton
+            // 
+            this.RefreshButton.BackColor = System.Drawing.Color.Transparent;
+            this.RefreshButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RefreshButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.RefreshButton.Image = global::智能家居系统.UnityResource.Refresh_0;
+            this.RefreshButton.Location = new System.Drawing.Point(0, 170);
+            this.RefreshButton.Margin = new System.Windows.Forms.Padding(0);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(240, 46);
+            this.RefreshButton.TabIndex = 7;
+            this.RefreshButton.Tag = "Refresh";
+            this.RefreshButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // LogoLabel
             // 
@@ -107,14 +120,31 @@
             this.LogoLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.LogoLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.LogoLabel.Image = global::智能家居系统.UnityResource.Logo;
+            this.LogoLabel.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.LogoLabel.Location = new System.Drawing.Point(0, 0);
             this.LogoLabel.Name = "LogoLabel";
-            this.LogoLabel.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.LogoLabel.Size = new System.Drawing.Size(240, 200);
-            this.LogoLabel.TabIndex = 0;
+            this.LogoLabel.Padding = new System.Windows.Forms.Padding(0, 20, 0, 15);
+            this.LogoLabel.Size = new System.Drawing.Size(240, 170);
+            this.LogoLabel.TabIndex = 6;
             this.LogoLabel.Text = "智能家居解决方案";
             this.LogoLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.LogoLabel.Click += new System.EventHandler(this.LogoLabel_Click);
+            // 
+            // DomesticAppliancePanel
+            // 
+            this.DomesticAppliancePanel.AutoScroll = true;
+            this.DomesticAppliancePanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.DomesticAppliancePanel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DomesticAppliancePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DomesticAppliancePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.DomesticAppliancePanel.ForeColor = System.Drawing.Color.Black;
+            this.DomesticAppliancePanel.Location = new System.Drawing.Point(0, 235);
+            this.DomesticAppliancePanel.Margin = new System.Windows.Forms.Padding(0);
+            this.DomesticAppliancePanel.Name = "DomesticAppliancePanel";
+            this.DomesticAppliancePanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.DomesticAppliancePanel.Size = new System.Drawing.Size(240, 363);
+            this.DomesticAppliancePanel.TabIndex = 1;
+            this.DomesticAppliancePanel.WrapContents = false;
             // 
             // TimeLabel
             // 
@@ -131,7 +161,7 @@
             // 
             // TopPanel
             // 
-            this.TopPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.TopPanel.Controls.Add(this.TimeLabel);
             this.TopPanel.Controls.Add(this.ExitButton);
             this.TopPanel.Controls.Add(this.ControlLabel);
@@ -577,6 +607,7 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.LeftPanel.ResumeLayout(false);
+            this.LogoPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.ControlPanel.ResumeLayout(false);
@@ -590,7 +621,6 @@
 
         #endregion
         private 数码复印机保密检查系统.MyPanel LeftPanel;
-        private System.Windows.Forms.Label LogoLabel;
         private System.Windows.Forms.FlowLayoutPanel DomesticAppliancePanel;
         private 数码复印机保密检查系统.MyPanel TopPanel;
         private System.Windows.Forms.Label InfoLabel;
@@ -625,6 +655,9 @@
         private System.Windows.Forms.ColumnHeader EventTimeColumnHeader;
         private System.Windows.Forms.Label TargetLabel;
         private System.Windows.Forms.Label PowerButton;
+        private 数码复印机保密检查系统.MyPanel LogoPanel;
+        private System.Windows.Forms.Label RefreshButton;
+        private System.Windows.Forms.Label LogoLabel;
     }
 }
 

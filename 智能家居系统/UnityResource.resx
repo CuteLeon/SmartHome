@@ -217,6 +217,15 @@
   <data name="Question" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Question.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Refresh_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Refresh_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Refresh_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Refresh_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Refresh_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Refresh_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SmallButton_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\SmallButton_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

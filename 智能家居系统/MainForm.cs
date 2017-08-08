@@ -152,6 +152,11 @@ namespace 智能家居系统
             CardPanel.Dock = DockStyle.Fill;
 
             //为按钮绑定鼠标动态效果事件
+            RefreshButton.MouseEnter += new EventHandler(Button_MouseEnter);
+            RefreshButton.MouseLeave += new EventHandler(Button_MouseLeave);
+            RefreshButton.MouseDown += new MouseEventHandler(Button_MouseDown);
+            RefreshButton.MouseUp += new MouseEventHandler(Button_MouseUp);
+
             InfoLabel.MouseEnter += new EventHandler(Button_MouseEnter);
             InfoLabel.MouseLeave += new EventHandler(TitleButton_MouseLeave);
             InfoLabel.MouseDown += new MouseEventHandler(Button_MouseDown);
@@ -190,7 +195,7 @@ namespace 智能家居系统
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            this.Refresh();
+            this.Invalidate();
             UnityModule.DebugPrint("界面显示完成。_Shown()");
             //连接数据库
             if (DataBaseController.CreateConnection())
@@ -212,7 +217,7 @@ namespace 智能家居系统
             //读取数据库里的家用电器
             LoadDomesticAppliance();
 
-            LogoLabel.Text = "家电读取完毕！\n欢迎使用智能家居系统！";
+            LogoLabel.Text = "欢迎使用智能家居系统！";
         }
 
         bool AllowToClose = false;
@@ -620,7 +625,7 @@ namespace 智能家居系统
         /// 判断家电是否在线
         /// </summary>
         /// <param name="MAC">家电的MAC地址</param>
-        /// <returns></returns>
+        /// <returns>是否在线</returns>
         [Obsolete]
         private bool IsDAOnLine(string MAC)
         {
@@ -655,5 +660,16 @@ namespace 智能家居系统
             UnityModule.DebugPrint("——————————————————————————");
         }
 
+        private void LeftPanel_Resize(object sender, EventArgs e)
+        {
+            DomesticAppliancePanel.Height = LeftPanel.Height - LogoPanel.Bottom;
+        }
+
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            SystemEngine.Stop();
+            LoadDomesticAppliance();
+            SystemEngine.Start();
+        }
     }
 }
