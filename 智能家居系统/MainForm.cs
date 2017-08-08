@@ -126,6 +126,8 @@ namespace 智能家居系统
                             break;
                         }
                 }
+
+                if(TipsBox.Visible) TipsBox.BringToFront();
                 UnityModule.DebugPrint("界面切换完成！当前状态：" + value.ToString());
             }
         }
@@ -260,6 +262,10 @@ namespace 智能家居系统
             TargetLabel.Left = TopPanel.Controls.Find(PanelStateNow.ToString() + "Label", false).First()?.Left??TargetLabel.Left;
         }
 
+        private void MainPanel_Resize(object sender, EventArgs e)
+        {
+            TipsBox.Left = (TipsBox.Visible ? TipsBox.Parent.Width - TipsBox.Width : TipsBox.Parent.Width);
+        }
 
         private void LeftPanel_Resize(object sender, EventArgs e)
         {
@@ -621,6 +627,8 @@ namespace 智能家居系统
 
             ShutdownDA(DomesticApplianceItem.ActiveItem.MAC);
 
+            ShowTipsMessage("家电关闭成功：","家电 "+ DomesticApplianceItem.ActiveItem.Tag.ToString() +" 已关闭！",MyMessageBox.IconType.Info);
+
             ResetDAInfoPanel();
             (DomesticApplianceItem.ActiveItem as IDisposable).Dispose();
         }
@@ -696,6 +704,7 @@ namespace 智能家居系统
             UnityModule.DebugPrint("————————<<<  点击家电列表刷新按钮  >>>————————");
             SystemEngine.Stop();
             LoadDomesticAppliance();
+            ShowTipsMessage("家电刷新完成：", "家电列表刷新完成！", MyMessageBox.IconType.Info);
             SystemEngine.Start();
         }
 
@@ -709,6 +718,7 @@ namespace 智能家居系统
                 UnitySREController.StopSREngine();
                 MicrophoneSwitch = false;
                 VoiceButton.Image = UnityResource.Microphone_Off;
+                ShowTipsMessage("语音识别引擎：", "语音识别引擎已关闭！", MyMessageBox.IconType.Info);
             }
             else
             {
@@ -717,6 +727,10 @@ namespace 智能家居系统
                 {
                     MicrophoneSwitch = true;
                     VoiceButton.Image = UnityResource.Microphone_On;
+                    ShowTipsMessage("语音识别引擎：", "语音识别引擎开启成功！", MyMessageBox.IconType.Info);
+                }
+                else {
+                    ShowTipsMessage("语音识别引擎：", "语音识别引擎开启失败！", MyMessageBox.IconType.Warning);
                 }
             }
         }

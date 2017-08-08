@@ -32,8 +32,8 @@
             this.LeftPanel = new 数码复印机保密检查系统.MyPanel();
             this.LogoPanel = new 数码复印机保密检查系统.MyPanel();
             this.FunctionButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.VoiceButton = new System.Windows.Forms.PictureBox();
             this.RefreshButton = new System.Windows.Forms.Label();
+            this.VoiceButton = new System.Windows.Forms.PictureBox();
             this.LogoLabel = new System.Windows.Forms.Label();
             this.DomesticAppliancePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TimeLabel = new System.Windows.Forms.Label();
@@ -44,6 +44,10 @@
             this.InfoLabel = new System.Windows.Forms.Label();
             this.TargetLabel = new System.Windows.Forms.Label();
             this.MainPanel = new 数码复印机保密检查系统.MyPanel();
+            this.TipsBox = new 数码复印机保密检查系统.MyPanel();
+            this.TipsIconLabel = new System.Windows.Forms.Label();
+            this.TipsMessageLabel = new System.Windows.Forms.Label();
+            this.TipsTitleLabel = new System.Windows.Forms.Label();
             this.ControlPanel = new 数码复印机保密检查系统.MyPanel();
             this.PowerButton = new System.Windows.Forms.Label();
             this.InfoPanel = new 数码复印机保密检查系统.MyPanel();
@@ -75,6 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.VoiceButton)).BeginInit();
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            this.TipsBox.SuspendLayout();
             this.ControlPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
             this.InfoTablePanel.SuspendLayout();
@@ -120,6 +125,19 @@
             this.FunctionButtonPanel.TabIndex = 9;
             this.FunctionButtonPanel.WrapContents = false;
             // 
+            // RefreshButton
+            // 
+            this.RefreshButton.BackColor = System.Drawing.Color.Transparent;
+            this.RefreshButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.RefreshButton.Image = global::智能家居系统.UnityResource.Refresh_0;
+            this.RefreshButton.Location = new System.Drawing.Point(191, 0);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(46, 46);
+            this.RefreshButton.TabIndex = 9;
+            this.RefreshButton.Tag = "Refresh";
+            this.RefreshButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
+            // 
             // VoiceButton
             // 
             this.VoiceButton.BackgroundImage = global::智能家居系统.UnityResource.CircularButton_0;
@@ -136,19 +154,6 @@
             this.VoiceButton.MouseEnter += new System.EventHandler(this.VoiceButton_MouseEnter);
             this.VoiceButton.MouseLeave += new System.EventHandler(this.VoiceButton_MouseLeave);
             this.VoiceButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VoiceButton_MouseUp);
-            // 
-            // RefreshButton
-            // 
-            this.RefreshButton.BackColor = System.Drawing.Color.Transparent;
-            this.RefreshButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
-            this.RefreshButton.Image = global::智能家居系统.UnityResource.Refresh_0;
-            this.RefreshButton.Location = new System.Drawing.Point(191, 0);
-            this.RefreshButton.Name = "RefreshButton";
-            this.RefreshButton.Size = new System.Drawing.Size(46, 46);
-            this.RefreshButton.TabIndex = 9;
-            this.RefreshButton.Tag = "Refresh";
-            this.RefreshButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // LogoLabel
             // 
@@ -291,6 +296,7 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
+            this.MainPanel.Controls.Add(this.TipsBox);
             this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Controls.Add(this.CardPanel);
@@ -299,6 +305,63 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(558, 518);
             this.MainPanel.TabIndex = 2;
+            this.MainPanel.Resize += new System.EventHandler(this.MainPanel_Resize);
+            // 
+            // TipsBox
+            // 
+            this.TipsBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(185)))), ((int)(((byte)(255)))));
+            this.TipsBox.Controls.Add(this.TipsIconLabel);
+            this.TipsBox.Controls.Add(this.TipsMessageLabel);
+            this.TipsBox.Controls.Add(this.TipsTitleLabel);
+            this.TipsBox.Location = new System.Drawing.Point(290, 30);
+            this.TipsBox.Margin = new System.Windows.Forms.Padding(0);
+            this.TipsBox.Name = "TipsBox";
+            this.TipsBox.Padding = new System.Windows.Forms.Padding(1);
+            this.TipsBox.Size = new System.Drawing.Size(270, 90);
+            this.TipsBox.TabIndex = 5;
+            this.TipsBox.Visible = false;
+            // 
+            // TipsIconLabel
+            // 
+            this.TipsIconLabel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TipsIconLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TipsIconLabel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TipsIconLabel.Location = new System.Drawing.Point(1, 25);
+            this.TipsIconLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TipsIconLabel.Name = "TipsIconLabel";
+            this.TipsIconLabel.Size = new System.Drawing.Size(60, 64);
+            this.TipsIconLabel.TabIndex = 5;
+            // 
+            // TipsMessageLabel
+            // 
+            this.TipsMessageLabel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TipsMessageLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.TipsMessageLabel.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TipsMessageLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.TipsMessageLabel.Location = new System.Drawing.Point(61, 25);
+            this.TipsMessageLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TipsMessageLabel.Name = "TipsMessageLabel";
+            this.TipsMessageLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.TipsMessageLabel.Size = new System.Drawing.Size(208, 64);
+            this.TipsMessageLabel.TabIndex = 4;
+            this.TipsMessageLabel.Text = "智能家居解决方案";
+            this.TipsMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // TipsTitleLabel
+            // 
+            this.TipsTitleLabel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TipsTitleLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TipsTitleLabel.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Bold);
+            this.TipsTitleLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.TipsTitleLabel.Location = new System.Drawing.Point(1, 1);
+            this.TipsTitleLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TipsTitleLabel.Name = "TipsTitleLabel";
+            this.TipsTitleLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.TipsTitleLabel.Size = new System.Drawing.Size(268, 24);
+            this.TipsTitleLabel.TabIndex = 3;
+            this.TipsTitleLabel.Text = "智能家居解决方案";
+            this.TipsTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TipsTitleLabel.Click += new System.EventHandler(this.TipsTitleLabel_Click);
             // 
             // ControlPanel
             // 
@@ -648,6 +711,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.VoiceButton)).EndInit();
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
+            this.TipsBox.ResumeLayout(false);
             this.ControlPanel.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
@@ -698,6 +762,10 @@
         private System.Windows.Forms.FlowLayoutPanel FunctionButtonPanel;
         private System.Windows.Forms.PictureBox VoiceButton;
         private System.Windows.Forms.Label RefreshButton;
+        private 数码复印机保密检查系统.MyPanel TipsBox;
+        private System.Windows.Forms.Label TipsIconLabel;
+        private System.Windows.Forms.Label TipsMessageLabel;
+        private System.Windows.Forms.Label TipsTitleLabel;
     }
 }
 
