@@ -13,7 +13,7 @@ namespace 智能家居系统
     /// <summary>
     /// MySQL数据库处理（数据库每5秒刷新，所以与数据库建立长连接）
     /// </summary>
-    class MySQLDBModel
+    class MySQLDataBaseController
     {
         /// <summary>
         /// 数据库长连接
@@ -33,6 +33,10 @@ namespace 智能家居系统
             UnityModule.DebugPrint("正在创建数据库连接...");
             try
             {
+                //数据库连接到打开时需要断开重新连接
+                if (DataBaseConnection != null && DataBaseConnection.State == ConnectionState.Open)
+                    CloseConnection();
+
                 string ConnectionString = "server=localhost;user id=root;password=987412365;database=iot";
                 DataBaseConnection = new MySqlConnection(ConnectionString);
                 DataBaseCommand = new MySqlCommand() { Connection=DataBaseConnection};
@@ -180,13 +184,19 @@ namespace 智能家居系统
         public void CloseConnection()
         {
             UnityModule.DebugPrint("正在关闭数据库连接...");
-            if (DataBaseConnection == null) return;
-            if (DataBaseConnection.State == ConnectionState.Open)
+            try
+            {
+                if (DataBaseConnection == null) return;
                 DataBaseConnection.Close();
-            DataBaseConnection = null;
+                DataBaseConnection = null;
+                DataBaseCommand = null;
+            }
+            catch (Exception ex) {
+                UnityModule.DebugPrint("关闭数据库连接时遇到错误：",ex.Message);
+            }
             UnityModule.DebugPrint("已经关闭数据库连接");
         }
-
+        
     }
 
 }

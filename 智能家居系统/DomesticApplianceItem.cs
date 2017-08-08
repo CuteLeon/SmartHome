@@ -70,7 +70,7 @@ namespace 智能家居系统
             }
 
             base.Dispose();
-            GC.Collect();
+            GC.SuppressFinalize(this);
         }
 
         /// <summary>

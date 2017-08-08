@@ -18,10 +18,17 @@ namespace 智能家居系统
 
     public partial class MainForm : Form
     {
+
+        #region "变量与对象"
+        /// <summary>
+        /// 语音识别引擎控制器
+        /// </summary>
+        SpeechRecognitionController UnitySREController = new SpeechRecognitionController();
+
         /// <summary>
         /// 数据库的长连接
         /// </summary>
-        MySQLDBModel DataBaseController = new MySQLDBModel();
+        MySQLDataBaseController UnityDBController = new MySQLDataBaseController();
 
         /// <summary>
         /// 界面状态枚举
@@ -55,7 +62,7 @@ namespace 智能家居系统
             set
             {
                 PanelStatenow = value;
-                UnityModule.DebugPrint("正在切换界面到 " + value.ToString());
+                UnityModule.DebugPrint("————————<<<  正在切换界面到 {0}  >>>————————",value.ToString());
                 switch (value)
                 {
                     case PanelState.Control:
@@ -122,6 +129,7 @@ namespace 智能家居系统
                 UnityModule.DebugPrint("界面切换完成！当前状态：" + value.ToString());
             }
         }
+        #endregion
 
         #region "窗体事件"
 
@@ -187,7 +195,7 @@ namespace 智能家居系统
             DeviceNameValueLabel.Click += new EventHandler(EditDAInfo);
             DescriptionValueLabel.Click += new EventHandler(EditDAInfo);
 
-            //界面初始化完后曾
+            //界面初始化完成
             LogoLabel.Text = "界面初始化完毕！";
             UnityModule.DebugPrint("界面初始化完毕！");
             this.Invalidate();
@@ -198,7 +206,7 @@ namespace 智能家居系统
             this.Invalidate();
             UnityModule.DebugPrint("界面显示完成。_Shown()");
             //连接数据库
-            if (DataBaseController.CreateConnection())
+            if (UnityDBController.CreateConnection())
             {
                 LogoLabel.Text = "数据库连接成功！";
                 UnityModule.DebugPrint("数据库长连接创建成功！");
@@ -207,7 +215,7 @@ namespace 智能家居系统
             {
                 LogoLabel.Text = "数据库连接失败！";
                 new MyMessageBox("无法连接数据库！请退出系统并检查连接！", "数据库连接失败：", MyMessageBox.IconType.Error).ShowDialog(this);
-                ExitApplication();
+                //ExitApplication();
             }
 
             //稳定界面
@@ -218,6 +226,13 @@ namespace 智能家居系统
             LoadDomesticAppliance();
 
             LogoLabel.Text = "欢迎使用智能家居系统！";
+
+            //创建语音识别引擎
+            if (UnitySREController.CreateSREngine())
+            {
+                //导入语法
+            }
+
         }
 
         bool AllowToClose = false;
@@ -264,8 +279,15 @@ namespace 智能家居系统
             //允许关闭窗体
             AllowToClose = true;
             //断开数据库连接
-            if (DataBaseController != null) DataBaseController.CloseConnection();
-            
+            if (UnityDBController != null)
+            {
+                UnityDBController.CloseConnection();
+            }
+            if (UnitySREController != null)
+            {
+                UnitySREController.StopSREngine();
+                (UnitySREController as IDisposable).Dispose();
+            }
             //向线程池申请可用线程，并在成功时回调动态隐藏函数
             ThreadPool.QueueUserWorkItem(delegate
             {
@@ -287,7 +309,7 @@ namespace 智能家居系统
         {
             UnityModule.DebugPrint("开始更新已连接家电信息...");
             //读取在线家电
-            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM devicebase WHERE FD>=0"))
+            using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM devicebase WHERE FD>=0"))
             {
                 if (DataReader == null) return;
                 if (DataReader.HasRows)
@@ -342,7 +364,7 @@ namespace 智能家居系统
                 }
                 DataReader.Close();
             }
-            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM devicebase WHERE FD<0"))
+            using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM devicebase WHERE FD<0"))
             {
                 if (DataReader == null) return;
                 if (DataReader.HasRows)
@@ -375,7 +397,7 @@ namespace 智能家居系统
 
         private void DomesticApplianceItem_ItemClick(object sender, EventArgs e)
         {
-            object Result = DataBaseController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", (sender as DomesticApplianceItem).MAC);
+            object Result = UnityDBController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", (sender as DomesticApplianceItem).MAC);
             if (Result == null) return;
             if (-1 < (int)Result)
             {
@@ -465,7 +487,7 @@ namespace 智能家居系统
             if (MACValueLabel.Text == "(unknown)") return;
             string LabelName= (sender as Label).Name.Remove((sender as Label).Name.Length - "ValueLabel".Length),UserInput = "";
             if( MyMessageBox.ShowInputBox(string.Format("请输入 {0} 信息：",LabelName),ref UserInput, (sender as Label).Text,50) != DialogResult.OK) return;
-            if (DataBaseController.ExecuteNonQuery("UPDATE devicebase SET {0} = '{1}' WHERE MAC='{2}'", LabelName, UserInput,MACValueLabel.Text))
+            if (UnityDBController.ExecuteNonQuery("UPDATE devicebase SET {0} = '{1}' WHERE MAC='{2}'", LabelName, UserInput,MACValueLabel.Text))
             {
                 (sender as Label).Text = UserInput;
                 DomesticApplianceItem.GetDAByMAC(MACValueLabel.Text)?.SetDeviceNameAndDescription(DeviceNameValueLabel.Text,DescriptionValueLabel.Text);
@@ -509,7 +531,7 @@ namespace 智能家居系统
         private void ShowDomesticApplianceInfo(string mac)
         {
             if (string.IsNullOrEmpty(mac)) return;
-            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM devicebase WHERE MAC= '{0}'", mac))
+            using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM devicebase WHERE MAC= '{0}'", mac))
             {
                 EventListView.Items.Clear();
                 if (DataReader == null) return;
@@ -546,7 +568,7 @@ namespace 智能家居系统
         private void ShowDomesticApplianceEventLog(string mac)
         {
             if (string.IsNullOrEmpty(mac)) return;
-            using (MySqlDataReader DataReader = DataBaseController.ExecuteReader("SELECT * FROM eventbase WHERE MAC= '{0}'",mac))
+            using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM eventbase WHERE MAC= '{0}'",mac))
             {
                 EventListView.Items.Clear();
                 if (DataReader == null) return;
@@ -623,7 +645,7 @@ namespace 智能家居系统
         {
             //todo:使用网络协议发送关闭指令
             //一个简单的方法，在数据库将家电的在线特征置为 -1；
-            DataBaseController.ExecuteNonQuery("UPDATE devicebase SET FD = {0} WHERE MAC='{1}'",-1,MAC);
+            UnityDBController.ExecuteNonQuery("UPDATE devicebase SET FD = {0} WHERE MAC='{1}'",-1,MAC);
         }
 
         #endregion
@@ -636,7 +658,7 @@ namespace 智能家居系统
         [Obsolete]
         private bool IsDAOnLine(string MAC)
         {
-            object Result = DataBaseController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", MAC);
+            object Result = UnityDBController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", MAC);
             if (Result == null) return false;
             return ((int)Result > -1);
         }
@@ -651,7 +673,7 @@ namespace 智能家居系统
 
         private void SystemEngine_Tick(object sender, EventArgs e)
         {
-            UnityModule.DebugPrint("心跳更新数据...");
+            UnityModule.DebugPrint("————————<<<  心跳更新数据  >>>————————");
             TimeLabel.Text = DateTime.Now.ToString("yyyy-MM-dd\nhh:mm");
 
             LoadDomesticAppliance();
@@ -671,20 +693,34 @@ namespace 智能家居系统
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            UnityModule.DebugPrint("点击家电列表刷新按钮");
+            UnityModule.DebugPrint("————————<<<  点击家电列表刷新按钮  >>>————————");
             SystemEngine.Stop();
             LoadDomesticAppliance();
             SystemEngine.Start();
         }
 
+        private bool MicrophoneSwitch = false;
         private void VoiceButton_Click(object sender, EventArgs e)
         {
-            UnityModule.DebugPrint("点击语音控制功能开关按钮");
-            MicrophoneSwitch = !MicrophoneSwitch;
-            VoiceButton.Image = (MicrophoneSwitch ? UnityResource.Microphone_On : UnityResource.Microphone_Off);
+            UnityModule.DebugPrint("————————<<<  点击语音控制功能开关按钮  >>>————————");
+            if (MicrophoneSwitch)
+            {
+                //关闭语音识别引擎
+                UnitySREController.StopSREngine();
+                MicrophoneSwitch = false;
+                VoiceButton.Image = UnityResource.Microphone_Off;
+            }
+            else
+            {
+                //开启语音识别引擎
+                if (UnitySREController.StartUpSREngine())
+                {
+                    MicrophoneSwitch = true;
+                    VoiceButton.Image = UnityResource.Microphone_On;
+                }
+            }
         }
 
-        private bool MicrophoneSwitch = false;
         private void VoiceButton_MouseDown(object sender, MouseEventArgs e)
         {
             VoiceButton.BackgroundImage = UnityResource.CircularButton_2;

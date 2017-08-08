@@ -618,7 +618,6 @@
             // 
             // SystemEngine
             // 
-            this.SystemEngine.Enabled = true;
             this.SystemEngine.Interval = 5000;
             this.SystemEngine.Tick += new System.EventHandler(this.SystemEngine_Tick);
             // 
