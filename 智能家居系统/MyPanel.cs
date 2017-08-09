@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace 数码复印机保密检查系统
+namespace 智能家居系统
 {
     class MyPanel:Panel
     {

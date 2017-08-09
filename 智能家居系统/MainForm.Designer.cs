@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.LeftPanel = new 数码复印机保密检查系统.MyPanel();
-            this.LogoPanel = new 数码复印机保密检查系统.MyPanel();
+            this.LeftPanel = new 智能家居系统.MyPanel();
+            this.LogoPanel = new 智能家居系统.MyPanel();
             this.FunctionButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.RefreshButton = new System.Windows.Forms.Label();
             this.VoiceButton = new System.Windows.Forms.PictureBox();
             this.LogoLabel = new System.Windows.Forms.Label();
             this.DomesticAppliancePanel = new System.Windows.Forms.FlowLayoutPanel();
             this.TimeLabel = new System.Windows.Forms.Label();
-            this.TopPanel = new 数码复印机保密检查系统.MyPanel();
+            this.TopPanel = new 智能家居系统.MyPanel();
             this.ExitButton = new System.Windows.Forms.Label();
             this.ControlLabel = new System.Windows.Forms.Label();
             this.CardLabel = new System.Windows.Forms.Label();
             this.InfoLabel = new System.Windows.Forms.Label();
             this.TargetLabel = new System.Windows.Forms.Label();
-            this.MainPanel = new 数码复印机保密检查系统.MyPanel();
-            this.TipsBox = new 数码复印机保密检查系统.MyPanel();
+            this.MainPanel = new 智能家居系统.MyPanel();
+            this.TipsBox = new 智能家居系统.MyPanel();
             this.TipsIconLabel = new System.Windows.Forms.Label();
             this.TipsMessageLabel = new System.Windows.Forms.Label();
             this.TipsTitleLabel = new System.Windows.Forms.Label();
-            this.ControlPanel = new 数码复印机保密检查系统.MyPanel();
+            this.ControlPanel = new 智能家居系统.MyPanel();
             this.PowerButton = new System.Windows.Forms.Label();
-            this.InfoPanel = new 数码复印机保密检查系统.MyPanel();
+            this.InfoPanel = new 智能家居系统.MyPanel();
             this.EventListView = new System.Windows.Forms.ListView();
             this.EventTimeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EventNameColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -71,7 +71,7 @@
             this.DeviceNameLabel = new System.Windows.Forms.Label();
             this.MACValueLabel = new System.Windows.Forms.Label();
             this.MACLabel = new System.Windows.Forms.Label();
-            this.CardPanel = new 数码复印机保密检查系统.MyPanel();
+            this.CardPanel = new 智能家居系统.MyPanel();
             this.SystemEngine = new System.Windows.Forms.Timer(this.components);
             this.LeftPanel.SuspendLayout();
             this.LogoPanel.SuspendLayout();
@@ -722,18 +722,18 @@
         }
 
         #endregion
-        private 数码复印机保密检查系统.MyPanel LeftPanel;
+        private 智能家居系统.MyPanel LeftPanel;
         private System.Windows.Forms.FlowLayoutPanel DomesticAppliancePanel;
-        private 数码复印机保密检查系统.MyPanel TopPanel;
+        private 智能家居系统.MyPanel TopPanel;
         private System.Windows.Forms.Label InfoLabel;
-        private 数码复印机保密检查系统.MyPanel MainPanel;
+        private 智能家居系统.MyPanel MainPanel;
         private System.Windows.Forms.Label ControlLabel;
         private System.Windows.Forms.Label CardLabel;
         private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.Timer SystemEngine;
-        private 数码复印机保密检查系统.MyPanel ControlPanel;
-        private 数码复印机保密检查系统.MyPanel InfoPanel;
-        private 数码复印机保密检查系统.MyPanel CardPanel;
+        private 智能家居系统.MyPanel ControlPanel;
+        private 智能家居系统.MyPanel InfoPanel;
+        private 智能家居系统.MyPanel CardPanel;
         private System.Windows.Forms.Label ExitButton;
         private System.Windows.Forms.TableLayoutPanel InfoTablePanel;
         private System.Windows.Forms.Label DescriptionValueLabel;
@@ -757,12 +757,12 @@
         private System.Windows.Forms.ColumnHeader EventTimeColumnHeader;
         private System.Windows.Forms.Label TargetLabel;
         private System.Windows.Forms.Label PowerButton;
-        private 数码复印机保密检查系统.MyPanel LogoPanel;
+        private 智能家居系统.MyPanel LogoPanel;
         private System.Windows.Forms.Label LogoLabel;
         private System.Windows.Forms.FlowLayoutPanel FunctionButtonPanel;
         private System.Windows.Forms.PictureBox VoiceButton;
         private System.Windows.Forms.Label RefreshButton;
-        private 数码复印机保密检查系统.MyPanel TipsBox;
+        private 智能家居系统.MyPanel TipsBox;
         private System.Windows.Forms.Label TipsIconLabel;
         private System.Windows.Forms.Label TipsMessageLabel;
         private System.Windows.Forms.Label TipsTitleLabel;

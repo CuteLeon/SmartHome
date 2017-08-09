@@ -34,7 +34,7 @@
             this.CloseButton = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Label();
             this.CancelButton = new System.Windows.Forms.Label();
-            this.MessageBoxPanel = new 数码复印机保密检查系统.MyPanel();
+            this.MessageBoxPanel = new 智能家居系统.MyPanel();
             this.InputTextBox = new System.Windows.Forms.TextBox();
             this.MessageBoxPanel.SuspendLayout();
             this.SuspendLayout();
@@ -174,7 +174,7 @@
         private System.Windows.Forms.Label CloseButton;
         private System.Windows.Forms.Label OKButton;
         private new System.Windows.Forms.Label CancelButton;
-        private 数码复印机保密检查系统.MyPanel MessageBoxPanel;
+        private 智能家居系统.MyPanel MessageBoxPanel;
         private System.Windows.Forms.TextBox InputTextBox;
     }
 }
