@@ -353,6 +353,8 @@
             this.TipsTitleLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TipsTitleLabel.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Bold);
             this.TipsTitleLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.TipsTitleLabel.Image = global::智能家居系统.UnityResource.Close_1;
+            this.TipsTitleLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.TipsTitleLabel.Location = new System.Drawing.Point(1, 1);
             this.TipsTitleLabel.Margin = new System.Windows.Forms.Padding(0);
             this.TipsTitleLabel.Name = "TipsTitleLabel";
