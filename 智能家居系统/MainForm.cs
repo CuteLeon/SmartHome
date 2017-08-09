@@ -596,7 +596,8 @@ namespace 智能家居系统
                                 TextAlign = ContentAlignment.MiddleRight,
                                 Name = DataReader["StatusName"] as string + "TempLabel",
                                 Text = DataReader["StatusDescription"] as string + "：",
-                                ForeColor = Color.DimGray
+                                Font = new Font(InfoTablePanel.Font.FontFamily, 12),
+                                ForeColor = Color.FromArgb(64,64,64)
                             };
                             InfoTablePanel.Controls.Add(NameLabel);
 
@@ -605,7 +606,8 @@ namespace 智能家居系统
                                 Text = DataReader["StatusValue"] as string,
                                 TextAlign = ContentAlignment.MiddleLeft,
                                 Name = DataReader["StatusName"] as string + "ValueTempLabel",
-                                Font = new Font(InfoTablePanel.Font,FontStyle.Bold)
+                                Font = new Font(InfoTablePanel.Font.FontFamily,12,FontStyle.Bold),
+                                ForeColor = Color.FromArgb(64, 64, 64)
                             };
                             InfoTablePanel.Controls.Add(ValueLabel);
                         }

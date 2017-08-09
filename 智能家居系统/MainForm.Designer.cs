@@ -181,11 +181,11 @@
             this.DomesticAppliancePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DomesticAppliancePanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.DomesticAppliancePanel.ForeColor = System.Drawing.Color.Black;
-            this.DomesticAppliancePanel.Location = new System.Drawing.Point(0, 235);
+            this.DomesticAppliancePanel.Location = new System.Drawing.Point(0, 216);
             this.DomesticAppliancePanel.Margin = new System.Windows.Forms.Padding(0);
             this.DomesticAppliancePanel.Name = "DomesticAppliancePanel";
             this.DomesticAppliancePanel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.DomesticAppliancePanel.Size = new System.Drawing.Size(240, 363);
+            this.DomesticAppliancePanel.Size = new System.Drawing.Size(240, 382);
             this.DomesticAppliancePanel.TabIndex = 1;
             this.DomesticAppliancePanel.WrapContents = false;
             // 
@@ -487,7 +487,7 @@
             // 
             this.DescriptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DescriptionLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DescriptionLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.DescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DescriptionLabel.Location = new System.Drawing.Point(3, 198);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(258, 32);
@@ -512,7 +512,7 @@
             // 
             this.FDLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FDLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FDLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.FDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.FDLabel.Location = new System.Drawing.Point(3, 172);
             this.FDLabel.Name = "FDLabel";
             this.FDLabel.Size = new System.Drawing.Size(258, 26);
@@ -537,7 +537,7 @@
             // 
             this.TypeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypeLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TypeLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.TypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TypeLabel.Location = new System.Drawing.Point(3, 114);
             this.TypeLabel.Name = "TypeLabel";
             this.TypeLabel.Size = new System.Drawing.Size(258, 26);
@@ -562,7 +562,7 @@
             // 
             this.ManufactorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ManufactorLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ManufactorLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.ManufactorLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ManufactorLabel.Location = new System.Drawing.Point(3, 88);
             this.ManufactorLabel.Name = "ManufactorLabel";
             this.ManufactorLabel.Size = new System.Drawing.Size(258, 26);
@@ -587,7 +587,7 @@
             // 
             this.ModelLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ModelLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ModelLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.ModelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ModelLabel.Location = new System.Drawing.Point(3, 62);
             this.ModelLabel.Name = "ModelLabel";
             this.ModelLabel.Size = new System.Drawing.Size(258, 26);
@@ -612,7 +612,7 @@
             // 
             this.DeviceNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeviceNameLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DeviceNameLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.DeviceNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.DeviceNameLabel.Location = new System.Drawing.Point(3, 36);
             this.DeviceNameLabel.Name = "DeviceNameLabel";
             this.DeviceNameLabel.Size = new System.Drawing.Size(258, 26);
@@ -637,7 +637,7 @@
             // 
             this.MACLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MACLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.MACLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.MACLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.MACLabel.Location = new System.Drawing.Point(3, 140);
             this.MACLabel.Name = "MACLabel";
             this.MACLabel.Size = new System.Drawing.Size(258, 32);
