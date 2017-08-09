@@ -512,10 +512,25 @@ namespace 智能家居系统
         /// </summary>
         private void ResetDAInfoPanel()
         {
-            foreach (Label ValueLabel in InfoTablePanel.Controls)
+            for (int Index = 0; Index < InfoTablePanel.Controls.Count; )
             {
-                if (ValueLabel.Name.EndsWith("ValueLabel"))ValueLabel.Text = "(unknown)";
+                if (InfoTablePanel.Controls[Index].Name.EndsWith("ValueLabel"))
+                {
+                    //重置基本信息
+                    InfoTablePanel.Controls[Index].Text = "(unknown)";
+                }
+                else if (InfoTablePanel.Controls[Index].Name.EndsWith("TempLabel"))
+                {
+                    //移除状态信息
+                    Control TempControl = InfoTablePanel.Controls[Index];
+                    InfoTablePanel.Controls.RemoveAt(Index);
+                    TempControl.Dispose();
+                    continue;
+                }
+
+                Index++;
             }
+
             EventListView.Items.Clear();
         }
 
@@ -537,11 +552,12 @@ namespace 智能家居系统
         private void ShowDomesticApplianceInfo(string mac)
         {
             if (string.IsNullOrEmpty(mac)) return;
+            //重置家电信息显示表
+            ResetDAInfoPanel();
+            //加载基本信息
             using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM devicebase WHERE MAC= '{0}'", mac))
             {
-                EventListView.Items.Clear();
                 if (DataReader == null) return;
-
                 if (DataReader.HasRows)
                 {
                     while (DataReader.Read())
@@ -559,6 +575,43 @@ namespace 智能家居系统
                         catch (Exception ex)
                         {
                             UnityModule.DebugPrint("读取家电信息时遇到错误：" + ex.Message);
+                        }
+                    }
+                }
+                DataReader.Close();
+            }
+            //加载状态信息
+            using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM statusbase WHERE MAC= '{0}'", mac))
+            {
+                if (DataReader == null) return;
+                if (DataReader.HasRows)
+                {
+                    while (DataReader.Read())
+                    {
+                        try
+                        {
+                            Label NameLabel = new Label()
+                            {
+                                Dock = DockStyle.Fill,
+                                TextAlign = ContentAlignment.MiddleRight,
+                                Name = DataReader["StatusName"] as string + "TempLabel",
+                                Text = DataReader["StatusDescription"] as string + "：",
+                                ForeColor = Color.DimGray
+                            };
+                            InfoTablePanel.Controls.Add(NameLabel);
+
+                            Label ValueLabel = new Label() {
+                                Dock = DockStyle.Fill,
+                                Text = DataReader["StatusValue"] as string,
+                                TextAlign = ContentAlignment.MiddleLeft,
+                                Name = DataReader["StatusName"] as string + "ValueTempLabel",
+                                Font = new Font(InfoTablePanel.Font,FontStyle.Bold)
+                            };
+                            InfoTablePanel.Controls.Add(ValueLabel);
+                        }
+                        catch (Exception ex)
+                        {
+                            UnityModule.DebugPrint("读取家电状态信息时遇到错误：" + ex.Message);
                         }
                     }
                 }

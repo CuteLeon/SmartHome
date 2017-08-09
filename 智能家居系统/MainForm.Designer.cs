@@ -48,8 +48,6 @@
             this.TipsIconLabel = new System.Windows.Forms.Label();
             this.TipsMessageLabel = new System.Windows.Forms.Label();
             this.TipsTitleLabel = new System.Windows.Forms.Label();
-            this.ControlPanel = new 智能家居系统.MyPanel();
-            this.PowerButton = new System.Windows.Forms.Label();
             this.InfoPanel = new 智能家居系统.MyPanel();
             this.EventListView = new System.Windows.Forms.ListView();
             this.EventTimeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -72,6 +70,9 @@
             this.MACValueLabel = new System.Windows.Forms.Label();
             this.MACLabel = new System.Windows.Forms.Label();
             this.CardPanel = new 智能家居系统.MyPanel();
+            this.ControlPanel = new 智能家居系统.MyPanel();
+            this.TVPanel = new 智能家居系统.MyPanel();
+            this.PowerButton = new System.Windows.Forms.Label();
             this.SystemEngine = new System.Windows.Forms.Timer(this.components);
             this.LeftPanel.SuspendLayout();
             this.LogoPanel.SuspendLayout();
@@ -80,9 +81,9 @@
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.TipsBox.SuspendLayout();
-            this.ControlPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
             this.InfoTablePanel.SuspendLayout();
+            this.ControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LeftPanel
@@ -297,9 +298,9 @@
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
             this.MainPanel.Controls.Add(this.TipsBox);
-            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Controls.Add(this.CardPanel);
+            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(241, 81);
             this.MainPanel.Name = "MainPanel";
@@ -364,33 +365,6 @@
             this.TipsTitleLabel.Text = "智能家居解决方案";
             this.TipsTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TipsTitleLabel.Click += new System.EventHandler(this.TipsTitleLabel_Click);
-            // 
-            // ControlPanel
-            // 
-            this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
-            this.ControlPanel.Controls.Add(this.PowerButton);
-            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.ControlPanel.Size = new System.Drawing.Size(558, 518);
-            this.ControlPanel.TabIndex = 3;
-            // 
-            // PowerButton
-            // 
-            this.PowerButton.BackColor = System.Drawing.Color.Transparent;
-            this.PowerButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PowerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
-            this.PowerButton.Image = global::智能家居系统.UnityResource.Power_true_0;
-            this.PowerButton.Location = new System.Drawing.Point(15, 15);
-            this.PowerButton.Margin = new System.Windows.Forms.Padding(0);
-            this.PowerButton.Name = "PowerButton";
-            this.PowerButton.Size = new System.Drawing.Size(528, 120);
-            this.PowerButton.TabIndex = 4;
-            this.PowerButton.Tag = "true";
-            this.PowerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.PowerButton.Click += new System.EventHandler(this.PowerButton_Click);
-            this.PowerButton.MouseEnter += new System.EventHandler(this.PowerButton_MouseEnter);
-            this.PowerButton.MouseLeave += new System.EventHandler(this.PowerButton_MouseLeave);
             // 
             // InfoPanel
             // 
@@ -513,7 +487,7 @@
             // 
             this.DescriptionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DescriptionLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.DescriptionLabel.ForeColor = System.Drawing.Color.DimGray;
             this.DescriptionLabel.Location = new System.Drawing.Point(3, 198);
             this.DescriptionLabel.Name = "DescriptionLabel";
             this.DescriptionLabel.Size = new System.Drawing.Size(258, 32);
@@ -538,7 +512,7 @@
             // 
             this.FDLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FDLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.FDLabel.ForeColor = System.Drawing.Color.DimGray;
             this.FDLabel.Location = new System.Drawing.Point(3, 172);
             this.FDLabel.Name = "FDLabel";
             this.FDLabel.Size = new System.Drawing.Size(258, 26);
@@ -563,7 +537,7 @@
             // 
             this.TypeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypeLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TypeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TypeLabel.ForeColor = System.Drawing.Color.DimGray;
             this.TypeLabel.Location = new System.Drawing.Point(3, 114);
             this.TypeLabel.Name = "TypeLabel";
             this.TypeLabel.Size = new System.Drawing.Size(258, 26);
@@ -588,7 +562,7 @@
             // 
             this.ManufactorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ManufactorLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ManufactorLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ManufactorLabel.ForeColor = System.Drawing.Color.DimGray;
             this.ManufactorLabel.Location = new System.Drawing.Point(3, 88);
             this.ManufactorLabel.Name = "ManufactorLabel";
             this.ManufactorLabel.Size = new System.Drawing.Size(258, 26);
@@ -613,7 +587,7 @@
             // 
             this.ModelLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ModelLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ModelLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ModelLabel.ForeColor = System.Drawing.Color.DimGray;
             this.ModelLabel.Location = new System.Drawing.Point(3, 62);
             this.ModelLabel.Name = "ModelLabel";
             this.ModelLabel.Size = new System.Drawing.Size(258, 26);
@@ -638,7 +612,7 @@
             // 
             this.DeviceNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DeviceNameLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.DeviceNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.DeviceNameLabel.ForeColor = System.Drawing.Color.DimGray;
             this.DeviceNameLabel.Location = new System.Drawing.Point(3, 36);
             this.DeviceNameLabel.Name = "DeviceNameLabel";
             this.DeviceNameLabel.Size = new System.Drawing.Size(258, 26);
@@ -663,7 +637,7 @@
             // 
             this.MACLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MACLabel.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.MACLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.MACLabel.ForeColor = System.Drawing.Color.DimGray;
             this.MACLabel.Location = new System.Drawing.Point(3, 140);
             this.MACLabel.Name = "MACLabel";
             this.MACLabel.Size = new System.Drawing.Size(258, 32);
@@ -680,6 +654,42 @@
             this.CardPanel.Size = new System.Drawing.Size(558, 518);
             this.CardPanel.TabIndex = 5;
             this.CardPanel.Visible = false;
+            // 
+            // ControlPanel
+            // 
+            this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.ControlPanel.Controls.Add(this.TVPanel);
+            this.ControlPanel.Controls.Add(this.PowerButton);
+            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.ControlPanel.Name = "ControlPanel";
+            this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.ControlPanel.Size = new System.Drawing.Size(558, 518);
+            this.ControlPanel.TabIndex = 3;
+            // 
+            // TVPanel
+            // 
+            this.TVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TVPanel.Location = new System.Drawing.Point(15, 135);
+            this.TVPanel.Name = "TVPanel";
+            this.TVPanel.Size = new System.Drawing.Size(528, 368);
+            this.TVPanel.TabIndex = 5;
+            // 
+            // PowerButton
+            // 
+            this.PowerButton.BackColor = System.Drawing.Color.Transparent;
+            this.PowerButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PowerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.PowerButton.Image = global::智能家居系统.UnityResource.Power_true_0;
+            this.PowerButton.Location = new System.Drawing.Point(15, 15);
+            this.PowerButton.Margin = new System.Windows.Forms.Padding(0);
+            this.PowerButton.Name = "PowerButton";
+            this.PowerButton.Size = new System.Drawing.Size(528, 120);
+            this.PowerButton.TabIndex = 4;
+            this.PowerButton.Tag = "true";
+            this.PowerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.PowerButton.Click += new System.EventHandler(this.PowerButton_Click);
+            this.PowerButton.MouseEnter += new System.EventHandler(this.PowerButton_MouseEnter);
+            this.PowerButton.MouseLeave += new System.EventHandler(this.PowerButton_MouseLeave);
             // 
             // SystemEngine
             // 
@@ -714,11 +724,11 @@
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.TipsBox.ResumeLayout(false);
-            this.ControlPanel.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
             this.InfoTablePanel.ResumeLayout(false);
             this.InfoTablePanel.PerformLayout();
+            this.ControlPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -768,6 +778,7 @@
         private System.Windows.Forms.Label TipsIconLabel;
         private System.Windows.Forms.Label TipsMessageLabel;
         private System.Windows.Forms.Label TipsTitleLabel;
+        private MyPanel TVPanel;
     }
 }
 
