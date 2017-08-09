@@ -184,6 +184,15 @@
   <data name="Error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Execute_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Execute_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Execute_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Execute_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Execute_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Execute_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ExitApp_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ExitApp_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -220,14 +229,14 @@
   <data name="Microphone_On" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Microphone_On.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Power_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Power_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Power_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Power_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Power_false_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Power_false_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Power_true_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\Power_true_0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Power_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\Power_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Question" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Question.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

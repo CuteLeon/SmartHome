@@ -182,6 +182,11 @@ namespace 智能家居系统
             CardLabel.MouseDown += new MouseEventHandler(Button_MouseDown);
             CardLabel.MouseUp += new MouseEventHandler(Button_MouseUp);
 
+            ExecuteButton.MouseEnter += new EventHandler(Button_MouseEnter);
+            ExecuteButton.MouseLeave += new EventHandler(Button_MouseLeave);
+            ExecuteButton.MouseDown += new MouseEventHandler(Button_MouseDown);
+            ExecuteButton.MouseUp += new MouseEventHandler(Button_MouseUp);
+
             ExitButton.MouseEnter += new EventHandler(Button_MouseEnter);
             ExitButton.MouseDown += new MouseEventHandler(Button_MouseDown);
             ExitButton.MouseLeave += new EventHandler(Button_MouseLeave);
@@ -678,8 +683,9 @@ namespace 智能家居系统
         private void PowerButton_Click(object sender, EventArgs e)
         {
             if (DomesticApplianceItem.ActiveItem == null) return;
+            PowerButton.Image = UnityResource.Power_1;
             if (new MyMessageBox(string.Format("您确定要关闭家电 {0} 的电源吗？",DomesticApplianceItem.ActiveItem.Tag.ToString()),MyMessageBox.IconType.Question).ShowDialog(this) != DialogResult.OK) return;
-
+            PowerButton.Image = UnityResource.Power_0;
             ShutdownDA(DomesticApplianceItem.ActiveItem.MAC);
 
             ShowTipsMessage("家电关闭成功：","家电 "+ DomesticApplianceItem.ActiveItem.Tag.ToString() +" 已关闭！",MyMessageBox.IconType.Info);
@@ -694,10 +700,16 @@ namespace 智能家居系统
             PowerButton.Image = UnityResource.Power_1;
         }
 
+        private void PowerButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (DomesticApplianceItem.ActiveItem == null) return;
+            PowerButton.Image = UnityResource.Power_2;
+        }
+
         private void PowerButton_MouseLeave(object sender, EventArgs e)
         {
             if (DomesticApplianceItem.ActiveItem == null) return;
-            PowerButton.Image = UnityResource.Power_true_0;
+            PowerButton.Image = UnityResource.Power_0;
         }
 
         /// <summary>
@@ -812,5 +824,9 @@ namespace 智能家居系统
 
         #endregion
 
+        private void ExecuteButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

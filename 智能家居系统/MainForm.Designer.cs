@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.LeftPanel = new 智能家居系统.MyPanel();
             this.LogoPanel = new 智能家居系统.MyPanel();
             this.FunctionButtonPanel = new System.Windows.Forms.FlowLayoutPanel();
@@ -48,6 +49,9 @@
             this.TipsIconLabel = new System.Windows.Forms.Label();
             this.TipsMessageLabel = new System.Windows.Forms.Label();
             this.TipsTitleLabel = new System.Windows.Forms.Label();
+            this.ControlPanel = new 智能家居系统.MyPanel();
+            this.ExecuteButton = new System.Windows.Forms.Label();
+            this.PowerButton = new System.Windows.Forms.Label();
             this.InfoPanel = new 智能家居系统.MyPanel();
             this.EventListView = new System.Windows.Forms.ListView();
             this.EventTimeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -70,10 +74,10 @@
             this.MACValueLabel = new System.Windows.Forms.Label();
             this.MACLabel = new System.Windows.Forms.Label();
             this.CardPanel = new 智能家居系统.MyPanel();
-            this.ControlPanel = new 智能家居系统.MyPanel();
-            this.TVPanel = new 智能家居系统.MyPanel();
-            this.PowerButton = new System.Windows.Forms.Label();
             this.SystemEngine = new System.Windows.Forms.Timer(this.components);
+            this.TVPanel = new 智能家居系统.MyPanel();
+            this.ChannelBox = new System.Windows.Forms.TextBox();
+            this.ChannelLabel = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.FunctionButtonPanel.SuspendLayout();
@@ -81,9 +85,10 @@
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.TipsBox.SuspendLayout();
+            this.ControlPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
             this.InfoTablePanel.SuspendLayout();
-            this.ControlPanel.SuspendLayout();
+            this.TVPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LeftPanel
@@ -298,9 +303,9 @@
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
             this.MainPanel.Controls.Add(this.TipsBox);
+            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Controls.Add(this.CardPanel);
-            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(241, 81);
             this.MainPanel.Name = "MainPanel";
@@ -365,6 +370,51 @@
             this.TipsTitleLabel.Text = "智能家居解决方案";
             this.TipsTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.TipsTitleLabel.Click += new System.EventHandler(this.TipsTitleLabel_Click);
+            // 
+            // ControlPanel
+            // 
+            this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.ControlPanel.Controls.Add(this.TVPanel);
+            this.ControlPanel.Controls.Add(this.ExecuteButton);
+            this.ControlPanel.Controls.Add(this.PowerButton);
+            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.ControlPanel.Name = "ControlPanel";
+            this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.ControlPanel.Size = new System.Drawing.Size(558, 518);
+            this.ControlPanel.TabIndex = 3;
+            // 
+            // ExecuteButton
+            // 
+            this.ExecuteButton.BackColor = System.Drawing.Color.Transparent;
+            this.ExecuteButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ExecuteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.ExecuteButton.Image = global::智能家居系统.UnityResource.Execute_0;
+            this.ExecuteButton.Location = new System.Drawing.Point(15, 383);
+            this.ExecuteButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ExecuteButton.Name = "ExecuteButton";
+            this.ExecuteButton.Size = new System.Drawing.Size(528, 120);
+            this.ExecuteButton.TabIndex = 5;
+            this.ExecuteButton.Tag = "Execute";
+            this.ExecuteButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click);
+            // 
+            // PowerButton
+            // 
+            this.PowerButton.BackColor = System.Drawing.Color.Transparent;
+            this.PowerButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PowerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.PowerButton.Image = ((System.Drawing.Image)(resources.GetObject("PowerButton.Image")));
+            this.PowerButton.Location = new System.Drawing.Point(15, 15);
+            this.PowerButton.Margin = new System.Windows.Forms.Padding(0);
+            this.PowerButton.Name = "PowerButton";
+            this.PowerButton.Size = new System.Drawing.Size(528, 120);
+            this.PowerButton.TabIndex = 4;
+            this.PowerButton.Tag = "";
+            this.PowerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.PowerButton.Click += new System.EventHandler(this.PowerButton_Click);
+            this.PowerButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PowerButton_MouseDown);
+            this.PowerButton.MouseEnter += new System.EventHandler(this.PowerButton_MouseEnter);
+            this.PowerButton.MouseLeave += new System.EventHandler(this.PowerButton_MouseLeave);
             // 
             // InfoPanel
             // 
@@ -655,46 +705,42 @@
             this.CardPanel.TabIndex = 5;
             this.CardPanel.Visible = false;
             // 
-            // ControlPanel
+            // SystemEngine
             // 
-            this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
-            this.ControlPanel.Controls.Add(this.TVPanel);
-            this.ControlPanel.Controls.Add(this.PowerButton);
-            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.ControlPanel.Size = new System.Drawing.Size(558, 518);
-            this.ControlPanel.TabIndex = 3;
+            this.SystemEngine.Enabled = true;
+            this.SystemEngine.Interval = 5000;
+            this.SystemEngine.Tick += new System.EventHandler(this.SystemEngine_Tick);
             // 
             // TVPanel
             // 
+            this.TVPanel.Controls.Add(this.ChannelLabel);
+            this.TVPanel.Controls.Add(this.ChannelBox);
             this.TVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TVPanel.Location = new System.Drawing.Point(15, 135);
             this.TVPanel.Name = "TVPanel";
-            this.TVPanel.Size = new System.Drawing.Size(528, 368);
-            this.TVPanel.TabIndex = 5;
+            this.TVPanel.Size = new System.Drawing.Size(528, 248);
+            this.TVPanel.TabIndex = 6;
             // 
-            // PowerButton
+            // ChannelBox
             // 
-            this.PowerButton.BackColor = System.Drawing.Color.Transparent;
-            this.PowerButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PowerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
-            this.PowerButton.Image = global::智能家居系统.UnityResource.Power_true_0;
-            this.PowerButton.Location = new System.Drawing.Point(15, 15);
-            this.PowerButton.Margin = new System.Windows.Forms.Padding(0);
-            this.PowerButton.Name = "PowerButton";
-            this.PowerButton.Size = new System.Drawing.Size(528, 120);
-            this.PowerButton.TabIndex = 4;
-            this.PowerButton.Tag = "true";
-            this.PowerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.PowerButton.Click += new System.EventHandler(this.PowerButton_Click);
-            this.PowerButton.MouseEnter += new System.EventHandler(this.PowerButton_MouseEnter);
-            this.PowerButton.MouseLeave += new System.EventHandler(this.PowerButton_MouseLeave);
+            this.ChannelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChannelBox.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ChannelBox.Location = new System.Drawing.Point(258, 116);
+            this.ChannelBox.Name = "ChannelBox";
+            this.ChannelBox.Size = new System.Drawing.Size(192, 34);
+            this.ChannelBox.TabIndex = 0;
+            this.ChannelBox.Text = "5";
+            this.ChannelBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // SystemEngine
+            // ChannelLabel
             // 
-            this.SystemEngine.Interval = 5000;
-            this.SystemEngine.Tick += new System.EventHandler(this.SystemEngine_Tick);
+            this.ChannelLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ChannelLabel.Location = new System.Drawing.Point(82, 113);
+            this.ChannelLabel.Name = "ChannelLabel";
+            this.ChannelLabel.Size = new System.Drawing.Size(162, 37);
+            this.ChannelLabel.TabIndex = 10;
+            this.ChannelLabel.Text = "频道：";
+            this.ChannelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // MainForm
             // 
@@ -724,11 +770,13 @@
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.TipsBox.ResumeLayout(false);
+            this.ControlPanel.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
             this.InfoTablePanel.ResumeLayout(false);
             this.InfoTablePanel.PerformLayout();
-            this.ControlPanel.ResumeLayout(false);
+            this.TVPanel.ResumeLayout(false);
+            this.TVPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -778,7 +826,10 @@
         private System.Windows.Forms.Label TipsIconLabel;
         private System.Windows.Forms.Label TipsMessageLabel;
         private System.Windows.Forms.Label TipsTitleLabel;
+        private System.Windows.Forms.Label ExecuteButton;
         private MyPanel TVPanel;
+        private System.Windows.Forms.TextBox ChannelBox;
+        private System.Windows.Forms.Label ChannelLabel;
     }
 }
 

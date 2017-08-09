@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -191,13 +192,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MySql.Data.dll" />
+    <None Include="Resources\Power_2.png" />
     <None Include="Resources\Microphone_On.png" />
     <None Include="Resources\Microphone_Off.png" />
     <None Include="Resources\Refresh_2.png" />
     <None Include="Resources\Refresh_1.png" />
     <None Include="Resources\Refresh_0.png" />
-    <None Include="Resources\Power_true_0.png" />
-    <None Include="Resources\Power_false_0.png" />
+    <None Include="Resources\Power_0.png" />
     <None Include="Resources\Power_1.png" />
     <None Include="Resources\Target.png" />
     <None Include="Resources\ExitApp_1.png" />
@@ -219,6 +220,9 @@
     <None Include="Resources\CircularButton_0.png" />
     <None Include="Resources\CircularButton_1.png" />
     <None Include="Resources\CircularButton_2.png" />
+    <None Include="Resources\Execute_0.png" />
+    <None Include="Resources\Execute_1.png" />
+    <None Include="Resources\Execute_2.png" />
     <Content Include="Resources\Info_.png" />
     <None Include="Resources\Warning.png" />
     <None Include="Resources\Question.png" />

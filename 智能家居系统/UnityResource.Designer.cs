@@ -283,6 +283,36 @@ namespace 智能家居系统 {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Execute_0 {
+            get {
+                object obj = ResourceManager.GetObject("Execute_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Execute_1 {
+            get {
+                object obj = ResourceManager.GetObject("Execute_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap Execute_2 {
+            get {
+                object obj = ResourceManager.GetObject("Execute_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap ExitApp_0 {
             get {
                 object obj = ResourceManager.GetObject("ExitApp_0", resourceCulture);
@@ -403,6 +433,16 @@ namespace 智能家居系统 {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap Power_0 {
+            get {
+                object obj = ResourceManager.GetObject("Power_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap Power_1 {
             get {
                 object obj = ResourceManager.GetObject("Power_1", resourceCulture);
@@ -413,19 +453,9 @@ namespace 智能家居系统 {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap Power_false_0 {
+        internal static System.Drawing.Bitmap Power_2 {
             get {
-                object obj = ResourceManager.GetObject("Power_false_0", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap Power_true_0 {
-            get {
-                object obj = ResourceManager.GetObject("Power_true_0", resourceCulture);
+                object obj = ResourceManager.GetObject("Power_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
