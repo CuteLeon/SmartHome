@@ -127,8 +127,8 @@ namespace 智能家居系统
                 UnitySpeechRecognitionEngine.LoadGrammar(new Grammar(GrammarChoice.ToGrammarBuilder()));
 
                 GrammarBuilder GrammarList = new GrammarBuilder();
-                GrammarList.Append(new Choices("汽车","飞机"));
-                GrammarList.Append(new Choices("前进", "后退"));
+                GrammarList.Append(new Choices("打开","关闭"));
+                GrammarList.Append(new Choices("电视", "空调"));
                 UnitySpeechRecognitionEngine.LoadGrammar(new Grammar(GrammarList));
             }
             catch (Exception ex)
@@ -160,13 +160,33 @@ namespace 智能家居系统
                 case "hello":
                 case "你好":
                     {
-                        //VoiceSpeak("欢迎使用智能家居系统，智能管家为您服务");
-                        VoiceSpeak("fuck off");
+                        VoiceSpeak("欢迎使用智能家居系统，智能管家为您服务");
+                        //VoiceSpeak("fuck off");
                         break;
                     }
                 case "who are u":
                     {
-                        VoiceSpeak("I'm your father.");
+                        //VoiceSpeak("I'm your father.");
+                        break;
+                    }
+                case "打开电视":
+                    {
+                        VoiceSpeak("正在为您打开电视");
+                        break;
+                    }
+                case "关闭电视":
+                    {
+                        VoiceSpeak("正在为您关闭电视");
+                        break;
+                    }
+                case "打开空调":
+                    {
+                        VoiceSpeak("正在为您打开空调");
+                        break;
+                    }
+                case "关闭空调":
+                    {
+                        VoiceSpeak("正在为您关闭空调");
                         break;
                     }
                 case "退出系统":
