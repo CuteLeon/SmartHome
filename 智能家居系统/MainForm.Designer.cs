@@ -50,6 +50,9 @@
             this.TipsMessageLabel = new System.Windows.Forms.Label();
             this.TipsTitleLabel = new System.Windows.Forms.Label();
             this.ControlPanel = new 智能家居系统.MyPanel();
+            this.TVPanel = new 智能家居系统.MyPanel();
+            this.ChannelLabel = new System.Windows.Forms.Label();
+            this.ChannelBox = new System.Windows.Forms.TextBox();
             this.ExecuteButton = new System.Windows.Forms.Label();
             this.PowerButton = new System.Windows.Forms.Label();
             this.InfoPanel = new 智能家居系统.MyPanel();
@@ -75,9 +78,6 @@
             this.MACLabel = new System.Windows.Forms.Label();
             this.CardPanel = new 智能家居系统.MyPanel();
             this.SystemEngine = new System.Windows.Forms.Timer(this.components);
-            this.TVPanel = new 智能家居系统.MyPanel();
-            this.ChannelBox = new System.Windows.Forms.TextBox();
-            this.ChannelLabel = new System.Windows.Forms.Label();
             this.LeftPanel.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.FunctionButtonPanel.SuspendLayout();
@@ -86,9 +86,9 @@
             this.MainPanel.SuspendLayout();
             this.TipsBox.SuspendLayout();
             this.ControlPanel.SuspendLayout();
+            this.TVPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
             this.InfoTablePanel.SuspendLayout();
-            this.TVPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LeftPanel
@@ -303,9 +303,9 @@
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
             this.MainPanel.Controls.Add(this.TipsBox);
-            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Controls.Add(this.CardPanel);
+            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(241, 81);
             this.MainPanel.Name = "MainPanel";
@@ -382,6 +382,37 @@
             this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
             this.ControlPanel.Size = new System.Drawing.Size(558, 518);
             this.ControlPanel.TabIndex = 3;
+            // 
+            // TVPanel
+            // 
+            this.TVPanel.Controls.Add(this.ChannelLabel);
+            this.TVPanel.Controls.Add(this.ChannelBox);
+            this.TVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TVPanel.Location = new System.Drawing.Point(15, 135);
+            this.TVPanel.Name = "TVPanel";
+            this.TVPanel.Size = new System.Drawing.Size(528, 248);
+            this.TVPanel.TabIndex = 6;
+            // 
+            // ChannelLabel
+            // 
+            this.ChannelLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ChannelLabel.Location = new System.Drawing.Point(82, 113);
+            this.ChannelLabel.Name = "ChannelLabel";
+            this.ChannelLabel.Size = new System.Drawing.Size(162, 37);
+            this.ChannelLabel.TabIndex = 10;
+            this.ChannelLabel.Text = "频道：";
+            this.ChannelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ChannelBox
+            // 
+            this.ChannelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChannelBox.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ChannelBox.Location = new System.Drawing.Point(258, 116);
+            this.ChannelBox.Name = "ChannelBox";
+            this.ChannelBox.Size = new System.Drawing.Size(192, 34);
+            this.ChannelBox.TabIndex = 0;
+            this.ChannelBox.Text = "5";
+            this.ChannelBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ExecuteButton
             // 
@@ -711,37 +742,6 @@
             this.SystemEngine.Interval = 5000;
             this.SystemEngine.Tick += new System.EventHandler(this.SystemEngine_Tick);
             // 
-            // TVPanel
-            // 
-            this.TVPanel.Controls.Add(this.ChannelLabel);
-            this.TVPanel.Controls.Add(this.ChannelBox);
-            this.TVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TVPanel.Location = new System.Drawing.Point(15, 135);
-            this.TVPanel.Name = "TVPanel";
-            this.TVPanel.Size = new System.Drawing.Size(528, 248);
-            this.TVPanel.TabIndex = 6;
-            // 
-            // ChannelBox
-            // 
-            this.ChannelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChannelBox.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ChannelBox.Location = new System.Drawing.Point(258, 116);
-            this.ChannelBox.Name = "ChannelBox";
-            this.ChannelBox.Size = new System.Drawing.Size(192, 34);
-            this.ChannelBox.TabIndex = 0;
-            this.ChannelBox.Text = "5";
-            this.ChannelBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ChannelLabel
-            // 
-            this.ChannelLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ChannelLabel.Location = new System.Drawing.Point(82, 113);
-            this.ChannelLabel.Name = "ChannelLabel";
-            this.ChannelLabel.Size = new System.Drawing.Size(162, 37);
-            this.ChannelLabel.TabIndex = 10;
-            this.ChannelLabel.Text = "频道：";
-            this.ChannelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -771,12 +771,12 @@
             this.MainPanel.ResumeLayout(false);
             this.TipsBox.ResumeLayout(false);
             this.ControlPanel.ResumeLayout(false);
+            this.TVPanel.ResumeLayout(false);
+            this.TVPanel.PerformLayout();
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
             this.InfoTablePanel.ResumeLayout(false);
             this.InfoTablePanel.PerformLayout();
-            this.TVPanel.ResumeLayout(false);
-            this.TVPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

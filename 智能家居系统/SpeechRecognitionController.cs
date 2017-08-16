@@ -128,7 +128,7 @@ namespace 智能家居系统
 
                 GrammarBuilder GrammarList = new GrammarBuilder();
                 GrammarList.Append(new Choices("打开","关闭"));
-                GrammarList.Append(new Choices("电视", "空调"));
+                GrammarList.Append(new Choices("电视", "空调","电灯","电风扇"));
                 UnitySpeechRecognitionEngine.LoadGrammar(new Grammar(GrammarList));
             }
             catch (Exception ex)

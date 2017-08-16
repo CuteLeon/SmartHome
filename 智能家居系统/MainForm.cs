@@ -193,7 +193,7 @@ namespace 智能家居系统
 
             //家电名称和描述显示控件鼠标进入或离开时改变编辑按钮的可见性
             Action<object, EventArgs> ShowEditButton = new Action<object, EventArgs>(delegate (object x,EventArgs y){ if (MACValueLabel.Text == "(unknown)") return; (x as Label).Image = UnityResource.Edit_0;(x as Label).ForeColor = Color.DeepSkyBlue; });
-            Action<object, EventArgs> HideEditButton = new Action<object, EventArgs>(delegate (object x, EventArgs y) { if (MACValueLabel.Text == "(unknown)") return; (x as Label).Image = null; (x as Label).ForeColor = Color.Black; });
+            Action<object, EventArgs> HideEditButton = new Action<object, EventArgs>(delegate (object x, EventArgs y) { if (MACValueLabel.Text == "(unknown)") return; (x as Label).Image = null; (x as Label).ForeColor = Color.FromArgb(255,64,64,64); });
             DeviceNameValueLabel.MouseEnter += new EventHandler(ShowEditButton);
             DescriptionValueLabel.MouseEnter += new EventHandler(ShowEditButton);
             DeviceNameValueLabel.MouseLeave += new EventHandler(HideEditButton);
@@ -286,6 +286,9 @@ namespace 智能家居系统
         /// </summary>
         private void ExitApplication()
         {
+            //停止心跳，防止线程资源冲突
+            SystemEngine.Stop();
+
             UnityModule.DebugPrint("正在退出系统...");
             //允许关闭窗体
             AllowToClose = true;
@@ -415,13 +418,14 @@ namespace 智能家居系统
                 //如果用户点击的家电仍在线，更新家电信息
                 UnityModule.DebugPrint("点击家电项目，加载家电信息和事件记录...");
                 ShowDomesticApplianceInfo((sender as DomesticApplianceItem).MAC);
+
+                ResetDAEventList();
                 ShowDomesticApplianceEventLog((sender as DomesticApplianceItem).MAC);
-
-
             }
             else
             {
-                ResetDAInfoPanel();
+                ResetDAInfoTable();
+                ResetDAEventList();
                 (sender as IDisposable).Dispose();
             }
         }
@@ -513,9 +517,18 @@ namespace 智能家居系统
         }
 
         /// <summary>
-        /// 初始化家电信息界面
+        /// 重置家电事件列表
         /// </summary>
-        private void ResetDAInfoPanel()
+        private void ResetDAEventList()
+        {
+            EventListView.Items.Clear();
+            LastEventTime = -1;
+        }
+
+        /// <summary>
+        /// 初始化家电信息显示内容
+        /// </summary>
+        private void ResetDAInfoTable()
         {
             for (int Index = 0; Index < InfoTablePanel.Controls.Count; )
             {
@@ -535,8 +548,6 @@ namespace 智能家居系统
 
                 Index++;
             }
-
-            EventListView.Items.Clear();
         }
 
         /// <summary>
@@ -558,7 +569,7 @@ namespace 智能家居系统
         {
             if (string.IsNullOrEmpty(mac)) return;
             //重置家电信息显示表
-            ResetDAInfoPanel();
+            ResetDAInfoTable();
             //加载基本信息
             using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM devicebase WHERE MAC= '{0}'", mac))
             {
@@ -628,15 +639,19 @@ namespace 智能家居系统
         }
 
         /// <summary>
+        /// 上次读取的最后一个事件的时间（用于心跳时仅更新最新的事件，防止ListView闪烁）
+        /// </summary>
+        int LastEventTime = -1;
+        /// <summary>
         /// 从数据库读取家电的事件记录
         /// </summary>
         /// <param name="mac">家电设备的MAC地址</param>
         private void ShowDomesticApplianceEventLog(string mac)
         {
             if (string.IsNullOrEmpty(mac)) return;
-            using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM eventbase WHERE MAC= '{0}'",mac))
+
+            using (MySqlDataReader DataReader = UnityDBController.ExecuteReader("SELECT * FROM eventbase WHERE MAC= '{0}' AND EventTime>{1}", mac,LastEventTime))
             {
-                EventListView.Items.Clear();
                 if (DataReader == null) return;
 
                 if (DataReader.HasRows)
@@ -646,11 +661,13 @@ namespace 智能家居系统
                         try
                         {
                             UnityModule.DebugPrint("读取到事件：" + DataReader["EventName"].ToString());
-                            EventListView.Items.Add(new ListViewItem(new string[] {UnixTimeToString((long)(int)DataReader["EventTime"]), DataReader["EventName"].ToString(), DataReader["EventDescription"].ToString() }));
+                            EventListView.Items.Add(new ListViewItem(new string[] { UnixTimeToString((long)(int)DataReader["EventTime"]), DataReader["EventName"].ToString(), DataReader["EventDescription"].ToString() }));
+                            //更新上次事件时间
+                            Int32.TryParse(DataReader["EventTime"].ToString(),out LastEventTime);
                         }
                         catch (Exception ex)
                         {
-                            UnityModule.DebugPrint("读取事件时遇到错误："+ ex.Message);
+                            UnityModule.DebugPrint("读取事件时遇到错误：" + ex.Message);
                         }
                     }
                 }
@@ -690,7 +707,8 @@ namespace 智能家居系统
 
             ShowTipsMessage("家电关闭成功：","家电 "+ DomesticApplianceItem.ActiveItem.Tag.ToString() +" 已关闭！",MyMessageBox.IconType.Info);
 
-            ResetDAInfoPanel();
+            ResetDAInfoTable();
+            ResetDAEventList();
             (DomesticApplianceItem.ActiveItem as IDisposable).Dispose();
         }
 
@@ -816,7 +834,7 @@ namespace 智能家居系统
         {
             VoiceButton.BackgroundImage = UnityResource.CircularButton_0;
         }
-
+        
         private void VoiceButton_MouseUp(object sender, MouseEventArgs e)
         {
             VoiceButton.BackgroundImage = UnityResource.CircularButton_1;
