@@ -20,9 +20,14 @@ namespace 智能家居系统
         private SpeechRecognitionEngine UnitySpeechRecognitionEngine = null;
 
         /// <summary>
+        /// 当 SpeechRecognitionEngine 采用与其加载启用的 Grammar 对象匹配的输入的时候引发
+        /// </summary>
+        public event EventHandler<string> SpeechRecognized;
+
+        /// <summary>
         /// 创建语音识别引擎
         /// </summary>
-        /// <param name="PreferredCulture"></param>
+        /// <param name="PreferredCulture">优先</param>
         /// <returns></returns>
         public bool CreateSREngine(string PreferredCulture = "zh-CN")
         {
@@ -68,9 +73,6 @@ namespace 智能家居系统
                 UnitySpeechRecognitionEngine.AudioStateChanged += new EventHandler<AudioStateChangedEventArgs>(UnitySREngine_AudioStateChanged);
                 UnityModule.DebugPrint("语音识别引擎注册事件成功");
 
-                LoadGammer();
-                UnityModule.DebugPrint("语法导入成功");
-
                 //使用系统默认音频输入设备
                 UnitySpeechRecognitionEngine.SetInputToDefaultAudioDevice();
                 UnityModule.DebugPrint("使用默认音频输入设备");
@@ -113,35 +115,26 @@ namespace 智能家居系统
         }
 
 
-        private void LoadGammer()
+        public void LoadGrammar(Grammar CustomGrammar)
         {
+            if (CustomGrammar == null) return;
             if (UnitySpeechRecognitionEngine == null) return;
+
             try
             {
-                //添加固定短语
-                Choices GrammarChoice = new Choices();
-                GrammarChoice.Add("你好");
-                GrammarChoice.Add("hello");
-                GrammarChoice.Add("who are u");
-                GrammarChoice.Add("退出系统");
-                UnitySpeechRecognitionEngine.LoadGrammar(new Grammar(GrammarChoice.ToGrammarBuilder()));
-
-                GrammarBuilder GrammarList = new GrammarBuilder();
-                GrammarList.Append(new Choices("打开","关闭"));
-                GrammarList.Append(new Choices("电视", "空调","电灯","电风扇"));
-                UnitySpeechRecognitionEngine.LoadGrammar(new Grammar(GrammarList));
+                UnitySpeechRecognitionEngine.LoadGrammar(CustomGrammar);
             }
             catch (Exception ex)
             {
-                UnityModule.DebugPrint("为语音识别引擎导入语法是遇到错误：{0}",ex.Message);
-                UnityModule.DebugPrint("将使用系统默认识别语法：");
-                try
-                {
-                    //导入语法出错时，使用系统默认识别语法
-                    UnitySpeechRecognitionEngine.LoadGrammar(new DictationGrammar());
-                }
-                catch (Exception) { }
-
+                UnityModule.DebugPrint("为语音识别引擎导入语法 [{0}] 时遇到错误：{1}",ex.Message);
+                //try
+                //{
+                //    //导入语法出错时，使用系统默认识别语法
+                //    UnitySpeechRecognitionEngine.LoadGrammar(new DictationGrammar());
+                //}
+                //catch (Exception ex1) {
+                //    UnityModule.DebugPrint("导入默认语法遇到错误：{0}", ex1.Message);
+                //}
             }
         }
 
@@ -151,55 +144,15 @@ namespace 智能家居系统
             //语音状态改变
         }
 
+        /// <summary>
+        /// 当 SpeechRecognitionEngine 采用与其加载启用的 Grammar 对象匹配的输入的时候引发
+        /// </summary>
         private void UnitySREngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
             //语音识别结束
-            UnityModule.DebugPrint("识别结果：{0}",e.Result.Text );
-            switch (e.Result.Text)
-            {
-                case "hello":
-                case "你好":
-                    {
-                        VoiceSpeak("欢迎使用智能家居系统，智能管家为您服务");
-                        //VoiceSpeak("fuck off");
-                        break;
-                    }
-                case "who are u":
-                    {
-                        //VoiceSpeak("I'm your father.");
-                        break;
-                    }
-                case "打开电视":
-                    {
-                        VoiceSpeak("正在为您打开电视");
-                        break;
-                    }
-                case "关闭电视":
-                    {
-                        VoiceSpeak("正在为您关闭电视");
-                        break;
-                    }
-                case "打开空调":
-                    {
-                        VoiceSpeak("正在为您打开空调");
-                        break;
-                    }
-                case "关闭空调":
-                    {
-                        VoiceSpeak("正在为您关闭空调");
-                        break;
-                    }
-                case "退出系统":
-                    {
-                        MainForm.ActiveForm.Close();
-                        break;
-                    }
-                default:
-                    {
-                        VoiceSpeak("我听不懂您在说什么");
-                        break;
-                    }
-            }
+            UnityModule.DebugPrint(" $ 识别到语音指令：{0}",e.Result.Text );
+            //触发事件，转入外部处理
+            SpeechRecognized(sender,e.Result.Text);
         }
 
         private void UnitySREngine_AudioLevelUpdated(object sender, AudioLevelUpdatedEventArgs e)

@@ -10,9 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.Speech.Recognition;
 
-
-//todo:为事件增加时间戳判断，仅增加新出现的事件，防止控件闪烁
 namespace 智能家居系统
 {
 
@@ -131,6 +130,7 @@ namespace 智能家居系统
                 UnityModule.DebugPrint("界面切换完成！当前状态：" + value.ToString());
             }
         }
+
         #endregion
 
         #region "窗体事件"
@@ -238,6 +238,12 @@ namespace 智能家居系统
             if (UnitySREController.CreateSREngine())
             {
                 //导入语法
+                LoadGrammar();
+
+                //绑定识别完成方法
+                UnitySREController.SpeechRecognized += new EventHandler<string>(SpeechRecognized);
+
+                SpeechRecognized(new object(),"放松一下");
             }
 
         }
@@ -408,27 +414,6 @@ namespace 智能家居系统
         }
 
         #endregion
-
-        private void DomesticApplianceItem_ItemClick(object sender, EventArgs e)
-        {
-            object Result = UnityDBController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", (sender as DomesticApplianceItem).MAC);
-            if (Result == null) return;
-            if (-1 < (int)Result)
-            {
-                //如果用户点击的家电仍在线，更新家电信息
-                UnityModule.DebugPrint("点击家电项目，加载家电信息和事件记录...");
-                ShowDomesticApplianceInfo((sender as DomesticApplianceItem).MAC);
-
-                ResetDAEventList();
-                ShowDomesticApplianceEventLog((sender as DomesticApplianceItem).MAC);
-            }
-            else
-            {
-                ResetDAInfoTable();
-                ResetDAEventList();
-                (sender as IDisposable).Dispose();
-            }
-        }
 
         #region "按钮动态效果"
         private void Button_MouseDown(object sender, MouseEventArgs e)
@@ -696,6 +681,10 @@ namespace 智能家居系统
         #endregion
 
         #region "家电控制界面事件"
+        private void ExecuteButton_Click(object sender, EventArgs e)
+        {
+            //todo:发送控制指令
+        }
 
         private void PowerButton_Click(object sender, EventArgs e)
         {
@@ -742,45 +731,6 @@ namespace 智能家居系统
         }
 
         #endregion
-
-        /// <summary>
-        /// 判断家电是否在线
-        /// </summary>
-        /// <param name="MAC">家电的MAC地址</param>
-        /// <returns>是否在线</returns>
-        [Obsolete]
-        private bool IsDAOnLine(string MAC)
-        {
-            object Result = UnityDBController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", MAC);
-            if (Result == null) return false;
-            return ((int)Result > -1);
-        }
-
-        private void LogoLabel_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-                this.WindowState = FormWindowState.Normal;
-            else if (this.WindowState == FormWindowState.Normal)
-                this.WindowState = FormWindowState.Maximized;
-        }
-
-        private void SystemEngine_Tick(object sender, EventArgs e)
-        {
-            UnityModule.DebugPrint("————————<<<  心跳更新数据  >>>————————");
-            TimeLabel.Text = DateTime.Now.ToString("yyyy-MM-dd\nhh:mm");
-
-            LoadDomesticAppliance();
-
-            if (PanelStatenow == PanelState.Info)
-            {
-                if (DomesticApplianceItem.ActiveItem != null && !string.IsNullOrEmpty(DomesticApplianceItem.ActiveItem.MAC))
-                {
-                    ShowDomesticApplianceInfo(DomesticApplianceItem.ActiveItem.MAC);
-                    ShowDomesticApplianceEventLog(DomesticApplianceItem.ActiveItem.MAC);
-                }
-            }
-            UnityModule.DebugPrint("——————————————————————————");
-        }
 
         #region "功能按钮流式布局区事件"
 
@@ -842,9 +792,184 @@ namespace 智能家居系统
 
         #endregion
 
-        private void ExecuteButton_Click(object sender, EventArgs e)
-        {
+        #region "语音识别功能"
 
+        /// <summary>
+        /// 导入语音识别的语法
+        /// </summary>
+        private void LoadGrammar()
+        {
+            UnityModule.DebugPrint("开始导入语法...");
+            try
+            {
+                //添加固定语法
+                Choices GrammarChoice = new Choices();
+                GrammarChoice.Add("你好");
+                GrammarChoice.Add("hello");
+                GrammarChoice.Add("刷新");
+                GrammarChoice.Add("放松一下");
+                GrammarChoice.Add("退出系统");
+                UnitySREController.LoadGrammar(new Grammar(GrammarChoice.ToGrammarBuilder()));
+                UnityModule.DebugPrint("固定短语导入完毕");
+
+                //添加组合语法
+                GrammarBuilder GrammarList = new GrammarBuilder();
+                GrammarList.Append(new Choices("打开", "关闭"));
+                GrammarList.Append(new Choices("电视", "空调", "电灯", "电风扇"));
+                UnitySREController.LoadGrammar(new Grammar(GrammarList));
+
+                UnityModule.DebugPrint("组合短语导入完毕");
+            }
+            catch (Exception ex)
+            {
+                UnityModule.DebugPrint("导入语法时遇到错误：{0}", ex.Message);
+            }
         }
+
+        /// <summary>
+        /// 当 SpeechRecognitionEngine 采用与其加载启用的 Grammar 对象匹配的输入的时候引发
+        /// </summary>
+        /// <param name="VoiceCommand">识别到的语音指令</param>
+        private void SpeechRecognized(object sender, string VoiceCommand)
+        {
+            switch (VoiceCommand)
+            {
+                case "hello":
+                case "你好":
+                    {
+                        SpeechRecognitionController.VoiceSpeak("欢迎使用Smart Home，智能管家为您服务");
+                        break;
+                    }
+                case "刷新":
+                    {
+                        UnityModule.DebugPrint("————————<<<  语音刷新指令  >>>————————");
+                        LoadDomesticAppliance();
+                        ShowTipsMessage("家电刷新完成：", "家电列表刷新完成！", MyMessageBox.IconType.Info);
+                        break;
+                    }
+                case "放松一下":
+                    {
+                        string[] Jorks = new string[] {
+                            "我有一个看家本领。什么？看家。",
+                            "a说，你说我这穷日子过到啥时侯是个头啊？b说，那得看你能活多久了。",
+                            "今天客户来银行取钱，坐下一句话说的我石化了：你好，我死期到了。",
+                            "做人最失败的莫过于唐僧，身边的人不管是敌是友都想送他上西天",
+                            "甲方的需求定下来，这次真不改了！",
+                            "一首现代诗，《笑里藏刀》:哈哈哈哈哈哈哈哈哈哈哈哈哈哈刀哈哈哈哈哈哈哈哈哈哈哈哈哈哈",
+                            "周末大家说要举行放鸽子大赛，最后，就我一个人去了。",
+                            "公司举办扫雷大赛，第一名被辞退了",
+                            "世界上有许多你意想不到的事，比如，你以为我要举个例子。",
+                            "我就喜欢你看不惯我，还要和我一同建设社会主义的样子。",
+                            "在此次打黑行动中，包拯壮烈牺牲",
+                            "如果你每天能省下买一包烟的钱，那么十天后，你就能买十包。",
+                            "三百六十行，行行要人命。",
+                            "如果一个人没有梦想，那和无忧无虑有什么分别？",
+                            "猜谜语：路边招手，打一出租车。",
+                            "大爷说：你应该是象棋新手吧？我说：大爷，你怎么知道？大爷说：我在这玩了这么多年，第一步走帅的真不多",
+                            "你的事就是我的事，我的事一般都懒得做。"
+                        };
+                        SpeechRecognitionController.VoiceSpeak(Jorks[new Random().Next(Jorks.Length)]);
+                        break;
+                    }
+                case "打开电视":
+                    {
+                        SpeechRecognitionController.VoiceSpeak("正在为您打开电视");
+                        break;
+                    }
+                case "关闭电视":
+                    {
+                        SpeechRecognitionController.VoiceSpeak("正在为您关闭电视");
+                        break;
+                    }
+                case "打开空调":
+                    {
+                        SpeechRecognitionController.VoiceSpeak("正在为您打开空调");
+                        break;
+                    }
+                case "关闭空调":
+                    {
+                        SpeechRecognitionController.VoiceSpeak("正在为您关闭空调");
+                        break;
+                    }
+                case "退出系统":
+                    {
+                        MainForm.ActiveForm.Close();
+                        break;
+                    }
+                default:
+                    {
+                        //SpeechRecognitionController.VoiceSpeak("我听不懂您在说什么");
+                        UnityModule.DebugPrint("遇到未识别的指令：{0}",VoiceCommand);
+                        break;
+                    }
+            }
+        }
+
+        #endregion
+
+        #region "特殊方法"
+
+        /// <summary>
+        /// 判断家电是否在线
+        /// </summary>
+        /// <param name="MAC">家电的MAC地址</param>
+        /// <returns>是否在线</returns>
+        [Obsolete]
+        private bool IsDAOnLine(string MAC)
+        {
+            object Result = UnityDBController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", MAC);
+            if (Result == null) return false;
+            return ((int)Result > -1);
+        }
+
+        private void LogoLabel_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else if (this.WindowState == FormWindowState.Normal)
+                this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void SystemEngine_Tick(object sender, EventArgs e)
+        {
+            UnityModule.DebugPrint("————————<<<  心跳更新数据  >>>————————");
+            TimeLabel.Text = DateTime.Now.ToString("yyyy-MM-dd\nhh:mm");
+
+            LoadDomesticAppliance();
+
+            if (PanelStatenow == PanelState.Info)
+            {
+                if (DomesticApplianceItem.ActiveItem != null && !string.IsNullOrEmpty(DomesticApplianceItem.ActiveItem.MAC))
+                {
+                    ShowDomesticApplianceInfo(DomesticApplianceItem.ActiveItem.MAC);
+                    ShowDomesticApplianceEventLog(DomesticApplianceItem.ActiveItem.MAC);
+                }
+            }
+            UnityModule.DebugPrint("——————————————————————————");
+        }
+
+        private void DomesticApplianceItem_ItemClick(object sender, EventArgs e)
+        {
+            object Result = UnityDBController.ExecuteScalar("SELECT FD FROM devicebase WHERE MAC='{0}'", (sender as DomesticApplianceItem).MAC);
+            if (Result == null) return;
+            if (-1 < (int)Result)
+            {
+                //如果用户点击的家电仍在线，更新家电信息
+                UnityModule.DebugPrint("点击家电项目，加载家电信息和事件记录...");
+                ShowDomesticApplianceInfo((sender as DomesticApplianceItem).MAC);
+
+                ResetDAEventList();
+                ShowDomesticApplianceEventLog((sender as DomesticApplianceItem).MAC);
+            }
+            else
+            {
+                ResetDAInfoTable();
+                ResetDAEventList();
+                (sender as IDisposable).Dispose();
+            }
+        }
+
+        #endregion
+
     }
 }
