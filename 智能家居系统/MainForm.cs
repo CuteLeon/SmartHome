@@ -686,42 +686,21 @@ namespace 智能家居系统
 
         #endregion
 
-        #region "家电控制界面事件"\
-        bool isLightOn = false;
+        #region "家电控制界面事件"
 
+        bool isLightOn = false;
         private void ExecuteButton_Click(object sender, EventArgs e)
         {
-            TcpClient TCPClient = null;
-            NetworkStream TCPStream = null;
-            try
+            if (DomesticApplianceItem.ActiveItem?.DAType != "灯")
             {
-                TCPClient = new TcpClient();
-                UnityModule.DebugPrint(" @ 创建TCP客户端连接，正在发送连接请求...");
-                TCPClient.Connect("192.168.1.194", 1926);
-                UnityModule.DebugPrint(" @ TCP连接创建成功");
-
-                TCPStream = TCPClient.GetStream();
-                UnityModule.DebugPrint(" @ TCP数据流创建成功");
-
-                if (TCPStream.CanWrite)
-                {
-                    UnityModule.DebugPrint(" @ 正在发送家电控制指令...");
-                    Byte[] sendBytes = Encoding.ASCII.GetBytes(isLightOn ? "0" : "1");
-                    TCPStream.Write(sendBytes, 0, sendBytes.Length);
-                    isLightOn = !isLightOn;
-                    UnityModule.DebugPrint(" @ 家电控制指令发送成功");
-                    ShowTipsMessage("家电控制指令发送成功！", MyMessageBox.IconType.Info);
-                }
-            }
-            catch (Exception ex)
-            {
-                UnityModule.DebugPrint(" @ 家电控制失败：{0}",ex.Message);
-                ShowTipsMessage("家电控制指令发送失败！",ex.Message, MyMessageBox.IconType.Error);
+                ShowTipsMessage("家电控制指令发送成功！", MyMessageBox.IconType.Info);
+                return;
             }
 
-            TCPStream?.Close();
-            TCPClient?.Close();
-            UnityModule.DebugPrint("————————————————");
+            if (ControlLight(!isLightOn))
+            {
+                isLightOn = !isLightOn;
+            }
         }
 
         private void PowerButton_Click(object sender, EventArgs e)
@@ -915,12 +894,36 @@ namespace 智能家居系统
                         UnitySREController.VoiceSpeak(string.Format("{0} 今日天气，{1}，实时温度，{2}，温度区间，{3}",CityNameLabel.Text,WeatherLabel.Text,TempLabel.Text, TempRngLabel.Text));
                         break;
                     }
+                case "打开电灯":
+                    {
+                        if (isLightOn)
+                        {
+                            UnitySREController.VoiceSpeak("电灯已经打开");
+                        }
+                        else
+                        {
+                            UnitySREController.VoiceSpeak("正在为您打开电灯");
+                            if (ControlLight(true)) isLightOn = true;
+                        }
+                        break;
+                    }
+                case "关闭电灯":
+                    {
+                        if (!isLightOn)
+                        {
+                            UnitySREController.VoiceSpeak("电灯已经关闭");
+                        }
+                        else
+                        {
+                            UnitySREController.VoiceSpeak("正在为您关闭电灯");
+                            if (ControlLight(false)) isLightOn = false;
+                        }
+                        break;
+                    }
                 case "打开电视":
                 case "关闭电视":
                 case "打开空调":
                 case "关闭空调":
-                case "打开电灯":
-                case "关闭电灯":
                 case "打开电风扇":
                 case "关闭电风扇":
                     {
@@ -1032,9 +1035,40 @@ namespace 智能家居系统
             }
         }
 
-        private void ControlLight()
+        private bool ControlLight(bool makeLightOn)
         {
+            TcpClient TCPClient = null;
+            NetworkStream TCPStream = null;
+            try
+            {
+                TCPClient = new TcpClient();
+                UnityModule.DebugPrint(" @ 创建TCP客户端连接，正在发送连接请求...");
+                TCPClient.Connect("192.168.1.194", 1926);
+                UnityModule.DebugPrint(" @ TCP连接创建成功");
 
+                TCPStream = TCPClient.GetStream();
+                UnityModule.DebugPrint(" @ TCP数据流创建成功");
+
+                if (TCPStream.CanWrite)
+                {
+                    UnityModule.DebugPrint(" @ 正在发送家电控制指令...");
+                    Byte[] sendBytes = Encoding.ASCII.GetBytes(makeLightOn ? "1" : "0");
+                    TCPStream.Write(sendBytes, 0, sendBytes.Length);
+                    UnityModule.DebugPrint(" @ 家电控制指令发送成功");
+                    ShowTipsMessage("家电控制指令发送成功！", MyMessageBox.IconType.Info);
+                }
+            }
+            catch (Exception ex)
+            {
+                UnityModule.DebugPrint(" @ 家电控制失败：{0}", ex.Message);
+                ShowTipsMessage("家电控制指令发送失败！", ex.Message, MyMessageBox.IconType.Error);
+                return false;
+            }
+
+            TCPStream?.Close();
+            TCPClient?.Close();
+            UnityModule.DebugPrint("————————————————");
+            return true;
         }
 
         #endregion
