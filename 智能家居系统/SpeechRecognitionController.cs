@@ -265,6 +265,19 @@ namespace 智能家居系统
                     UnityModule.DebugPrint("注销语音识别引擎时遇到错误：{0}",ex.Message);
                 }
             }
+            if (UnitySpeechSynthesizer != null)
+            {
+                try
+                {
+                    UnitySpeechSynthesizer.SpeakAsyncCancelAll();
+                    UnitySpeechRecognitionEngine.Dispose();
+                    UnitySpeechRecognitionEngine = null;
+                }
+                catch (Exception ex)
+                {
+                    UnityModule.DebugPrint("注销语音朗读引擎时遇到错误：{0}", ex.Message);
+                }
+            }
             GC.SuppressFinalize(this);
         }
 

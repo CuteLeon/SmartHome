@@ -877,23 +877,15 @@ namespace 智能家居系统
                         break;
                     }
                 case "打开电视":
-                    {
-                        UnitySREController.VoiceSpeak("正在为您打开电视");
-                        break;
-                    }
                 case "关闭电视":
-                    {
-                        UnitySREController.VoiceSpeak("正在为您关闭电视");
-                        break;
-                    }
                 case "打开空调":
-                    {
-                        UnitySREController.VoiceSpeak("正在为您打开空调");
-                        break;
-                    }
                 case "关闭空调":
+                case "打开电灯":
+                case "关闭电灯":
+                case "打开电风扇":
+                case "关闭电风扇":
                     {
-                        UnitySREController.VoiceSpeak("正在为您关闭空调");
+                        UnitySREController.VoiceSpeak("正在为您" + VoiceCommand);
                         break;
                     }
                 case "退出系统":
@@ -903,7 +895,7 @@ namespace 智能家居系统
                     }
                 default:
                     {
-                        //UnitySREController.VoiceSpeak("我听不懂您在说什么");
+                        UnitySREController.VoiceSpeak("我听不懂您在说什么");
                         UnityModule.DebugPrint("遇到未识别的指令：{0}",VoiceCommand);
                         break;
                     }
