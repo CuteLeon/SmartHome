@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Sockets;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -685,10 +686,42 @@ namespace 智能家居系统
 
         #endregion
 
-        #region "家电控制界面事件"
+        #region "家电控制界面事件"\
+        bool isLightOn = false;
+
         private void ExecuteButton_Click(object sender, EventArgs e)
         {
-            ShowTipsMessage("家电控制指令发送成功！",MyMessageBox.IconType.Info);
+            TcpClient TCPClient = null;
+            NetworkStream TCPStream = null;
+            try
+            {
+                TCPClient = new TcpClient();
+                UnityModule.DebugPrint(" @ 创建TCP客户端连接，正在发送连接请求...");
+                TCPClient.Connect("192.168.1.194", 1926);
+                UnityModule.DebugPrint(" @ TCP连接创建成功");
+
+                TCPStream = TCPClient.GetStream();
+                UnityModule.DebugPrint(" @ TCP数据流创建成功");
+
+                if (TCPStream.CanWrite)
+                {
+                    UnityModule.DebugPrint(" @ 正在发送家电控制指令...");
+                    Byte[] sendBytes = Encoding.ASCII.GetBytes(isLightOn ? "0" : "1");
+                    TCPStream.Write(sendBytes, 0, sendBytes.Length);
+                    isLightOn = !isLightOn;
+                    UnityModule.DebugPrint(" @ 家电控制指令发送成功");
+                    ShowTipsMessage("家电控制指令发送成功！", MyMessageBox.IconType.Info);
+                }
+            }
+            catch (Exception ex)
+            {
+                UnityModule.DebugPrint(" @ 家电控制失败：{0}",ex.Message);
+                ShowTipsMessage("家电控制指令发送失败！",ex.Message, MyMessageBox.IconType.Error);
+            }
+
+            TCPStream?.Close();
+            TCPClient?.Close();
+            UnityModule.DebugPrint("————————————————");
         }
 
         private void PowerButton_Click(object sender, EventArgs e)
@@ -997,6 +1030,11 @@ namespace 智能家居系统
                 ResetDAEventList();
                 (sender as IDisposable).Dispose();
             }
+        }
+
+        private void ControlLight()
+        {
+
         }
 
         #endregion
