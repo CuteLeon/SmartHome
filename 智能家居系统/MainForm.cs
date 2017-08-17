@@ -243,7 +243,8 @@ namespace 智能家居系统
                 //绑定识别完成方法
                 UnitySREController.SpeechRecognized += new EventHandler<string>(SpeechRecognized);
             }
-
+            //创建语音朗读引擎
+            UnitySREController.CreateSpeechSynthesizer();
         }
 
         bool AllowToClose = false;
@@ -836,7 +837,7 @@ namespace 智能家居系统
                 case "hello":
                 case "你好":
                     {
-                        SpeechRecognitionController.VoiceSpeak("欢迎使用Smart Home，智能管家为您服务");
+                        UnitySREController.VoiceSpeak("欢迎使用Smart Home，智能管家为您服务");
                         break;
                     }
                 case "刷新":
@@ -867,32 +868,32 @@ namespace 智能家居系统
                             "大爷说：你应该是象棋新手吧？我说：大爷，你怎么知道？大爷说：我在这玩了这么多年，第一步走帅的真不多",
                             "你的事就是我的事，我的事一般都懒得做。"
                         };
-                        SpeechRecognitionController.VoiceSpeak(Jorks[new Random().Next(Jorks.Length)]);
+                        UnitySREController.VoiceSpeak(Jorks[new Random().Next(Jorks.Length)]);
                         break;
                     }
                 case "天气":
                     {
-                        SpeechRecognitionController.VoiceSpeak(string.Format("{0} 今日天气，{1}，实时温度，{2}，温度区间，{3}",CityNameLabel.Text,WeatherLabel.Text,TempLabel.Text, TempRngLabel.Text));
+                        UnitySREController.VoiceSpeak(string.Format("{0} 今日天气，{1}，实时温度，{2}，温度区间，{3}",CityNameLabel.Text,WeatherLabel.Text,TempLabel.Text, TempRngLabel.Text));
                         break;
                     }
                 case "打开电视":
                     {
-                        SpeechRecognitionController.VoiceSpeak("正在为您打开电视");
+                        UnitySREController.VoiceSpeak("正在为您打开电视");
                         break;
                     }
                 case "关闭电视":
                     {
-                        SpeechRecognitionController.VoiceSpeak("正在为您关闭电视");
+                        UnitySREController.VoiceSpeak("正在为您关闭电视");
                         break;
                     }
                 case "打开空调":
                     {
-                        SpeechRecognitionController.VoiceSpeak("正在为您打开空调");
+                        UnitySREController.VoiceSpeak("正在为您打开空调");
                         break;
                     }
                 case "关闭空调":
                     {
-                        SpeechRecognitionController.VoiceSpeak("正在为您关闭空调");
+                        UnitySREController.VoiceSpeak("正在为您关闭空调");
                         break;
                     }
                 case "退出系统":
@@ -902,7 +903,7 @@ namespace 智能家居系统
                     }
                 default:
                     {
-                        //SpeechRecognitionController.VoiceSpeak("我听不懂您在说什么");
+                        //UnitySREController.VoiceSpeak("我听不懂您在说什么");
                         UnityModule.DebugPrint("遇到未识别的指令：{0}",VoiceCommand);
                         break;
                     }

@@ -15,6 +15,11 @@ namespace 智能家居系统
     class SpeechRecognitionController:IDisposable
     {
         /// <summary>
+        /// 语音朗读引擎
+        /// </summary>
+        private SpeechSynthesizer UnitySpeechSynthesizer = null;
+
+        /// <summary>
         /// 语音识别引擎
         /// </summary>
         private SpeechRecognitionEngine UnitySpeechRecognitionEngine = null;
@@ -23,6 +28,49 @@ namespace 智能家居系统
         /// 当 SpeechRecognitionEngine 采用与其加载启用的 Grammar 对象匹配的输入的时候引发
         /// </summary>
         public event EventHandler<string> SpeechRecognized;
+
+        /// <summary>
+        /// 创建语音朗读引擎
+        /// </summary>
+        /// <returns></returns>
+        public bool CreateSpeechSynthesizer()
+        {
+            try
+            {
+                UnitySpeechSynthesizer = new SpeechSynthesizer();
+                UnityModule.DebugPrint("创建语音朗读引擎成功");
+                UnitySpeechSynthesizer.SpeakStarted += new EventHandler<SpeakStartedEventArgs>(delegate(object s, SpeakStartedEventArgs e ) {
+                    UnityModule.DebugPrint("<<<开始语音朗读,暂时停止监听语音指令.");
+                    try
+                    {
+                        if (UnitySpeechRecognitionEngine != null)
+                            UnitySpeechRecognitionEngine.RecognizeAsyncStop();
+                    }
+                    catch (Exception ex)
+                    {
+                        UnityModule.DebugPrint("暂时停止监听语音指令时遇到错误：{0}", ex.Message);
+                    }
+                });
+                UnitySpeechSynthesizer.SpeakCompleted += new EventHandler<SpeakCompletedEventArgs>(delegate(object s,SpeakCompletedEventArgs e) {
+                    UnityModule.DebugPrint(">>>语音朗读结束,重新开始监听语音指令...");
+                    try
+                    {
+                        if (UnitySpeechRecognitionEngine != null)
+                            UnitySpeechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+                    }
+                    catch (Exception ex) {
+                        UnityModule.DebugPrint("重新监听语音指令时遇到错误：{0}",ex.Message);
+                    }
+                });
+                UnityModule.DebugPrint("语音朗读引擎事件绑定成功");
+            }
+            catch (Exception ex)
+            {
+                UnityModule.DebugPrint("创建语音朗读引擎遇到错误：{0}",ex.Message);
+                return false;
+            }
+            return true;
+        }
 
         /// <summary>
         /// 创建语音识别引擎
@@ -181,10 +229,25 @@ namespace 智能家居系统
         /// 语音播报信息
         /// </summary>
         /// <param name="Message">需要语音播报的信息</param>
-        static public void VoiceSpeak(string Message)
+        public void VoiceSpeak(string Message)
         {
-            UnityModule.DebugPrint("开始语音播报：{0}",Message);
-            new SpeechSynthesizer().SpeakAsync(Message);
+            try
+            {
+                //检测一次，如果语朗读别引擎为null，使用默认参数创建一次，并再次检测为null时，结束函数
+                if (UnitySpeechSynthesizer == null)
+                {
+                    UnityModule.DebugPrint("语音朗读引擎为 null，使用默认参数创建语音识别引擎...");
+                    CreateSpeechSynthesizer();
+                    if (UnitySpeechSynthesizer == null) return;
+                }
+
+                UnityModule.DebugPrint("开始语音播报：{0}", Message);
+                UnitySpeechSynthesizer.SpeakAsync(Message);
+            }
+            catch (Exception ex)
+            {
+                UnityModule.DebugPrint("语音朗读时遇到错误：{0}", ex.Message);
+            }
         }
 
         void IDisposable.Dispose()
