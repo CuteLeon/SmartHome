@@ -161,6 +161,10 @@ namespace 智能家居系统
             InfoPanel.Dock = DockStyle.Fill;
             CardPanel.Dock = DockStyle.Fill;
 
+            //控制界面针对家电的控制控件填充停靠
+            AirConditioningPanel.Dock = DockStyle.Fill;
+            TVPanel.Dock = DockStyle.Fill;
+
             //为按钮绑定鼠标动态效果事件
             RefreshButton.MouseEnter += new EventHandler(Button_MouseEnter);
             RefreshButton.MouseLeave += new EventHandler(Button_MouseLeave);
@@ -340,6 +344,7 @@ namespace 智能家居系统
                         string Description="";
                         string Manufactor="";
                         string MAC="";
+                        string DAType = "";
 
                         try
                         {
@@ -359,8 +364,9 @@ namespace 智能家居系统
                                 //家电不存在，添加新家电
                                 Model = DataReader["Model"] as string;
                                 Manufactor = DataReader["Manufactor"] as string;
+                                DAType = DataReader["Type"] as string;
                                 DomesticApplianceItem newDAItem;
-                                newDAItem = new DomesticApplianceItem(MAC, Manufactor,Model);
+                                newDAItem = new DomesticApplianceItem(MAC, Manufactor,Model,DAType);
                                 newDAItem.SetDeviceNameAndDescription(DeviceName,Description);
                                 newDAItem.Width = DomesticAppliancePanel.Width-25;
                                 newDAItem.ItemClick += new EventHandler(DomesticApplianceItem_ItemClick);
@@ -682,7 +688,7 @@ namespace 智能家居系统
         #region "家电控制界面事件"
         private void ExecuteButton_Click(object sender, EventArgs e)
         {
-            //todo:发送控制指令
+            ShowTipsMessage("家电控制指令发送成功！",MyMessageBox.IconType.Info);
         }
 
         private void PowerButton_Click(object sender, EventArgs e)
@@ -957,6 +963,33 @@ namespace 智能家居系统
 
                 ResetDAEventList();
                 ShowDomesticApplianceEventLog((sender as DomesticApplianceItem).MAC);
+
+
+                switch ((sender as DomesticApplianceItem).DAType)
+                {
+                    case "空调":
+                        {
+                            if (TVPanel.Visible) TVPanel.Hide();
+                            AirConditioningPanel.Show();
+                            AirConditioningPanel.BringToFront();
+                            break;
+                        }
+                    case "电视":
+                        {
+                            if(AirConditioningPanel.Visible) AirConditioningPanel.Hide();
+                            TVPanel.Show();
+                            TVPanel.BringToFront();
+                            break;
+                        }
+                    default:
+                        {
+                            TVPanel.Hide();
+                            AirConditioningPanel.Hide();
+                            break;
+                        }
+
+                }
+
             }
             else
             {

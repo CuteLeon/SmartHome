@@ -42,6 +42,10 @@ namespace 智能家居系统
         /// 家电型号
         /// </summary>
         private readonly string Model;
+        /// <summary>
+        /// 家电类型
+        /// </summary>
+        public readonly string DAType;
 
         /// <summary>
         /// 继承自 IDisposable 接口，释放托管资源并自动从家电字典里移除此项（注意：必须使用 IDisposable 接口调用此方法）
@@ -114,7 +118,7 @@ namespace 智能家居系统
         /// <param name="mac">家电设备的MAC</param>
         /// <param name="manufactor">家电设备的厂商</param>
         /// <param name="model">家电设备的型号</param>
-        public DomesticApplianceItem(string mac,string manufactor, string model)
+        public DomesticApplianceItem(string mac,string manufactor, string model,string daType)
         {
             InitializeComponent();
             //以设备MAC地址为键维护家电设备字典
@@ -126,6 +130,7 @@ namespace 智能家居系统
 
                 Manufactor = manufactor;
                 Model = model;
+                DAType = daType;
 
                 UnityModule.DebugPrint("以MAC为键，将家电加入在线家电字典");
             }

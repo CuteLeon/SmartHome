@@ -45,6 +45,16 @@
             this.InfoLabel = new System.Windows.Forms.Label();
             this.TargetLabel = new System.Windows.Forms.Label();
             this.MainPanel = new 智能家居系统.MyPanel();
+            this.TipsBox = new 智能家居系统.MyPanel();
+            this.TipsIconLabel = new System.Windows.Forms.Label();
+            this.TipsMessageLabel = new System.Windows.Forms.Label();
+            this.TipsTitleLabel = new System.Windows.Forms.Label();
+            this.ControlPanel = new 智能家居系统.MyPanel();
+            this.TVPanel = new 智能家居系统.MyPanel();
+            this.ChannelLabel = new System.Windows.Forms.Label();
+            this.ChannelBox = new System.Windows.Forms.TextBox();
+            this.ExecuteButton = new System.Windows.Forms.Label();
+            this.PowerButton = new System.Windows.Forms.Label();
             this.CardPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.WeatherPanel = new System.Windows.Forms.TableLayoutPanel();
             this.WeatherLabel = new System.Windows.Forms.Label();
@@ -52,11 +62,20 @@
             this.TempLabel = new System.Windows.Forms.Label();
             this.CityNameLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.CardNameLabel = new System.Windows.Forms.Label();
-            this.TipsBox = new 智能家居系统.MyPanel();
-            this.TipsIconLabel = new System.Windows.Forms.Label();
-            this.TipsMessageLabel = new System.Windows.Forms.Label();
-            this.TipsTitleLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.InfoPanel = new 智能家居系统.MyPanel();
             this.EventListView = new System.Windows.Forms.ListView();
             this.EventTimeColumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -78,44 +97,29 @@
             this.DeviceNameLabel = new System.Windows.Forms.Label();
             this.MACValueLabel = new System.Windows.Forms.Label();
             this.MACLabel = new System.Windows.Forms.Label();
-            this.ControlPanel = new 智能家居系统.MyPanel();
-            this.TVPanel = new 智能家居系统.MyPanel();
-            this.ChannelLabel = new System.Windows.Forms.Label();
-            this.ChannelBox = new System.Windows.Forms.TextBox();
-            this.ExecuteButton = new System.Windows.Forms.Label();
-            this.PowerButton = new System.Windows.Forms.Label();
             this.SystemEngine = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.AirConditioningPanel = new 智能家居系统.MyPanel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.LeftPanel.SuspendLayout();
             this.LogoPanel.SuspendLayout();
             this.FunctionButtonPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.VoiceButton)).BeginInit();
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            this.TipsBox.SuspendLayout();
+            this.ControlPanel.SuspendLayout();
+            this.TVPanel.SuspendLayout();
             this.CardPanel.SuspendLayout();
             this.WeatherPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.TipsBox.SuspendLayout();
-            this.InfoPanel.SuspendLayout();
-            this.InfoTablePanel.SuspendLayout();
-            this.ControlPanel.SuspendLayout();
-            this.TVPanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            this.InfoPanel.SuspendLayout();
+            this.InfoTablePanel.SuspendLayout();
+            this.AirConditioningPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // LeftPanel
@@ -329,16 +333,151 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
-            this.MainPanel.Controls.Add(this.CardPanel);
             this.MainPanel.Controls.Add(this.TipsBox);
-            this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Controls.Add(this.ControlPanel);
+            this.MainPanel.Controls.Add(this.CardPanel);
+            this.MainPanel.Controls.Add(this.InfoPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(241, 81);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(558, 518);
             this.MainPanel.TabIndex = 2;
             this.MainPanel.Resize += new System.EventHandler(this.MainPanel_Resize);
+            // 
+            // TipsBox
+            // 
+            this.TipsBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(185)))), ((int)(((byte)(255)))));
+            this.TipsBox.Controls.Add(this.TipsIconLabel);
+            this.TipsBox.Controls.Add(this.TipsMessageLabel);
+            this.TipsBox.Controls.Add(this.TipsTitleLabel);
+            this.TipsBox.Location = new System.Drawing.Point(290, 30);
+            this.TipsBox.Margin = new System.Windows.Forms.Padding(0);
+            this.TipsBox.Name = "TipsBox";
+            this.TipsBox.Padding = new System.Windows.Forms.Padding(1);
+            this.TipsBox.Size = new System.Drawing.Size(270, 90);
+            this.TipsBox.TabIndex = 5;
+            this.TipsBox.Visible = false;
+            // 
+            // TipsIconLabel
+            // 
+            this.TipsIconLabel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TipsIconLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TipsIconLabel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TipsIconLabel.Location = new System.Drawing.Point(1, 25);
+            this.TipsIconLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TipsIconLabel.Name = "TipsIconLabel";
+            this.TipsIconLabel.Size = new System.Drawing.Size(60, 64);
+            this.TipsIconLabel.TabIndex = 5;
+            // 
+            // TipsMessageLabel
+            // 
+            this.TipsMessageLabel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TipsMessageLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.TipsMessageLabel.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TipsMessageLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.TipsMessageLabel.Location = new System.Drawing.Point(61, 25);
+            this.TipsMessageLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TipsMessageLabel.Name = "TipsMessageLabel";
+            this.TipsMessageLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.TipsMessageLabel.Size = new System.Drawing.Size(208, 64);
+            this.TipsMessageLabel.TabIndex = 4;
+            this.TipsMessageLabel.Text = "智能家居解决方案";
+            this.TipsMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // TipsTitleLabel
+            // 
+            this.TipsTitleLabel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.TipsTitleLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TipsTitleLabel.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Bold);
+            this.TipsTitleLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.TipsTitleLabel.Image = global::智能家居系统.UnityResource.Close_1;
+            this.TipsTitleLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.TipsTitleLabel.Location = new System.Drawing.Point(1, 1);
+            this.TipsTitleLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TipsTitleLabel.Name = "TipsTitleLabel";
+            this.TipsTitleLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.TipsTitleLabel.Size = new System.Drawing.Size(268, 24);
+            this.TipsTitleLabel.TabIndex = 3;
+            this.TipsTitleLabel.Text = "智能家居解决方案";
+            this.TipsTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.TipsTitleLabel.Click += new System.EventHandler(this.TipsTitleLabel_Click);
+            // 
+            // ControlPanel
+            // 
+            this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
+            this.ControlPanel.Controls.Add(this.AirConditioningPanel);
+            this.ControlPanel.Controls.Add(this.TVPanel);
+            this.ControlPanel.Controls.Add(this.ExecuteButton);
+            this.ControlPanel.Controls.Add(this.PowerButton);
+            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
+            this.ControlPanel.Name = "ControlPanel";
+            this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.ControlPanel.Size = new System.Drawing.Size(558, 518);
+            this.ControlPanel.TabIndex = 3;
+            // 
+            // TVPanel
+            // 
+            this.TVPanel.Controls.Add(this.ChannelLabel);
+            this.TVPanel.Controls.Add(this.ChannelBox);
+            this.TVPanel.Location = new System.Drawing.Point(178, 213);
+            this.TVPanel.Name = "TVPanel";
+            this.TVPanel.Size = new System.Drawing.Size(365, 170);
+            this.TVPanel.TabIndex = 6;
+            this.TVPanel.Visible = false;
+            // 
+            // ChannelLabel
+            // 
+            this.ChannelLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ChannelLabel.Location = new System.Drawing.Point(82, 113);
+            this.ChannelLabel.Name = "ChannelLabel";
+            this.ChannelLabel.Size = new System.Drawing.Size(162, 37);
+            this.ChannelLabel.TabIndex = 10;
+            this.ChannelLabel.Text = "频道：";
+            this.ChannelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ChannelBox
+            // 
+            this.ChannelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChannelBox.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ChannelBox.Location = new System.Drawing.Point(258, 116);
+            this.ChannelBox.Name = "ChannelBox";
+            this.ChannelBox.Size = new System.Drawing.Size(192, 34);
+            this.ChannelBox.TabIndex = 0;
+            this.ChannelBox.Text = "5";
+            this.ChannelBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ExecuteButton
+            // 
+            this.ExecuteButton.BackColor = System.Drawing.Color.Transparent;
+            this.ExecuteButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ExecuteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.ExecuteButton.Image = global::智能家居系统.UnityResource.Execute_0;
+            this.ExecuteButton.Location = new System.Drawing.Point(15, 383);
+            this.ExecuteButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ExecuteButton.Name = "ExecuteButton";
+            this.ExecuteButton.Size = new System.Drawing.Size(528, 120);
+            this.ExecuteButton.TabIndex = 5;
+            this.ExecuteButton.Tag = "Execute";
+            this.ExecuteButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click);
+            // 
+            // PowerButton
+            // 
+            this.PowerButton.BackColor = System.Drawing.Color.Transparent;
+            this.PowerButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PowerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
+            this.PowerButton.Image = ((System.Drawing.Image)(resources.GetObject("PowerButton.Image")));
+            this.PowerButton.Location = new System.Drawing.Point(15, 15);
+            this.PowerButton.Margin = new System.Windows.Forms.Padding(0);
+            this.PowerButton.Name = "PowerButton";
+            this.PowerButton.Size = new System.Drawing.Size(528, 120);
+            this.PowerButton.TabIndex = 4;
+            this.PowerButton.Tag = "";
+            this.PowerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.PowerButton.Click += new System.EventHandler(this.PowerButton_Click);
+            this.PowerButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PowerButton_MouseDown);
+            this.PowerButton.MouseEnter += new System.EventHandler(this.PowerButton_MouseEnter);
+            this.PowerButton.MouseLeave += new System.EventHandler(this.PowerButton_MouseLeave);
             // 
             // CardPanel
             // 
@@ -452,76 +591,220 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(238, 158);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(232, 127);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "CH：5";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CardNameLabel
             // 
             this.CardNameLabel.BackColor = System.Drawing.Color.Transparent;
             this.CardNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CardNameLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.CardNameLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.CardNameLabel.Location = new System.Drawing.Point(3, 126);
+            this.CardNameLabel.Location = new System.Drawing.Point(3, 127);
             this.CardNameLabel.Name = "CardNameLabel";
-            this.CardNameLabel.Size = new System.Drawing.Size(113, 32);
+            this.CardNameLabel.Size = new System.Drawing.Size(113, 31);
             this.CardNameLabel.TabIndex = 0;
             this.CardNameLabel.Text = "电视";
             this.CardNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TipsBox
+            // tableLayoutPanel2
             // 
-            this.TipsBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(185)))), ((int)(((byte)(255)))));
-            this.TipsBox.Controls.Add(this.TipsIconLabel);
-            this.TipsBox.Controls.Add(this.TipsMessageLabel);
-            this.TipsBox.Controls.Add(this.TipsTitleLabel);
-            this.TipsBox.Location = new System.Drawing.Point(290, 30);
-            this.TipsBox.Margin = new System.Windows.Forms.Padding(0);
-            this.TipsBox.Name = "TipsBox";
-            this.TipsBox.Padding = new System.Windows.Forms.Padding(1);
-            this.TipsBox.Size = new System.Drawing.Size(270, 90);
-            this.TipsBox.TabIndex = 5;
-            this.TipsBox.Visible = false;
+            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(194)))), ((int)(((byte)(237)))));
+            this.tableLayoutPanel2.BackgroundImage = global::智能家居系统.UnityResource.CardBGI_1;
+            this.tableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
+            this.tableLayoutPanel2.ForeColor = System.Drawing.Color.White;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(15, 183);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.37975F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.62025F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(219, 158);
+            this.tableLayoutPanel2.TabIndex = 3;
             // 
-            // TipsIconLabel
+            // label2
             // 
-            this.TipsIconLabel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.TipsIconLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TipsIconLabel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TipsIconLabel.Location = new System.Drawing.Point(1, 25);
-            this.TipsIconLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.TipsIconLabel.Name = "TipsIconLabel";
-            this.TipsIconLabel.Size = new System.Drawing.Size(60, 64);
-            this.TipsIconLabel.TabIndex = 5;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel2.SetColumnSpan(this.label2, 2);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.Silver;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(213, 127);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "26 ℃";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // TipsMessageLabel
+            // label3
             // 
-            this.TipsMessageLabel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.TipsMessageLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.TipsMessageLabel.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TipsMessageLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.TipsMessageLabel.Location = new System.Drawing.Point(61, 25);
-            this.TipsMessageLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.TipsMessageLabel.Name = "TipsMessageLabel";
-            this.TipsMessageLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.TipsMessageLabel.Size = new System.Drawing.Size(208, 64);
-            this.TipsMessageLabel.TabIndex = 4;
-            this.TipsMessageLabel.Text = "智能家居解决方案";
-            this.TipsMessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.DimGray;
+            this.label3.Location = new System.Drawing.Point(3, 127);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 31);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "空调";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // TipsTitleLabel
+            // tableLayoutPanel3
             // 
-            this.TipsTitleLabel.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.TipsTitleLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TipsTitleLabel.Font = new System.Drawing.Font("微软雅黑", 11F, System.Drawing.FontStyle.Bold);
-            this.TipsTitleLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.TipsTitleLabel.Image = global::智能家居系统.UnityResource.Close_1;
-            this.TipsTitleLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.TipsTitleLabel.Location = new System.Drawing.Point(1, 1);
-            this.TipsTitleLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.TipsTitleLabel.Name = "TipsTitleLabel";
-            this.TipsTitleLabel.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.TipsTitleLabel.Size = new System.Drawing.Size(268, 24);
-            this.TipsTitleLabel.TabIndex = 3;
-            this.TipsTitleLabel.Text = "智能家居解决方案";
-            this.TipsTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TipsTitleLabel.Click += new System.EventHandler(this.TipsTitleLabel_Click);
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(194)))), ((int)(((byte)(237)))));
+            this.tableLayoutPanel3.BackgroundImage = global::智能家居系统.UnityResource.CardBGI_2;
+            this.tableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
+            this.tableLayoutPanel3.ForeColor = System.Drawing.Color.White;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(244, 183);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 2;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.37975F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.62025F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(299, 158);
+            this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel3.SetColumnSpan(this.label4, 2);
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(293, 127);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "正在甩干";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.ForeColor = System.Drawing.Color.DimGray;
+            this.label5.Location = new System.Drawing.Point(3, 127);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(143, 31);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "洗衣机";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(194)))), ((int)(((byte)(237)))));
+            this.tableLayoutPanel4.BackgroundImage = global::智能家居系统.UnityResource.CardBGI_3;
+            this.tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.label6, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label7, 0, 1);
+            this.tableLayoutPanel4.ForeColor = System.Drawing.Color.White;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(15, 351);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.37975F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.62025F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(259, 158);
+            this.tableLayoutPanel4.TabIndex = 5;
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel4.SetColumnSpan(this.label6, 2);
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(3, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(253, 127);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "已闭锁";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.ForeColor = System.Drawing.Color.DimGray;
+            this.label7.Location = new System.Drawing.Point(3, 127);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(123, 31);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "电磁门";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(194)))), ((int)(((byte)(237)))));
+            this.tableLayoutPanel5.BackgroundImage = global::智能家居系统.UnityResource.CardBGI_4;
+            this.tableLayoutPanel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.label8, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.label9, 0, 1);
+            this.tableLayoutPanel5.ForeColor = System.Drawing.Color.White;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(284, 351);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(5);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.37975F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.62025F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(259, 158);
+            this.tableLayoutPanel5.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel5.SetColumnSpan(this.label8, 2);
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(3, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(253, 127);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "待机中...";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label9.ForeColor = System.Drawing.Color.DimGray;
+            this.label9.Location = new System.Drawing.Point(3, 127);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(123, 31);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "电风扇";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // InfoPanel
             // 
@@ -802,289 +1085,42 @@
             this.MACLabel.Text = "MAC：";
             this.MACLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ControlPanel
-            // 
-            this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
-            this.ControlPanel.Controls.Add(this.TVPanel);
-            this.ControlPanel.Controls.Add(this.ExecuteButton);
-            this.ControlPanel.Controls.Add(this.PowerButton);
-            this.ControlPanel.Location = new System.Drawing.Point(0, 0);
-            this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.ControlPanel.Size = new System.Drawing.Size(558, 518);
-            this.ControlPanel.TabIndex = 3;
-            // 
-            // TVPanel
-            // 
-            this.TVPanel.Controls.Add(this.ChannelLabel);
-            this.TVPanel.Controls.Add(this.ChannelBox);
-            this.TVPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TVPanel.Location = new System.Drawing.Point(15, 135);
-            this.TVPanel.Name = "TVPanel";
-            this.TVPanel.Size = new System.Drawing.Size(528, 248);
-            this.TVPanel.TabIndex = 6;
-            // 
-            // ChannelLabel
-            // 
-            this.ChannelLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ChannelLabel.Location = new System.Drawing.Point(82, 113);
-            this.ChannelLabel.Name = "ChannelLabel";
-            this.ChannelLabel.Size = new System.Drawing.Size(162, 37);
-            this.ChannelLabel.TabIndex = 10;
-            this.ChannelLabel.Text = "频道：";
-            this.ChannelLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ChannelBox
-            // 
-            this.ChannelBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChannelBox.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ChannelBox.Location = new System.Drawing.Point(258, 116);
-            this.ChannelBox.Name = "ChannelBox";
-            this.ChannelBox.Size = new System.Drawing.Size(192, 34);
-            this.ChannelBox.TabIndex = 0;
-            this.ChannelBox.Text = "5";
-            this.ChannelBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ExecuteButton
-            // 
-            this.ExecuteButton.BackColor = System.Drawing.Color.Transparent;
-            this.ExecuteButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ExecuteButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
-            this.ExecuteButton.Image = global::智能家居系统.UnityResource.Execute_0;
-            this.ExecuteButton.Location = new System.Drawing.Point(15, 383);
-            this.ExecuteButton.Margin = new System.Windows.Forms.Padding(0);
-            this.ExecuteButton.Name = "ExecuteButton";
-            this.ExecuteButton.Size = new System.Drawing.Size(528, 120);
-            this.ExecuteButton.TabIndex = 5;
-            this.ExecuteButton.Tag = "Execute";
-            this.ExecuteButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ExecuteButton.Click += new System.EventHandler(this.ExecuteButton_Click);
-            // 
-            // PowerButton
-            // 
-            this.PowerButton.BackColor = System.Drawing.Color.Transparent;
-            this.PowerButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PowerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(190)))), ((int)(((byte)(238)))));
-            this.PowerButton.Image = ((System.Drawing.Image)(resources.GetObject("PowerButton.Image")));
-            this.PowerButton.Location = new System.Drawing.Point(15, 15);
-            this.PowerButton.Margin = new System.Windows.Forms.Padding(0);
-            this.PowerButton.Name = "PowerButton";
-            this.PowerButton.Size = new System.Drawing.Size(528, 120);
-            this.PowerButton.TabIndex = 4;
-            this.PowerButton.Tag = "";
-            this.PowerButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.PowerButton.Click += new System.EventHandler(this.PowerButton_Click);
-            this.PowerButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PowerButton_MouseDown);
-            this.PowerButton.MouseEnter += new System.EventHandler(this.PowerButton_MouseEnter);
-            this.PowerButton.MouseLeave += new System.EventHandler(this.PowerButton_MouseLeave);
-            // 
             // SystemEngine
             // 
             this.SystemEngine.Enabled = true;
             this.SystemEngine.Interval = 5000;
             this.SystemEngine.Tick += new System.EventHandler(this.SystemEngine_Tick);
             // 
-            // label1
+            // AirConditioningPanel
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(232, 126);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "CH：5";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AirConditioningPanel.Controls.Add(this.label10);
+            this.AirConditioningPanel.Controls.Add(this.textBox1);
+            this.AirConditioningPanel.Location = new System.Drawing.Point(97, 174);
+            this.AirConditioningPanel.Name = "AirConditioningPanel";
+            this.AirConditioningPanel.Size = new System.Drawing.Size(365, 170);
+            this.AirConditioningPanel.TabIndex = 7;
+            this.AirConditioningPanel.Visible = false;
             // 
-            // tableLayoutPanel2
+            // label10
             // 
-            this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(194)))), ((int)(((byte)(237)))));
-            this.tableLayoutPanel2.BackgroundImage = global::智能家居系统.UnityResource.CardBGI_1;
-            this.tableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label3, 0, 1);
-            this.tableLayoutPanel2.ForeColor = System.Drawing.Color.White;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(15, 183);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.37975F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.62025F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(219, 158);
-            this.tableLayoutPanel2.TabIndex = 3;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(82, 113);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(162, 37);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "温度：";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label2
+            // textBox1
             // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel2.SetColumnSpan(this.label2, 2);
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.Silver;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(213, 126);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "26 ℃";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.DimGray;
-            this.label3.Location = new System.Drawing.Point(3, 126);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 32);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "空调";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(194)))), ((int)(((byte)(237)))));
-            this.tableLayoutPanel3.BackgroundImage = global::智能家居系统.UnityResource.CardBGI_2;
-            this.tableLayoutPanel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label5, 0, 1);
-            this.tableLayoutPanel3.ForeColor = System.Drawing.Color.White;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(244, 183);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.37975F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.62025F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(299, 158);
-            this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel3.SetColumnSpan(this.label4, 2);
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(293, 126);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "正在甩干";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.ForeColor = System.Drawing.Color.DimGray;
-            this.label5.Location = new System.Drawing.Point(3, 126);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(143, 32);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "洗衣机";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(194)))), ((int)(((byte)(237)))));
-            this.tableLayoutPanel4.BackgroundImage = global::智能家居系统.UnityResource.CardBGI_3;
-            this.tableLayoutPanel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Controls.Add(this.label6, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label7, 0, 1);
-            this.tableLayoutPanel4.ForeColor = System.Drawing.Color.White;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(15, 351);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.37975F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.62025F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(259, 158);
-            this.tableLayoutPanel4.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel4.SetColumnSpan(this.label6, 2);
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(3, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(253, 126);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "已闭锁";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.ForeColor = System.Drawing.Color.DimGray;
-            this.label7.Location = new System.Drawing.Point(3, 126);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(123, 32);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "电磁门";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(194)))), ((int)(((byte)(237)))));
-            this.tableLayoutPanel5.BackgroundImage = global::智能家居系统.UnityResource.CardBGI_4;
-            this.tableLayoutPanel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tableLayoutPanel5.ColumnCount = 2;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.label8, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.label9, 0, 1);
-            this.tableLayoutPanel5.ForeColor = System.Drawing.Color.White;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(284, 351);
-            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(5);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.37975F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.62025F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(259, 158);
-            this.tableLayoutPanel5.TabIndex = 6;
-            // 
-            // label8
-            // 
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel5.SetColumnSpan(this.label8, 2);
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(3, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(253, 126);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "待机中...";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.ForeColor = System.Drawing.Color.DimGray;
-            this.label9.Location = new System.Drawing.Point(3, 126);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(123, 32);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "电风扇";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(258, 116);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(192, 34);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "26";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // MainForm
             // 
@@ -1113,21 +1149,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.VoiceButton)).EndInit();
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
-            this.CardPanel.ResumeLayout(false);
-            this.WeatherPanel.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.TipsBox.ResumeLayout(false);
-            this.InfoPanel.ResumeLayout(false);
-            this.InfoPanel.PerformLayout();
-            this.InfoTablePanel.ResumeLayout(false);
-            this.InfoTablePanel.PerformLayout();
             this.ControlPanel.ResumeLayout(false);
             this.TVPanel.ResumeLayout(false);
             this.TVPanel.PerformLayout();
+            this.CardPanel.ResumeLayout(false);
+            this.WeatherPanel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.InfoPanel.ResumeLayout(false);
+            this.InfoPanel.PerformLayout();
+            this.InfoTablePanel.ResumeLayout(false);
+            this.InfoTablePanel.PerformLayout();
+            this.AirConditioningPanel.ResumeLayout(false);
+            this.AirConditioningPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1201,6 +1239,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private MyPanel AirConditioningPanel;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
