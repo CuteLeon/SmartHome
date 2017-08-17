@@ -45,6 +45,12 @@
             this.InfoLabel = new System.Windows.Forms.Label();
             this.TargetLabel = new System.Windows.Forms.Label();
             this.MainPanel = new 智能家居系统.MyPanel();
+            this.CardPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.WeatherPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.WeatherLabel = new System.Windows.Forms.Label();
+            this.TempRngLabel = new System.Windows.Forms.Label();
+            this.TempLabel = new System.Windows.Forms.Label();
+            this.CityNameLabel = new System.Windows.Forms.Label();
             this.TipsBox = new 智能家居系统.MyPanel();
             this.TipsIconLabel = new System.Windows.Forms.Label();
             this.TipsMessageLabel = new System.Windows.Forms.Label();
@@ -70,7 +76,6 @@
             this.DeviceNameLabel = new System.Windows.Forms.Label();
             this.MACValueLabel = new System.Windows.Forms.Label();
             this.MACLabel = new System.Windows.Forms.Label();
-            this.CardPanel = new 智能家居系统.MyPanel();
             this.ControlPanel = new 智能家居系统.MyPanel();
             this.TVPanel = new 智能家居系统.MyPanel();
             this.ChannelLabel = new System.Windows.Forms.Label();
@@ -84,6 +89,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.VoiceButton)).BeginInit();
             this.TopPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
+            this.CardPanel.SuspendLayout();
+            this.WeatherPanel.SuspendLayout();
             this.TipsBox.SuspendLayout();
             this.InfoPanel.SuspendLayout();
             this.InfoTablePanel.SuspendLayout();
@@ -302,16 +309,102 @@
             // MainPanel
             // 
             this.MainPanel.BackColor = System.Drawing.Color.White;
-            this.MainPanel.Controls.Add(this.TipsBox);
             this.MainPanel.Controls.Add(this.CardPanel);
-            this.MainPanel.Controls.Add(this.ControlPanel);
+            this.MainPanel.Controls.Add(this.TipsBox);
             this.MainPanel.Controls.Add(this.InfoPanel);
+            this.MainPanel.Controls.Add(this.ControlPanel);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainPanel.Location = new System.Drawing.Point(241, 81);
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(558, 518);
             this.MainPanel.TabIndex = 2;
             this.MainPanel.Resize += new System.EventHandler(this.MainPanel_Resize);
+            // 
+            // CardPanel
+            // 
+            this.CardPanel.Controls.Add(this.WeatherPanel);
+            this.CardPanel.Location = new System.Drawing.Point(0, 0);
+            this.CardPanel.Name = "CardPanel";
+            this.CardPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.CardPanel.Size = new System.Drawing.Size(559, 518);
+            this.CardPanel.TabIndex = 2;
+            // 
+            // WeatherPanel
+            // 
+            this.WeatherPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.WeatherPanel.BackgroundImage = global::智能家居系统.UnityResource.WeatherBGI;
+            this.WeatherPanel.ColumnCount = 2;
+            this.WeatherPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.70166F));
+            this.WeatherPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.29834F));
+            this.WeatherPanel.Controls.Add(this.WeatherLabel, 0, 0);
+            this.WeatherPanel.Controls.Add(this.TempRngLabel, 1, 3);
+            this.WeatherPanel.Controls.Add(this.TempLabel, 1, 0);
+            this.WeatherPanel.Controls.Add(this.CityNameLabel, 0, 2);
+            this.WeatherPanel.ForeColor = System.Drawing.Color.White;
+            this.WeatherPanel.Location = new System.Drawing.Point(18, 18);
+            this.WeatherPanel.Name = "WeatherPanel";
+            this.WeatherPanel.Padding = new System.Windows.Forms.Padding(5);
+            this.WeatherPanel.RowCount = 4;
+            this.WeatherPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.WeatherPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.WeatherPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.WeatherPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.WeatherPanel.Size = new System.Drawing.Size(280, 158);
+            this.WeatherPanel.TabIndex = 1;
+            // 
+            // WeatherLabel
+            // 
+            this.WeatherLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.WeatherLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WeatherLabel.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.WeatherLabel.Location = new System.Drawing.Point(5, 5);
+            this.WeatherLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.WeatherLabel.Name = "WeatherLabel";
+            this.WeatherPanel.SetRowSpan(this.WeatherLabel, 3);
+            this.WeatherLabel.Size = new System.Drawing.Size(90, 111);
+            this.WeatherLabel.TabIndex = 3;
+            this.WeatherLabel.Text = "多云转阵雨";
+            this.WeatherLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TempRngLabel
+            // 
+            this.TempRngLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TempRngLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TempRngLabel.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TempRngLabel.Location = new System.Drawing.Point(95, 116);
+            this.TempRngLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TempRngLabel.Name = "TempRngLabel";
+            this.TempRngLabel.Size = new System.Drawing.Size(180, 37);
+            this.TempRngLabel.TabIndex = 2;
+            this.TempRngLabel.Text = "19℃ ~ 30℃";
+            this.TempRngLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TempLabel
+            // 
+            this.TempLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.TempLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TempLabel.Font = new System.Drawing.Font("微软雅黑", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TempLabel.Location = new System.Drawing.Point(95, 5);
+            this.TempLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.TempLabel.Name = "TempLabel";
+            this.WeatherPanel.SetRowSpan(this.TempLabel, 3);
+            this.TempLabel.Size = new System.Drawing.Size(180, 111);
+            this.TempLabel.TabIndex = 1;
+            this.TempLabel.Text = "23℃";
+            this.TempLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CityNameLabel
+            // 
+            this.CityNameLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.CityNameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CityNameLabel.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CityNameLabel.Location = new System.Drawing.Point(5, 116);
+            this.CityNameLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.CityNameLabel.Name = "CityNameLabel";
+            this.CityNameLabel.Size = new System.Drawing.Size(90, 37);
+            this.CityNameLabel.TabIndex = 0;
+            this.CityNameLabel.Text = "兰州";
+            this.CityNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TipsBox
             // 
@@ -650,16 +743,6 @@
             this.MACLabel.Text = "MAC：";
             this.MACLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // CardPanel
-            // 
-            this.CardPanel.BackColor = System.Drawing.Color.Transparent;
-            this.CardPanel.Location = new System.Drawing.Point(0, 0);
-            this.CardPanel.Name = "CardPanel";
-            this.CardPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.CardPanel.Size = new System.Drawing.Size(558, 518);
-            this.CardPanel.TabIndex = 5;
-            this.CardPanel.Visible = false;
-            // 
             // ControlPanel
             // 
             this.ControlPanel.BackColor = System.Drawing.Color.Transparent;
@@ -769,6 +852,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.VoiceButton)).EndInit();
             this.TopPanel.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
+            this.CardPanel.ResumeLayout(false);
+            this.WeatherPanel.ResumeLayout(false);
             this.TipsBox.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
             this.InfoPanel.PerformLayout();
@@ -793,7 +878,6 @@
         private System.Windows.Forms.Timer SystemEngine;
         private 智能家居系统.MyPanel ControlPanel;
         private 智能家居系统.MyPanel InfoPanel;
-        private 智能家居系统.MyPanel CardPanel;
         private System.Windows.Forms.Label ExitButton;
         private System.Windows.Forms.TableLayoutPanel InfoTablePanel;
         private System.Windows.Forms.Label DescriptionValueLabel;
@@ -830,6 +914,12 @@
         private MyPanel TVPanel;
         private System.Windows.Forms.TextBox ChannelBox;
         private System.Windows.Forms.Label ChannelLabel;
+        private System.Windows.Forms.TableLayoutPanel WeatherPanel;
+        private System.Windows.Forms.Label TempLabel;
+        private System.Windows.Forms.Label CityNameLabel;
+        private System.Windows.Forms.FlowLayoutPanel CardPanel;
+        private System.Windows.Forms.Label TempRngLabel;
+        private System.Windows.Forms.Label WeatherLabel;
     }
 }
 

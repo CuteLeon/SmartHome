@@ -242,8 +242,6 @@ namespace 智能家居系统
 
                 //绑定识别完成方法
                 UnitySREController.SpeechRecognized += new EventHandler<string>(SpeechRecognized);
-
-                SpeechRecognized(new object(),"放松一下");
             }
 
         }
@@ -807,6 +805,7 @@ namespace 智能家居系统
                 GrammarChoice.Add("你好");
                 GrammarChoice.Add("hello");
                 GrammarChoice.Add("刷新");
+                GrammarChoice.Add("天气");
                 GrammarChoice.Add("放松一下");
                 GrammarChoice.Add("退出系统");
                 UnitySREController.LoadGrammar(new Grammar(GrammarChoice.ToGrammarBuilder()));
@@ -869,6 +868,11 @@ namespace 智能家居系统
                             "你的事就是我的事，我的事一般都懒得做。"
                         };
                         SpeechRecognitionController.VoiceSpeak(Jorks[new Random().Next(Jorks.Length)]);
+                        break;
+                    }
+                case "天气":
+                    {
+                        SpeechRecognitionController.VoiceSpeak(string.Format("{0} 今日天气，{1}，实时温度，{2}，温度区间，{3}",CityNameLabel.Text,WeatherLabel.Text,TempLabel.Text, TempRngLabel.Text));
                         break;
                     }
                 case "打开电视":

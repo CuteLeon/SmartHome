@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MySql.Data.dll" />
+    <None Include="Resources\WeatherBGI.jpg" />
     <None Include="Resources\Power_2.png" />
     <None Include="Resources\Microphone_On.png" />
     <None Include="Resources\Microphone_Off.png" />
