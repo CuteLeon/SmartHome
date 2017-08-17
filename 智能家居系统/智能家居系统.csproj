@@ -224,6 +224,11 @@
     <None Include="Resources\Execute_0.png" />
     <None Include="Resources\Execute_1.png" />
     <None Include="Resources\Execute_2.png" />
+    <None Include="Resources\CardBGI_0.png" />
+    <None Include="Resources\CardBGI_1.png" />
+    <None Include="Resources\CardBGI_2.png" />
+    <None Include="Resources\CardBGI_3.png" />
+    <None Include="Resources\CardBGI_4.png" />
     <Content Include="Resources\Info_.png" />
     <None Include="Resources\Warning.png" />
     <None Include="Resources\Question.png" />
