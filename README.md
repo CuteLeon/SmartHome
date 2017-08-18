@@ -1,5 +1,9 @@
 # SmartHome
 
+> 2017/08/18 在兰州交通大学拿了 "西北赛区·一等奖"
+
+---
+
 > *使用此产品需遵循 [《GNU General Public License》](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) 开源许可协议*
 
 ---
