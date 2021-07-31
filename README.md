@@ -17,4 +17,4 @@
 
 ---
 ### 截图
-![image](./README/截图.png)
+![image](https://raw.github.com/CuteLeon/SmartHome/master/README/截图.png)
